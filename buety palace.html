@@ -93,6 +93,56 @@
         .book-btn:hover {
             background-color: #f0f0f0;
         }
+          /* New Services Section Styles */
+          .services {
+            padding: 4rem 2rem;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.5;
+        }
 
         @media (max-width: 768px) {
             .nav {
@@ -105,6 +155,13 @@
 
             .hero p {
                 font-size: 1rem;
+            }
+            .services {
+                padding: 2rem 1rem;
+            }
+
+            .services h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -128,6 +185,51 @@
         <h1>Stop Reapplying, Get Permanent</h1>
         <p>The best permanent makeup in Addis Ababa. We create the beauty you'll love.</p>
         <a href="/book" class="book-btn">Book Now</a>
+    </section>
+
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="/placeholder.svg" alt="Ombre Brows" />
+                <div class="service-content">
+                    <h3>Ombre Brows</h3>
+                    <p>Gradient eyebrow technique for a soft, natural look. Perfect for those wanting fuller, defined brows.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="/placeholder.svg" alt="Nano Brows" />
+                <div class="service-content">
+                    <h3>Nano Brows</h3>
+                    <p>Ultra-fine, hair-like strokes for the most natural-looking brows. Ideal for those with little to no eyebrow hair.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="/placeholder.svg" alt="Lip Blushing" />
+                <div class="service-content">
+                    <h3>Lip Blushing</h3>
+                    <p>Subtle, semi-permanent lip color enhancement. Adds definition and a natural flush to your lips.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="/placeholder.svg" alt="Eyeliner" />
+                <div class="service-content">
+                    <h3>Eyeliner</h3>
+                    <p>Long-lasting, smudge-proof eyeliner. Enhances your eye shape and eliminates daily application.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="/placeholder.svg" alt="Makeup" />
+                <div class="service-content">
+                    <h3>Makeup</h3>
+                    <p>Professional makeup application for any occasion. From natural day looks to glamorous evening styles.</p>
+                </div>
+            </div>
+        </div>
     </section>
 </body>
 </html>
