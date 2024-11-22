@@ -29,6 +29,7 @@
             align-items: center;
             z-index: 1000;
             backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
         }
 
         .logo {
@@ -65,7 +66,7 @@
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('https://picsum.photos/300/200') center/cover;
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -125,11 +126,12 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
         .service-card img {
@@ -140,24 +142,21 @@
         }
 
         .service-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .service-content {
             padding: 1.5rem;
         }
 
-        .service-content p {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            height: 4.5em;
-        }
-
         .service-content h3 {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
+        }
+
+        .service-content p {
+            font-size: 0.9rem;
+            color: #666;
         }
 
         .pmu-artist {
@@ -213,12 +212,53 @@
             background: #333;
         }
 
-        .our-work, .recently-posted {
+        .our-work {
             padding: 4rem 2rem;
             overflow: hidden;
         }
 
-        .work-grid, .video-grid {
+        .work-grid {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 1rem;
+        }
+
+        .work-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .work-item {
+            flex: 0 0 auto;
+            width: 300px;
+            scroll-snap-align: start;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .work-item:hover {
+            transform: scale(1.05);
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .recently-posted {
+            padding: 4rem 2rem;
+            overflow: hidden;
+        }
+
+        .video-grid {
             display: grid;
             grid-auto-flow: column;
             grid-auto-columns: 300px;
@@ -231,11 +271,11 @@
             padding: 1rem;
         }
 
-        .work-grid::-webkit-scrollbar, .video-grid::-webkit-scrollbar {
+        .video-grid::-webkit-scrollbar {
             display: none;
         }
 
-        .work-item, .video-item {
+        .video-item {
             scroll-snap-align: start;
             border-radius: 8px;
             overflow: hidden;
@@ -243,14 +283,8 @@
             transition: transform 0.3s ease;
         }
 
-        .work-item:hover, .video-item:hover {
+        .video-item:hover {
             transform: scale(1.02);
-        }
-
-        .work-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
         }
 
         .video-item video {
@@ -263,6 +297,42 @@
             padding: 1rem;
             font-size: 0.9rem;
             color: #333;
+        }
+
+        .fullscreen-preview {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .fullscreen-preview.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .fullscreen-preview img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close-preview {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
         }
 
         @media (max-width: 768px) {
@@ -286,7 +356,11 @@
                 min-height: 300px;
             }
 
-            .work-grid, .video-grid {
+            .work-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .video-grid {
                 grid-auto-columns: 250px;
             }
 
@@ -323,38 +397,38 @@
         <h2 class="section-title">Our Services</h2>
         <div class="services-grid">
             <div class="service-card">
-                <img src="https://picsum.photos/300/200" alt="Ombre Brows" />
+                <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows" />
                 <div class="service-content">
                     <h3>Ombre Brows</h3>
-                    <p>Gradient eyebrow technique for a soft, natural look. Perfect for those wanting fuller, defined brows.</p>
+                    <p>Gradient eyebrow technique for a soft, natural look.</p>
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://picsum.photos/300/200" alt="Nano Brows" />
+                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows" />
                 <div class="service-content">
                     <h3>Nano Brows</h3>
-                    <p>Ultra-fine, hair-like strokes for the most natural-looking brows. Ideal for those with little to no eyebrow hair.</p>
+                    <p>Ultra-fine, hair-like strokes for natural-looking brows.</p>
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://picsum.photos/300/200" alt="Lip Blushing" />
+                <img src="https://images.unsplash.com/photo-1588511210679-a4ca5523fb4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing" />
                 <div class="service-content">
                     <h3>Lip Blushing</h3>
-                    <p>Subtle, semi-permanent lip color enhancement. Adds definition and a natural flush to your lips.</p>
+                    <p>Subtle, semi-permanent lip color enhancement.</p>
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://picsum.photos/300/200" alt="Permanent Eyeliner" />
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner" />
                 <div class="service-content">
                     <h3>Permanent Eyeliner</h3>
-                    <p>Wake up with perfectly define eyes. Our permanent eyeliner technique gives you a flawless look 24/7.</p>
+                    <p>Wake up with perfectly defined eyes every day.</p>
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://picsum.photos/300/200" alt="Lash Enhancement" />
+                <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lash Enhancement" />
                 <div class="service-content">
                     <h3>Lash Enhancement</h3>
-                    <p>Subtle permanent makeup technique that creates the appearance of fuller, darker lashes without traditional eyeliner.</p>
+                    <p>Create the appearance of fuller, darker lashes.</p>
                 </div>
             </div>
         </div>
@@ -368,7 +442,7 @@
                 <p>She is extremely passionate about her career and wants every client to leave her chair feeling as fulfilled as she does. Brianna genuinely loves people and getting to know them on a personal level is important to her. She has been working in the industry for about 2 years now and enjoys the constant progressiveness the hair business has to offer.</p>
                 <a href="#" class="certificate-btn">See Her Certificates</a>
             </div>
-            <img src="https://picsum.photos/300/400" alt="Brianna" class="artist-image" />
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Brianna" class="artist-image" />
         </div>
     </section>
 
@@ -376,40 +450,28 @@
         <h2 class="section-title">Our Work</h2>
         <div class="work-grid">
             <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 1" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 1" loading="lazy" />
             </div>
             <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 2" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Work 2" loading="lazy" />
             </div>
             <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 3" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 3" loading="lazy" />
             </div>
             <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 4" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Work 4" loading="lazy" />
             </div>
             <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 5" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 5" loading="lazy" />
             </div>
             <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 6" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1588511210679-a4ca5523fb4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Work 6" loading="lazy" />
             </div>
             <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 7" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 7" loading="lazy" />
             </div>
             <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 8" loading="lazy" />
-            </div>
-            <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 9" loading="lazy" />
-            </div>
-            <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 10" loading="lazy" />
-            </div>
-            <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 11" loading="lazy" />
-            </div>
-            <div class="work-item">
-                <img src="https://picsum.photos/300/250" alt="Work 12" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Work 8" loading="lazy" />
             </div>
         </div>
     </section>
@@ -462,45 +524,70 @@
         </div>
     </section>
 
+    <div class="fullscreen-preview">
+        <img src="" alt="Full-screen preview" />
+        <span class="close-preview">&times;</span>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const scrollContainers = document.querySelectorAll('.work-grid, .video-grid');
-            
-            scrollContainers.forEach(container => {
-                let isScrolling = false;
-                let startX;
-                let scrollLeft;
+            const header = document.querySelector('.header');
+            const workItems = document.querySelectorAll('.work-item');
+            const fullscreenPreview = document.querySelector('.fullscreen-preview');
+            const previewImage = fullscreenPreview.querySelector('img');
+            const closePreview = document.querySelector('.close-preview');
 
-                container.addEventListener('mousedown', (e) => {
-                    isScrolling = true;
-                    startX = e.pageX - container.offsetLeft;
-                    scrollLeft = container.scrollLeft;
-                });
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                const maxScroll = 200;
+                const opacity = 1 - Math.min(scrollPosition / maxScroll, 0.9);
+                header.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
+            });
 
-                container.addEventListener('mouseleave', () => {
-                    isScrolling = false;
-                });
-
-                container.addEventListener('mouseup', () => {
-                    isScrolling = false;
-                });
-
-                container.addEventListener('mousemove', (e) => {
-                    if (!isScrolling) return;
-                    e.preventDefault();
-                    const x = e.pageX - container.offsetLeft;
-                    const walk = (x - startX) * 2;
-                    container.scrollLeft = scrollLeft - walk;
+            workItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const imgSrc = item.querySelector('img').src;
+                    previewImage.src = imgSrc;
+                    fullscreenPreview.classList.add('active');
                 });
             });
-        });
 
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            const scrollPosition = window.scrollY;
-            const maxScroll = 200;
-            const opacity = 1 - Math.min(scrollPosition / maxScroll, 0.9);
-            header.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
+            closePreview.addEventListener('click', () => {
+                fullscreenPreview.classList.remove('active');
+            });
+
+            fullscreenPreview.addEventListener('click', (e) => {
+                if (e.target === fullscreenPreview) {
+                    fullscreenPreview.classList.remove('active');
+                }
+            });
+
+            const workGrid = document.querySelector('.work-grid');
+            let isScrolling = false;
+            let startX;
+            let scrollLeft;
+
+            workGrid.addEventListener('mousedown', (e) => {
+                isScrolling = true;
+                startX = e.pageX - workGrid.offsetLeft;
+                scrollLeft = workGrid.scrollLeft;
+            });
+
+            workGrid.addEventListener('mouseleave', () => {
+                isScrolling = false;
+            });
+
+            workGrid.addEventListener('mouseup', () => {
+                isScrolling = false;
+            });
+
+            workGrid.addEventListener('mousemove', (e) => {
+                if (!isScrolling) return;
+                e.preventDefault();
+                const x = e.pageX - workGrid.offsetLeft;
+                const walk = (x - startX) * 2;
+                workGrid.scrollLeft = scrollLeft - walk;
+            });
         });
     </script>
 </body>
