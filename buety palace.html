@@ -5,23 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neon Beauty Palace</title>
     <style>
-       * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
         }
 
         .header {
-            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             padding: 1rem 2rem;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .logo {
@@ -56,9 +63,9 @@
         }
 
         .hero {
-            height: 85vh; /* Increased from 70vh */
+            height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('/placeholder.svg') center/cover;
+                        url('https://picsum.photos/300/200') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -100,9 +107,9 @@
             margin: 4rem 0 3rem;
         }
 
-        /* Services Section */
         .services {
             padding: 4rem 2rem;
+            background-color: #f9f9f9;
         }
 
         .services-grid {
@@ -129,13 +136,30 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.05);
         }
 
         .service-content {
             padding: 1.5rem;
         }
 
-        /* PMU Artist Section */
+        .service-content p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 4.5em;
+        }
+
+        .service-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
         .pmu-artist {
             padding: 4rem 2rem;
             max-width: 1200px;
@@ -189,103 +213,69 @@
             background: #333;
         }
 
-        /* Horizontal Scroll Sections */
-        .scroll-section {
+        .our-work, .recently-posted {
             padding: 4rem 2rem;
+            overflow: hidden;
         }
 
-        .scroll-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
+        .work-grid, .video-grid {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 300px;
             gap: 1rem;
-            padding: 1rem 0;
-            -webkit-overflow-scrolling: touch;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 1rem;
         }
 
-        .scroll-container::-webkit-scrollbar {
-            height: 8px;
+        .work-grid::-webkit-scrollbar, .video-grid::-webkit-scrollbar {
+            display: none;
         }
 
-        .scroll-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 4px;
-        }
-
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-
-        .work-card {
+        .work-item, .video-item {
             scroll-snap-align: start;
-            min-width: 300px;
-            background: white;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .work-card img {
+        .work-item:hover, .video-item:hover {
+            transform: scale(1.02);
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .video-item video {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
 
-        .work-card h4 {
+        .video-item p {
             padding: 1rem;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            margin: 0;
-        }
-
-        .video-card {
-            scroll-snap-align: start;
-            min-width: 300px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .video-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .video-content {
-            padding: 1rem;
-        }
-
-        .video-content h4 {
-            margin-bottom: 0.5rem;
-        }
-
-        .video-content p {
-            color: #666;
             font-size: 0.9rem;
-        }
-
-        .view-more-btn {
-            display: block;
-            width: fit-content;
-            margin: 2rem auto 0;
-            padding: 0.75rem 2rem;
-            background: #000;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .view-more-btn:hover {
-            background: #333;
+            color: #333;
         }
 
         @media (max-width: 768px) {
             .nav {
                 display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
 
             .artist-card {
@@ -296,12 +286,16 @@
                 min-height: 300px;
             }
 
-            .scroll-container {
-                gap: 0.5rem;
+            .work-grid, .video-grid {
+                grid-auto-columns: 250px;
             }
 
-            .work-card, .video-card {
-                min-width: 250px;
+            .work-item img {
+                height: 200px;
+            }
+
+            .video-item video {
+                height: 150px;
             }
         }
     </style>
@@ -311,12 +305,10 @@
         <a href="/" class="logo">Neon Beauty Palace</a>
         <nav class="nav">
             <a href="/" class="nav-link">Home</a>
-            <a href="/services" class="nav-link">Services</a>
-            <a href="/about" class="nav-link">About</a>
-            <a href="/our-work" class="nav-link">Our Work</a>
-            <a href="/recently-posted" class="nav-link">Recently Posted</a>
-            <a href="/contact" class="nav-link">Contact Us</a>
-            <a href="/gallery" class="nav-link">Gallery</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#pmu-artist" class="nav-link">PMU Artist</a>
+            <a href="#our-work" class="nav-link">Our Work</a>
+            <a href="#recently-posted" class="nav-link">Recently Posted</a>
             <a href="/academy" class="academy-btn">Academy</a>
         </nav>
     </header>
@@ -327,49 +319,189 @@
         <a href="/book" class="book-btn">Book Now</a>
     </section>
 
-    <section class="services">
-        <h2>Our Services</h2>
+    <section id="services" class="services">
+        <h2 class="section-title">Our Services</h2>
         <div class="services-grid">
             <div class="service-card">
-                <img src="/placeholder.svg" alt="Ombre Brows" />
+                <img src="https://picsum.photos/300/200" alt="Ombre Brows" />
                 <div class="service-content">
                     <h3>Ombre Brows</h3>
                     <p>Gradient eyebrow technique for a soft, natural look. Perfect for those wanting fuller, defined brows.</p>
                 </div>
             </div>
-
             <div class="service-card">
-                <img src="/placeholder.svg" alt="Nano Brows" />
+                <img src="https://picsum.photos/300/200" alt="Nano Brows" />
                 <div class="service-content">
                     <h3>Nano Brows</h3>
                     <p>Ultra-fine, hair-like strokes for the most natural-looking brows. Ideal for those with little to no eyebrow hair.</p>
                 </div>
             </div>
-
             <div class="service-card">
-                <img src="/placeholder.svg" alt="Lip Blushing" />
+                <img src="https://picsum.photos/300/200" alt="Lip Blushing" />
                 <div class="service-content">
                     <h3>Lip Blushing</h3>
                     <p>Subtle, semi-permanent lip color enhancement. Adds definition and a natural flush to your lips.</p>
                 </div>
             </div>
-
             <div class="service-card">
-                <img src="/placeholder.svg" alt="Eyeliner" />
+                <img src="https://picsum.photos/300/200" alt="Permanent Eyeliner" />
                 <div class="service-content">
-                    <h3>Eyeliner</h3>
-                    <p>Long-lasting, smudge-proof eyeliner. Enhances your eye shape and eliminates daily application.</p>
+                    <h3>Permanent Eyeliner</h3>
+                    <p>Wake up with perfectly define eyes. Our permanent eyeliner technique gives you a flawless look 24/7.</p>
                 </div>
             </div>
-
             <div class="service-card">
-                <img src="/placeholder.svg" alt="Makeup" />
+                <img src="https://picsum.photos/300/200" alt="Lash Enhancement" />
                 <div class="service-content">
-                    <h3>Makeup</h3>
-                    <p>Professional makeup application for any occasion. From natural day looks to glamorous evening styles.</p>
+                    <h3>Lash Enhancement</h3>
+                    <p>Subtle permanent makeup technique that creates the appearance of fuller, darker lashes without traditional eyeliner.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <section id="pmu-artist" class="pmu-artist">
+        <h2 class="section-title">PMU Artist</h2>
+        <div class="artist-card">
+            <div class="artist-info">
+                <h3>Brianna</h3>
+                <p>She is extremely passionate about her career and wants every client to leave her chair feeling as fulfilled as she does. Brianna genuinely loves people and getting to know them on a personal level is important to her. She has been working in the industry for about 2 years now and enjoys the constant progressiveness the hair business has to offer.</p>
+                <a href="#" class="certificate-btn">See Her Certificates</a>
+            </div>
+            <img src="https://picsum.photos/300/400" alt="Brianna" class="artist-image" />
+        </div>
+    </section>
+
+    <section id="our-work" class="our-work">
+        <h2 class="section-title">Our Work</h2>
+        <div class="work-grid">
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 1" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 2" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 3" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 4" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 5" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 6" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 7" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 8" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 9" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 10" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 11" loading="lazy" />
+            </div>
+            <div class="work-item">
+                <img src="https://picsum.photos/300/250" alt="Work 12" loading="lazy" />
+            </div>
+        </div>
+    </section>
+
+    <section id="recently-posted" class="recently-posted">
+        <h2 class="section-title">Recently Posted</h2>
+        <div class="video-grid">
+            <div class="video-item">
+                <video controls preload="metadata">
+                    <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Ombre Brows Tutorial: Learn the step-by-step process.</p>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata">
+                    <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Lip Blushing Technique: Discover the secrets to perfect lips.</p>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata">
+                    <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Eyeliner Masterclass: Master the art of flawless application.</p>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata">
+                    <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Natural Makeup Look: Create a stunning look in 10 minutes.</p>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata">
+                    <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Advanced Ombre Brows Techniques: Taking your skills to the next level.</p>
+            </div>
+            <div class="video-item">
+                <video controls preload="metadata">
+                    <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Client Consultation: How to understand and meet your client's needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollContainers = document.querySelectorAll('.work-grid, .video-grid');
+            
+            scrollContainers.forEach(container => {
+                let isScrolling = false;
+                let startX;
+                let scrollLeft;
+
+                container.addEventListener('mousedown', (e) => {
+                    isScrolling = true;
+                    startX = e.pageX - container.offsetLeft;
+                    scrollLeft = container.scrollLeft;
+                });
+
+                container.addEventListener('mouseleave', () => {
+                    isScrolling = false;
+                });
+
+                container.addEventListener('mouseup', () => {
+                    isScrolling = false;
+                });
+
+                container.addEventListener('mousemove', (e) => {
+                    if (!isScrolling) return;
+                    e.preventDefault();
+                    const x = e.pageX - container.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    container.scrollLeft = scrollLeft - walk;
+                });
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            const scrollPosition = window.scrollY;
+            const maxScroll = 200;
+            const opacity = 1 - Math.min(scrollPosition / maxScroll, 0.9);
+            header.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
+        });
+    </script>
 </body>
 </html>
