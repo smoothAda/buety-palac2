@@ -504,6 +504,150 @@
                 grid-template-columns: 1fr;
             }
         }
+    /* testemonial */
+   
+    .testimonial-section {
+            padding: 6rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-section-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .testimonial-scroll-container {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .testimonial-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 300px;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-content {
+            padding: 1.5rem;
+        }
+
+        .testimonial-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-quote {
+            font-size: 0.95rem;
+            color: #333;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-section {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .testimonial-section-title {
+                font-size: 2rem;
+            }
+
+            .testimonial-card {
+                width: 280px;
+            }
+        }
+        /* footer */
+        .nbp-footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem;
+        }
+
+        .nbp-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .nbp-footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nbp-footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nbp-footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nbp-footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nbp-footer-links a:hover {
+            color: #ccc;
+        }
+
+        .nbp-footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #555;
+        }
+
+        @media (max-width: 768px) {
+            .nbp-contact-grid,
+            .nbp-footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -732,6 +876,98 @@
         </div>
     </div>
 
+
+    
+    <section class="testimonial-section">
+        <h2 class="testimonial-section-title">What Our Clients Say</h2>
+        <div class="testimonial-scroll-container">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Sarah Johnson" class="testimonial-image">
+                    <h3 class="testimonial-name">Sarah Johnson</h3>
+                    <p class="testimonial-role">Regular Client</p>
+                    <p class="testimonial-quote">"I've been coming to Neon Beauty Palace for years, and I'm always impressed with their service. The staff is professional, and the results are amazing!"</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Emily Davis" class="testimonial-image">
+                    <h3 class="testimonial-name">Emily Davis</h3>
+                    <p class="testimonial-role">First-time Customer</p>
+                    <p class="testimonial-quote">"I was nervous about trying permanent makeup, but the team at Neon Beauty Palace made me feel so comfortable. I love my new brows!"</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Jessica Lee" class="testimonial-image">
+                    <h3 class="testimonial-name">Jessica Lee</h3>
+                    <p class="testimonial-role">Makeup Artist</p>
+                    <p class="testimonial-quote">"As a makeup artist, I have high standards. Neon Beauty Palace exceeds them all. Their attention to detail is unmatched."</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Olivia Wilson" class="testimonial-image">
+                    <h3 class="testimonial-name">Olivia Wilson</h3>
+                    <p class="testimonial-role">Influencer</p>
+                    <p class="testimonial-quote">"I've had my lips done at several places, but none compare to Neon Beauty Palace. The results are natural and long-lasting."</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Sophia Martinez" class="testimonial-image">
+                    <h3 class="testimonial-name">Sophia Martinez</h3>
+                    <p class="testimonial-role">Model</p>
+                    <p class="testimonial-quote">"My career depends on my looks, and I trust Neon Beauty Palace completely. They're true artists in their field."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="nbp-footer">
+        <div class="nbp-container">
+            <div class="nbp-footer-grid">
+                <div class="nbp-footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="nbp-footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="nbp-footer-column">
+                    <h3>Services</h3>
+                    <ul class="nbp-footer-links">
+                        <li><a href="#">Ombre Brows</a></li>
+                        <li><a href="#">Lip Blushing</a></li>
+                        <li><a href="#">Eyeliner</a></li>
+                        <li><a href="#">Lash Enhancement</a></li>
+                    </ul>
+                </div>
+                <div class="nbp-footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="nbp-footer-links">
+                        <li>XQQR+RWX, Addis Ababa</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li>info@neonbeautypalace.com</li>
+                    </ul>
+                </div>
+                <div class="nbp-footer-column">
+                    <h3>Follow Us</h3>
+                    <ul class="nbp-footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nbp-footer-bottom">
+                <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 <script src="script.js"></script>
 
 
@@ -805,7 +1041,17 @@
     }
 
 
+//testemonial 
+document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.testimonial-header');
 
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                const maxScroll = 200;
+                const opacity = 1 - Math.min(scrollPosition / maxScroll, 0.9);
+                header.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
+            });
+        });
 
 
     </script>
