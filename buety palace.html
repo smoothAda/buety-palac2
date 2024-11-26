@@ -66,9 +66,9 @@
         }
 
         .hero {
+            width: 100%;
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center/cover;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -76,8 +76,17 @@
             text-align: center;
             color: white;
             padding: 0 1rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+            position: relative;
         }
-
+ .hero-content {
+            max-width: 800px;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
@@ -165,7 +174,8 @@
 
         .pmu-artist {
             padding: 2rem 1rem;
-            max-width: 1200px;
+            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -666,10 +676,12 @@
     </header>
 
     <section class="hero">
-        <h1>Stop Reapplying, Get Permanent</h1>
-        <p>The best permanent makeup in Addis Ababa. We create the beauty you'll love.</p>
-        <a href="/book" class="book-btn">Book Now</a>
-    </section>
+        <div class="hero-content">
+            <h1>Stop Reapplying, Get Permanent</h1>
+            <p>The best permanent makeup in Addis Ababa. We create the beauty you'll love.</p>
+            <a href="/book" class="book-btn">Book Now</a>
+        </div>
+    </section>  
 
     <section id="services" class="services">
         <h2 class="section-title">Our Services</h2>
