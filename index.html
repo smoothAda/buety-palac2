@@ -19,7 +19,6 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-color: #FAF9F6;
         }
 
         .header {
@@ -40,7 +39,7 @@
         .logo {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #d06a22;
+            color: #000;
             text-decoration: none;
         }
 
@@ -51,7 +50,7 @@
         }
 
         .nav-link {
-            color: #333;
+            color: #000;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 300;
@@ -62,9 +61,10 @@
         }
 
         .academy-btn {
-            background-color: #e8843d;
-            color: white;
+            background-color: #000;
             margin-left: 3rem;
+
+            color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             text-decoration: none;
@@ -101,7 +101,6 @@
             font-size: 3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #ffffff;
         }
 
         .hero p {
@@ -112,7 +111,7 @@
         }
 
         .book-btn {
-            background-color: #d06a22;
+            background-color: white;
             color: black;
             padding: 0.75rem 2rem;
             border-radius: 4px;
@@ -122,7 +121,7 @@
         }
 
         .book-btn:hover {
-            background-color: #b85a1c;
+            background-color: #f0f0f0;
         }
 
         .section-title {
@@ -134,7 +133,7 @@
         }
 
         .services {
-            padding: 4rem 5%;
+            padding: 4rem 5rem;
             background-color: #f9f9f9;
         }
 
@@ -178,12 +177,12 @@
 
         .service-content p {
             font-size: 0.9rem;
-            color: #333;
+            color: #666;
             font-weight: 300;
         }
 
         .pmu-artist {
-            padding: 4rem 5%;
+            padding: 4rem 5rem;
             max-width: 1300px;
             margin: 0 auto;
         }
@@ -211,7 +210,7 @@
         }
 
         .artist-info p {
-            color: #333;
+            color: #666;
             line-height: 1.6;
             margin-bottom: 1rem;
             font-size: 0.9rem;
@@ -227,7 +226,7 @@
 
         .certificate-btn {
             display: inline-block;
-            background: #d06a22;
+            background: #000;
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 4px;
@@ -236,11 +235,11 @@
         }
 
         .certificate-btn:hover {
-            background: #b85a1c;
+            background: #333;
         }
 
         .our-work {
-            padding: 4rem 5%;
+            padding: 4rem 5rem;
             overflow: hidden;
         }
 
@@ -283,7 +282,7 @@
         }
 
         .recently-posted {
-            padding: 4rem 5%;
+            padding: 4rem 5rem;
             overflow: hidden;
         }
 
@@ -371,7 +370,7 @@
 
         .view-more-btn {
             display: inline-block;
-            background-color: #d06a22;
+            background-color: #000;
             color: white;
             padding: 0.75rem 2rem;
             border-radius: 4px;
@@ -381,9 +380,44 @@
         }
 
         .view-more-btn:hover {
-            background-color: #b85a1c;
+            background-color: #333;
         }
 
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .artist-card {
+                grid-template-columns: 1fr;
+            }
+
+            .artist-image {
+                min-height: 300px;
+            }
+
+            .work-item, .video-item {
+                width: 250px;
+            }
+
+            .work-item img {
+                height: 200px;
+            }
+
+            .video-item video {
+                height: 150px;
+            }
+        }
+
+        /* contact */
         .nbp-reset {
             margin: 0;
             padding: 0;
@@ -393,7 +427,7 @@
 
         .nbp-body {
             background-color: #f5f5f5;
-            padding: 4rem 5%;
+            padding: 4rem 5rem;
         }
 
         .nbp-container {
@@ -412,6 +446,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            padding-left:35px;
         }
 
         .nbp-contact-card {
@@ -472,7 +507,7 @@
         .nbp-show-map-btn {
             width: 100%;
             padding: 0.75rem;
-            background: #d06a22;
+            background: #000;
             color: white;
             border: none;
             border-radius: 8px;
@@ -482,11 +517,18 @@
         }
 
         .nbp-show-map-btn:hover {
-            background: #b85a1c;
+            background: #333;
         }
 
+        @media (max-width: 768px) {
+            .nbp-contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* testimonial */
         .testimonial-section {
-            padding: 4rem 5%;
+            padding: 4rem 5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -564,6 +606,21 @@
             font-style: italic;
         }
 
+        @media (max-width: 768px) {
+            .testimonial-section {
+                padding: 5rem 1rem 3rem;
+            }
+
+            .testimonial-section-title {
+                font-size: 2rem;
+            }
+
+            .testimonial-card {
+                width: 280px;
+            }
+        }
+
+        /* footer */
         .nbp-footer {
             background-color: #333;
             color: #fff;
@@ -571,7 +628,7 @@
         }
 
         .nbp-footer-grid {
-            padding: 4rem 5%;
+            padding: 4rem 5rem;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
@@ -608,6 +665,14 @@
             border-top: 1px solid #555;
         }
 
+        @media (max-width: 768px) {
+            .nbp-contact-grid,
+            .nbp-footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* social icons */
         .social-icons {
             position: fixed;
             left: 20px;
@@ -683,111 +748,7 @@
             background: linear-gradient(45deg, #0088cc, #0088cc);
         }
 
-        .centered-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 1024px) {
-            .services, .pmu-artist, .our-work, .recently-posted, .testimonial-section, .nbp-body {
-                padding: 3rem 5%;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            .artist-card {
-                grid-template-columns: 1fr;
-            }
-
-            .artist-image {
-                height: 300px;
-            }
-
-            .nbp-footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            .header {
-                padding: 1rem;
-            }
-
-            .nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: rgba(255, 255, 255, 0.9);
-                flex-direction: column;
-                padding: 1rem;
-            }
-
-            .nav.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-link {
-                padding: 0.5rem 0;
-            }
-
-            .academy-btn {
-                margin: 0.5rem 0 0 0;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .services, .pmu-artist, .our-work, .recently-posted, .testimonial-section, .nbp-body {
-                padding: 2rem 5%;
-            }
-
-            .work-item, .video-item {
-                width: 250px;
-            }
-
-            .work-item img {
-                height: 200px;
-            }
-
-            .video-item video {
-                height: 150px;
-            }
-
-            .nbp-contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nbp-footer-grid {
-                grid-template-columns: 1fr;
-            }
-
             .social-icons {
                 left: 10px;
             }
@@ -802,35 +763,9 @@
                 height: 20px;
             }
         }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero p {
-                font-size: 0.9rem;
-            }
-
-            .book-btn {
-                padding: 0.5rem 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .work-item, .video-item {
-                width: 100%;
-            }
-
-            .testimonial-card {
-                width: 100%;
-            }
+        .centered-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -854,16 +789,14 @@
     </div>
     <header class="header">
         <a href="/" class="logo">Neon Beauty Palace</a>
-        <button class="mobile-menu-btn" aria-label="Toggle mobile menu">☰</button>
         <nav class="nav">
             <a href="/" class="nav-link">Home</a>
             <a href="#services" class="nav-link">Services</a>
             <a href="#pmu-artist" class="nav-link">PMU Artist</a>
             <a href="#our-work" class="nav-link">Our Work</a>
             <a href="#recently-posted" class="nav-link">Recently Posted</a>
-            <a href="#contact" class="nav-link">Contact</a>
-            <a href="/academy" class="academy-btn">Academy</a>
-        </nav>
+            <a<a href="#contact" class="nav-link">Contact</a>
+            <a href="/academy" class="academy-btn">Academy</a></nav>
     </header>
 
     <section class="hero">
@@ -893,7 +826,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lip Blushing" />
+                    <img src="https://images.unsplash.com/photo-1588511210679-a4ca5523fb4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing" />
                     <div class="service-content">
                         <h3>Lip Blushing</h3>
                         <p>Subtle, semi-permanent lip color enhancement.</p>
@@ -926,7 +859,7 @@
                     <p>She is a passionate permanent makeup artist dedicated to enhancing natural beauty and boosting confidence. With years of experience, she combines precision and artistry to deliver personalized, long-lasting results. She values building strong connections with her clients, ensuring each session is comfortable and tailored to their needs.</p>
                     <a href="#" class="certificate-btn">See Her Certificates</a>
                 </div>
-                <img src="home2.png" alt="Seble" class="artist-image" />
+                <img src="home2.png" alt="Brianna" class="artist-image" />
             </div>
         </div>
     </section>
@@ -1029,9 +962,11 @@
     </section>
 
     <div class="fullscreen-preview">
-        <img src="" alt="Full-screen preview" /><span class="close-preview">&times;</span>
+        <img src="" alt="Full-screen preview" />
+        <span class="close-preview">&times;</span>
     </div>
 
+    <!-- contact -->
     <section id="contact" class="nbp-reset nbp-body">
         <div class="centered-content">
             <h1 class="nbp-title">Contact Us</h1>
@@ -1050,7 +985,7 @@
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                 <polyline points="22,6 12,13 2,6"/>
                             </svg>
-                            <span>info@neonbeautypalace.com</span>
+                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="543d3a323b143a313b3a36313521202d2435383537317a373b39">[email&#160;protected]</a></span>
                         </div>
                         <div class="nbp-contact-item">
                             <svg class="nbp-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1137,6 +1072,7 @@
         </div>
     </section>
 
+    <!-- footer -->
     <footer class="nbp-footer">
         <div class="centered-content">
             <div class="nbp-footer-grid">
@@ -1144,18 +1080,18 @@
                     <h3>Quick Links</h3>
                     <ul class="nbp-footer-links">
                         <li><a href="#">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#pmu-artist">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
                     <h3>Services</h3>
                     <ul class="nbp-footer-links">
-                        <li><a href="#services">Ombre Brows</a></li>
-                        <li><a href="#services">Lip Blushing</a></li>
-                        <li><a href="#services">Eyeliner</a></li>
-                        <li><a href="#services">Lash Enhancement</a></li>
+                        <li><a href="#">Ombre Brows</a></li>
+                        <li><a href="#">Lip Blushing</a></li>
+                        <li><a href="#">Eyeliner</a></li>
+                        <li><a href="#">Lash Enhancement</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
@@ -1163,7 +1099,7 @@
                     <ul class="nbp-footer-links">
                         <li>XQQR+RWX, Addis Ababa</li>
                         <li>+1 (555) 123-4567</li>
-                        <li>info@neonbeautypalace.com</li>
+                        <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="640d0a020b240a010b0a06010511101d1405080507014a070b09">[email&#160;protected]</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
@@ -1180,6 +1116,7 @@
             </div>
         </div>
     </footer>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1188,8 +1125,6 @@
             const fullscreenPreview = document.querySelector('.fullscreen-preview');
             const previewImage = fullscreenPreview.querySelector('img');
             const closePreview = document.querySelector('.close-preview');
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const nav = document.querySelector('.nav');
 
             window.addEventListener('scroll', () => {
                 const scrollPosition = window.scrollY;
@@ -1242,17 +1177,27 @@
                 const walk = (x - startX) * 2;
                 workGrid.scrollLeft = scrollLeft - walk;
             });
-
-            mobileMenuBtn.addEventListener('click', () => {
-                nav.classList.toggle('active');
-            });
         });
 
+        // contact 
         function nbpShowLocation() {
             const location = "XQQR+RWX, Addis Ababa";
             const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
             window.open(url, '_blank');
         }
+
+        //testimonial 
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.testimonial-header');
+
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                const maxScroll = 200;
+                const opacity = 1 - Math.min(scrollPosition / maxScroll, 0.9);
+                header.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
+            });
+        });
     </script>
 </body>
 </html>
+
