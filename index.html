@@ -37,12 +37,20 @@
         }
 
         .logo {
-            font-size: 1.25rem;
+            font-size: 2rem;
             font-weight: 600;
             color: #000;
             text-decoration: none;
         }
+        .logo img {
+            font-size: 10pxs;
 
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+             transform: scale(1.05);
+        }
         .nav {
             display: flex;
             gap: 2rem;
@@ -788,8 +796,9 @@
         </a>
     </div>
     <header class="header">
-        <a href="/" class="logo">Neon Beauty Palace</a>
-        <nav class="nav">
+        <a href="/" class="logo">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logoo.PNG-FqvQH55ZN2S1mkOXlk8j5cEA9WgBmy.png" alt="Neon Beauty Palace Logo" style="height: 50px; width: auto;">
+        </a>        <nav class="nav">
             <a href="/" class="nav-link">Home</a>
             <a href="#services" class="nav-link">Services</a>
             <a href="#pmu-artist" class="nav-link">PMU Artist</a>
