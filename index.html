@@ -26,7 +26,7 @@
             top: 0;
             right: 0;
             left: 0;
-            padding: 1rem 2rem;
+            padding: 0.5rem 2rem;
             background-color: rgba(255, 255, 255, 0.9);
             display: flex;
             justify-content: space-between;
@@ -34,18 +34,18 @@
             z-index: 1000;
             backdrop-filter: blur(10px);
             transition: background-color 0.3s ease;
+            height: 90px
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #000;
-            text-decoration: none;
+            display: flex;
+            align-items: center;
         }
         .logo img {
-            font-size: 10pxs;
-
+            height: 90px;
             transition: transform 0.3s ease;
+            width: auto;
+
         }
 
         .logo:hover img {
@@ -53,6 +53,7 @@
         }
         .nav {
             display: flex;
+            gap: 1.5rem;
             gap: 2rem;
             align-items: center;
         }
@@ -62,16 +63,29 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 300;
+            padding: 0.3rem 0;
         }
 
         .nav-link:hover {
             color: #666;
         }
-
+        @media (max-width: 768px) {
+    .header {
+        height: 80px; /* Adjusted for mobile */
+        padding: 0.5rem 1rem;
+    }
+    
+    .logo img {
+        height: 65px; /* Larger logo on mobile, but still smaller than desktop */
+    }
+    
+    .nav {
+        display: none; /* Hide the navigation on mobile */
+    }
+}
         .academy-btn {
             background-color: #000;
-            margin-left: 3rem;
-
+            margin-left: 2rem;
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -797,7 +811,7 @@
     </div>
     <header class="header">
         <a href="/" class="logo">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logoo.PNG-FqvQH55ZN2S1mkOXlk8j5cEA9WgBmy.png" alt="Neon Beauty Palace Logo" style="height: 50px; width: auto;">
+            <img src="logoo.PNG" alt="Neon Beauty Palace Logo">
         </a>        <nav class="nav">
             <a href="/" class="nav-link">Home</a>
             <a href="#services" class="nav-link">Services</a>
