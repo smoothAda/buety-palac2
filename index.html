@@ -32,14 +32,13 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
             height: 90px;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0);
         }
 
         .header.scrolled {
             background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
@@ -1146,6 +1145,30 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.header');
+  const servicesSection = document.querySelector('#services');
+
+  function handleScroll() {
+    if (!servicesSection) return;
+
+    const scrollPosition = window.scrollY;
+    const servicesSectionTop = servicesSection.offsetTop;
+
+    if (scrollPosition >= servicesSectionTop - header.offsetHeight) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  
+  // Initial check in case the page is loaded scrolled down
+  handleScroll();
+});
+
+console.log("Header scroll behavior script loaded successfully.");
         document.addEventListener('DOMContentLoaded', () => {
             const header = document.querySelector('.header');
             const workItems = document.querySelectorAll('.work-item');
