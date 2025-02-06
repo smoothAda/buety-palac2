@@ -22,7 +22,7 @@
         }
 
         .header {
-            position: fixed;
+            position: absolute;
             top: 0;
             right: 0;
             left: 0;
@@ -32,13 +32,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
             height: 90px;
-        }
-
-        .header.scrolled {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
         }
 
         .logo {
@@ -71,7 +65,7 @@
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
         .nav-link:hover {
-            color: #666;
+            color: #ccc;
         }
         @media (max-width: 768px) {
             .header {
@@ -1146,111 +1140,38 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.header');
-  const servicesSection = document.querySelector('#services');
-
-  function handleScroll() {
-    if (!servicesSection) return;
-
-    const scrollPosition = window.scrollY;
-    const servicesSectionTop = servicesSection.offsetTop;
-
-    if (scrollPosition >= servicesSectionTop - header.offsetHeight) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  }
-
-  window.addEventListener('scroll', handleScroll);
-  
-  // Initial check in case the page is loaded scrolled down
-  handleScroll();
-});
-
-console.log("Header scroll behavior script loaded successfully.");
-        document.addEventListener('DOMContentLoaded', () => {
             const header = document.querySelector('.header');
-            const workItems = document.querySelectorAll('.work-item');
-            const fullscreenPreview = document.querySelector('.fullscreen-preview');
-            const previewImage = fullscreenPreview.querySelector('img');
-            const closePreview = document.querySelector('.close-preview');
+            const servicesSection = document.querySelector('#services');
 
-            window.addEventListener('scroll', () => {
+            function handleScroll() {
+                if (!servicesSection) return;
+
                 const scrollPosition = window.scrollY;
-                const maxScroll = 200;
-                const opacity = 1 - Math.min(scrollPosition / maxScroll, 0.9);
-            });
+                const servicesSectionTop = servicesSection.offsetTop;
 
-            workItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const imgSrc = item.querySelector('img').src;
-                    previewImage.src = imgSrc;
-                    fullscreenPreview.classList.add('active');
-                });
-            });
-
-            closePreview.addEventListener('click', () => {
-                fullscreenPreview.classList.remove('active');
-            });
-
-            fullscreenPreview.addEventListener('click', (e) => {
-                if (e.target === fullscreenPreview) {
-                    fullscreenPreview.classList.remove('active');
+                if (scrollPosition >= servicesSectionTop - header.offsetHeight) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
                 }
-            });
+            }
 
-            const workGrid = document.querySelector('.work-grid');
-            let isScrolling = false;
-            let startX;
-            let scrollLeft;
-
-            workGrid.addEventListener('mousedown', (e) => {
-                isScrolling = true;
-                startX = e.pageX - workGrid.offsetLeft;
-                scrollLeft = workGrid.scrollLeft;
-            });
-
-            workGrid.addEventListener('mouseleave', () => {
-                isScrolling = false;
-            });
-
-            workGrid.addEventListener('mouseup', () => {
-                isScrolling = false;
-            });
-
-            workGrid.addEventListener('mousemove', (e) => {
-                if (!isScrolling) return;
-                e.preventDefault();
-                const x = e.pageX - workGrid.offsetLeft;
-                const walk = (x - startX) * 2;
-                workGrid.scrollLeft = scrollLeft - walk;
-            });
+            window.addEventListener('scroll', handleScroll);
+            handleScroll();
         });
-        
+
         document.addEventListener('DOMContentLoaded', () => {
             const header = document.querySelector('.header');
             
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});                    header.classList.add('scrolled');
+                    header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
             });
         });
+
         // contact 
         function nbpShowLocation() {
             const location = "XQQR+RWX, Addis Ababa";
