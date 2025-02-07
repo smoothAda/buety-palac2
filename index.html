@@ -163,6 +163,8 @@ body.fade-out {
             font-weight: 600;
         }
 
+
+
         .services {
             padding: 4rem 5rem;
             background-color: #f9f9f9;
@@ -798,6 +800,56 @@ body.fade-out {
             max-width: 1200px;
             margin: 0 auto;
         }
+/* effect or animation when page is reloded */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content h1,
+        .hero-content p,
+        .hero-content .book-btn {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .hero-content p {
+            animation-delay: 0.2s;
+        }
+
+        .hero-content .book-btn {
+            animation-delay: 0.4s;
+        }
+
+        .social-icons .social-icon {
+            opacity: 0;
+            animation: fadeInLeft 0.6s ease-out forwards;
+        }
+
+        .social-icons .social-icon:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .social-icons .social-icon:nth-child(3) {
+            animation-delay: 0.4s;
+        }
     </style>
 </head>
 <body>
@@ -1049,7 +1101,7 @@ body.fade-out {
                 </div>
                 <div class="nbp-contact-card">
                     <h2 class="nbp-card-title">Our Location</h2>
-                    <div class="nbp-map-placeholder"></div>
+                    <div class="nbp-map-placeholder" style="background: url('https://www.skyscrapercenter.com/building/mcc-shengshi-international-plaza-tower-1/40000') center/cover no-repeat; height: 300px; border-radius: 8px;"></div>
                     <button class="nbp-show-map-btn" onclick="nbpShowLocation()">Show on Map</button>
                 </div>
             </div>
