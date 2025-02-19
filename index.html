@@ -200,8 +200,8 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -411,8 +411,9 @@
 
         .fullscreen-preview img {
             max-width: 90%;
-            max-height: 90%;
+            max-height: 90vh;
             object-fit: contain;
+            border-radius: 4px;
         }
 
         .close-preview {
@@ -422,6 +423,18 @@
             color: white;
             font-size: 30px;
             cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-preview:hover {
+            background: rgba(0, 0, 0, 0.8);
         }
 
         .view-more-container {
@@ -938,7 +951,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lash Enhancement" alt="Lip Blushing" />
+                    <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing" alt="Lip Blushing" />
                     <div class="service-content">
                         <h3>Lip Blushing</h3>
                         <p>Subtle, semi-permanent lip color enhancement.</p>
@@ -1074,8 +1087,8 @@
     </section>
 
     <div class="fullscreen-preview">
-        <img src="" alt="Full-screen preview" />
-        <span class="close-preview">&times;</span>
+        <img src="" alt="Full-screen preview">
+        <div class="close-preview">&times;</div>
     </div>
 
     <!-- contact -->
@@ -1305,6 +1318,43 @@
                 const maxScroll = 200;
                 const opacity = 1 - Math.min(scrollPosition / maxScroll, 0.9);
                 header.style.backgroundColor = `rgba(255, 255, 255, ${opacity})`;
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const workItems = document.querySelectorAll('.work-item img');
+            const fullscreenPreview = document.querySelector('.fullscreen-preview');
+            const previewImage = fullscreenPreview.querySelector('img');
+            const closeButton = document.querySelector('.close-preview');
+
+            // Open preview
+            workItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    previewImage.src = item.src;
+                    previewImage.alt = item.alt;
+                    fullscreenPreview.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                });
+            });
+
+            // Close preview
+            const closePreview = () => {
+                fullscreenPreview.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            };
+
+            closeButton.addEventListener('click', closePreview);
+            fullscreenPreview.addEventListener('click', (e) => {
+                if (e.target === fullscreenPreview) {
+                    closePreview();
+                }
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && fullscreenPreview.classList.contains('active')) {
+                    closePreview();
+                }
             });
         });
     </script>
