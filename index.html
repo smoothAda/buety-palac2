@@ -1039,46 +1039,66 @@
             <div class="video-grid">
                 <div class="video-item">
                     <video controls preload="metadata">
-                        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                        <source src="f9eb2fd86a5a6fff59641acde4138c7f.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Ombre Brows Tutorial: Learn the step-by-step process.</p>
                 </div>
                 <div class="video-item">
                     <video controls preload="metadata">
-                        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                        <source src="f9eb2fd86a5a6fff59641acde4138c7f.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Lip Blushing Technique: Discover the secrets to perfect lips.</p>
                 </div>
                 <div class="video-item">
                     <video controls preload="metadata">
-                        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                        <source src="f9eb2fd86a5a6fff59641acde4138c7f.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p>Eyeliner Masterclass: Master the art of flawless application.</p>
                 </div>
+
                 <div class="video-item">
                     <video controls preload="metadata">
-                        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                        <source src="f9eb2fd86a5a6fff59641acde4138c7f.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <p>Natural Makeup Look: Create a stunning look in 10 minutes.</p>
+                    <p>Eyeliner Masterclass: Master the art of flawless application.</p>
                 </div>
+
                 <div class="video-item">
                     <video controls preload="metadata">
-                        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                        <source src="f9eb2fd86a5a6fff59641acde4138c7f.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <p>Advanced Ombre Brows Techniques: Taking your skills to the next level.</p>
+                    <p>Eyeliner Masterclass: Master the art of flawless application.</p>
                 </div>
+
                 <div class="video-item">
                     <video controls preload="metadata">
-                        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sample-video-5s-YQVVXvWQXLZZDLLULLNRVHkOD1Hhwm.mp4" type="video/mp4">
+                        <source src="f9eb2fd86a5a6fff59641acde4138c7f.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <p>Client Consultation: How to understand and meet your client's needs.</p>
+                    <p>Eyeliner Masterclass: Master the art of flawless application.</p>
                 </div>
+
+                <div class="video-item">
+                    <video controls preload="metadata">
+                        <source src="f9eb2fd86a5a6fff59641acde4138c7f.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Eyeliner Masterclass: Master the art of flawless application.</p>
+                </div>
+
+                <div class="video-item">
+                    <video controls preload="metadata">
+                        <source src="f9eb2fd86a5a6fff59641acde4138c7f.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Eyeliner Masterclass: Master the art of flawless application.</p>
+                </div>
+                <!-- Add more video items as needed -->
             </div>
             <div class="view-more-container">
                 <a href="#" class="view-more-btn">View More</a>
@@ -1301,6 +1321,26 @@
                 }
             });
         });
+        //recently posted
+        document.addEventListener('DOMContentLoaded', function() {
+    const videoGrid = document.querySelector('.video-grid');
+
+    // Handle full-screen functionality
+    videoGrid.addEventListener('click', function(event) {
+        const video = event.target.closest('video');
+        if (video) {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
+            }
+        }
+    });
+});
 
         // contact 
         function nbpShowLocation() {
