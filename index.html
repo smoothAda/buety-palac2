@@ -269,7 +269,7 @@
 
         .pmu-artist {
             padding: 5rem 2rem;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             background-color: #f7f7f7;
             border-radius: 15px;
@@ -285,6 +285,8 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             padding: 2rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .artist-info {
@@ -867,17 +869,12 @@
         /* social icons */
         .social-icons {
             position: fixed;
-            left: 50%; /* Center horizontally */
-            top: 50%; /* Center vertically */
-            transform: translate(-50%, -50%); /* Adjust for centering */
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             flex-direction: column;
             z-index: 1000;
-            gap: 10px; /* Add some space between icons */
-            background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background for better visibility */
-            padding: 10px; /* Optional: Add padding */
-            border-radius: 10px; /* Optional: Add rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
         }
 
         .social-icon {
@@ -887,6 +884,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 15px;
             border-radius: 50%;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -922,11 +920,31 @@
             transform: scale(1.2);
         }
 
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .social-icon:hover {
+            animation: pulse 1s infinite;
+        }
+
+        .social-icon.tiktok:hover::before {
+            background: linear-gradient(45deg, #25fbfb, #701dec);
+        }
+
+        .social-icon.instagram:hover::before {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+
+        .social-icon.telegram:hover::before {
+            background: linear-gradient(45deg, #0088cc, #0088cc);
+        }
+
         @media (max-width: 768px) {
             .social-icons {
-                left: 50%; /* Center horizontally */
-                top: 50%; /* Center vertically */
-                transform: translate(-50%, -50%); /* Adjust for centering */
+                left: 10px;
             }
 
             .social-icon {
@@ -993,14 +1011,6 @@
         .social-icons .social-icon:nth-child(3) {
             animation-delay: 0.4s;
         }
-
-        .section-background {
-            background-color: #f7f7f7; /* Same background color */
-            border-radius: 15px;
-            padding: 5rem 2rem;
-            margin: 0 auto;
-            max-width: 1200px;
-        }
     </style>
 </head>
 <body>
@@ -1042,7 +1052,7 @@
         </div>
     </section>  
 
-    <section id="services" class="services section-background">
+    <section id="services" class="services">
         <div class="centered-content">
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
@@ -1085,7 +1095,7 @@
         </div>
     </section>
 
-    <section id="pmu-artist" class="pmu-artist section-background">
+    <section id="pmu-artist" class="pmu-artist">
         <div class="centered-content">
             <h2 class="section-title">PMU Artist</h2>
             <div class="artist-card">
@@ -1099,7 +1109,7 @@
         </div>
     </section>
 
-    <section id="our-work" class="our-work section-background">
+    <section id="our-work" class="our-work">
         <div class="centered-content">
             <h2 class="section-title">Our Work</h2>
             <div class="work-grid">
@@ -1143,7 +1153,7 @@
         </div>
     </section>
 
-    <section id="recently-posted" class="recently-posted section-background">
+    <section id="recently-posted" class="recently-posted">
         <div class="centered-content">
             <h2 class="section-title">Recently Posted</h2>
             <div class="video-grid">
@@ -1222,7 +1232,7 @@
     </div>
 
     <!-- contact -->
-    <section class="contact-section section-background" id="contact">
+    <section class="contact-section" id="contact">
         <div class="contact-container">
             <h1 class="contact-title">Contact us</h1>
             <p class="contact-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -1278,7 +1288,7 @@
         </div>
     </section>
     
-    <section class="testimonial-section section-background">
+    <section class="testimonial-section">
         <div class="centered-content">
             <h2 class="testimonial-section-title">What Our Clients Say</h2>
             <div class="testimonial-scroll-container">
