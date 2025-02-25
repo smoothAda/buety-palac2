@@ -867,12 +867,17 @@
         /* social icons */
         .social-icons {
             position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            left: 50%; /* Center horizontally */
+            top: 50%; /* Center vertically */
+            transform: translate(-50%, -50%); /* Adjust for centering */
             display: flex;
             flex-direction: column;
             z-index: 1000;
+            gap: 10px; /* Add some space between icons */
+            background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background for better visibility */
+            padding: 10px; /* Optional: Add padding */
+            border-radius: 10px; /* Optional: Add rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
         }
 
         .social-icon {
@@ -882,7 +887,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 15px;
             border-radius: 50%;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -918,31 +922,11 @@
             transform: scale(1.2);
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .social-icon:hover {
-            animation: pulse 1s infinite;
-        }
-
-        .social-icon.tiktok:hover::before {
-            background: linear-gradient(45deg, #25fbfb, #701dec);
-        }
-
-        .social-icon.instagram:hover::before {
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-        }
-
-        .social-icon.telegram:hover::before {
-            background: linear-gradient(45deg, #0088cc, #0088cc);
-        }
-
         @media (max-width: 768px) {
             .social-icons {
-                left: 10px;
+                left: 50%; /* Center horizontally */
+                top: 50%; /* Center vertically */
+                transform: translate(-50%, -50%); /* Adjust for centering */
             }
 
             .social-icon {
