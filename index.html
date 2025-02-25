@@ -614,9 +614,35 @@
 }
 
 .contact-info {
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin-bottom: 1rem; /* Add space before social icons */
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: fit-content;
+}
+
+.contact-button:hover {
+    background-color: var(--hover-beige);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-button i {
+    margin-right: 8px;
 }
 
 /* Mobile styles */
@@ -1178,9 +1204,11 @@
                     </div>
                     <h2>Email</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-                    <a href="mailto:hello@teleporthq.io" class="contact-link">
-                        <div class="contact-info">hello@teleporthq.io</div>
-                    </a>
+                    <div class="contact-info">
+                        <a href="mailto:hello@teleporthq.io" class="contact-button">
+                            Send Email
+                        </a>
+                    </div>
                 </div>
     
                 <div class="contact-item">
@@ -1191,9 +1219,11 @@
                     </div>
                     <h2>Phone</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-                    <a href="tel:+15550000000" class="contact-link">
-                        <div class="contact-info">+1 (555) 000-0000</div>
-                    </a>
+                    <div class="contact-info">
+                        <a href="tel:+15550000000" class="contact-button">
+                            Call Now
+                        </a>
+                    </div>
                 </div>
     
                 <div class="contact-item">
@@ -1205,9 +1235,11 @@
                     </div>
                     <h2>Office</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in ero.</p>
-                    <a href="https://maps.google.com/?q=456+Test+Ave+Bucharest" target="_blank" class="contact-link">
-                        <div class="contact-info">456 Test Ave, Bucharest</div>
-                    </a>
+                    <div class="contact-info">
+                        <a href="https://maps.google.com/?q=456+Test+Ave+Bucharest" target="_blank" class="contact-button">
+                            Get Directions
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
