@@ -501,6 +501,7 @@
 .contact-container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .contact-title {
@@ -524,6 +525,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 48px;
+    max-width: 900px; /* Reduced max-width for better centering */
+    margin: 0 auto; /* Center the grid */
 }
 
 .contact-item {
@@ -533,6 +536,10 @@
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px; /* Fixed height for consistent layout */
 }
 
 .contact-item:hover {
@@ -609,17 +616,19 @@
 .contact-info {
     font-weight: 500;
     font-size: 1.1rem;
+    margin-bottom: 1rem; /* Add space before social icons */
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        max-width: 400px; /* Smaller max-width for mobile */
     }
     
-    .contact-section {
-        padding: 64px 16px;
+    .contact-item {
+        min-height: auto; /* Allow height to be flexible on mobile */
+        padding: 1.5rem;
     }
     
     .contact-title {
