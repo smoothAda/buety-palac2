@@ -94,13 +94,38 @@
                 display: none; /* Hide the navigation on mobile */
             }
         }
-        .academy-btn {
+        .academy-btn,
+        .book-btn,
+        .certificate-btn,
+        .view-more-btn,
+        .contact-button {
             background-color: #000;
-            margin-left: 2rem;
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .academy-btn:hover,
+        .book-btn:hover,
+        .certificate-btn:hover,
+        .view-more-btn:hover,
+        .contact-button:hover {
+            background-color: #333;
+        }
+
+        .book-btn {
+            padding: 0.75rem 2rem; /* Slightly larger padding for hero section button */
+        }
+
+        .academy-btn {
+            margin-left: 2rem;
+        }
+
+        .view-more-container {
+            text-align: center;
+            margin-top: 2rem;
         }
       .hero {
         width: 100%;
@@ -623,22 +648,17 @@
 
 .contact-button {
     display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
+    background-color: #000;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
     text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-    width: fit-content;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 .contact-button:hover {
-    background-color: var(--hover-beige);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #333;
 }
 
 .contact-button i {
