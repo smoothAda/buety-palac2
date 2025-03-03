@@ -60,10 +60,13 @@
 
         .nav {
             display: flex;
-            gap: 2rem; /* Increased gap for spacing */
+            gap: 3rem; /* Increased gap for spacing */
+            justify-content: center; /* Center the navigation links */
+            flex-grow: 1; /* Allow the nav to take up available space */
+            align-items: center; /* Align items vertically */
         }
 
-        .nav-link, .academy-btn {
+        .nav-link {
             color: #fff; /* White text for contrast */
             text-decoration: none;
             font-weight: 500; /* Medium weight for modern look */
@@ -72,7 +75,7 @@
             position: relative;
         }
 
-        .nav-link::after, .academy-btn::after {
+        .nav-link::after {
             content: '';
             display: block;
             width: 0;
@@ -84,21 +87,24 @@
             left: 0;
         }
 
-        .nav-link:hover::after, .academy-btn:hover::after {
+        .nav-link:hover::after {
             width: 100%; /* Underline effect on hover */
         }
 
-        .nav-link:hover, .academy-btn:hover {
+        .nav-link:hover {
             color: #ddd; /* Lighter color on hover */
             transform: translateY(-2px); /* Slight lift on hover */
         }
 
         .academy-btn {
-            background-color: transparent; /* Transparent background */
-            border: 2px solid #fff; /* Border for button */
+            background-color: transparent; /* Ensure transparent background */
+            border: 2px solid #fff; /* White border */
+            color: #fff; /* White text */
             padding: 0.5rem 1rem;
             border-radius: 25px; /* Rounded button */
             transition: background-color 0.3s ease, color 0.3s ease;
+            margin-left: 3rem; /* Separate the button from the links */
+            text-decoration: none; /* Remove underline */
         }
 
         .academy-btn:hover {
@@ -1066,7 +1072,7 @@
             <a href="#pmu-artist" class="nav-link">PMU Artist</a>
             <a href="#our-work" class="nav-link">Our Work</a>
             <a href="#recently-posted" class="nav-link">Recently Posted</a>
-            <a<a href="#contact" class="nav-link">Contact</a>
+            <a href="#contact" class="nav-link">Contact</a>
             <a href="/academy" class="academy-btn">Academy</a></nav>
     </header>
 
