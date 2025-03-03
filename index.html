@@ -562,31 +562,26 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 5rem 2rem;  /* Added padding */
-            text-align: center;  /* Center align the content */
         }
         
-        .container h1 {
+        h1 {
             font-size: 2.5rem;
             font-weight: 600;
             color: #333;
-            margin-bottom: 3rem;  /* Increased margin */
-            text-align: center;
+            margin-bottom: 2rem;
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            max-width: 1000px;  /* Reduced max-width */
-            margin: 0 auto;     /* Center the grid */
         }
         
         .contact-card {
-            background-color: #fff;  /* Changed to white background */
-            border-radius: 15px;    /* Increased border radius */
+            background-color: #f1f3f5;
+            border-radius: 10px;
             padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         
         .card-title {
@@ -665,14 +660,13 @@
         @media (max-width: 768px) {
             .contact-grid {
                 grid-template-columns: 1fr;
-                padding: 0 1rem;  /* Added padding for mobile */
             }
             
-            .container {
-                padding: 3rem 1rem;  /* Adjusted padding for mobile */
+            body {
+                padding: 1rem;
             }
             
-            .container h1 {
+            h1 {
                 font-size: 2rem;
             }
         }
@@ -1222,14 +1216,6 @@
                     
                     <div class="info-item">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>350 5th Ave, New York, NY 10118</span>
-                    </div>
-                    
-                    <div class="info-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
@@ -1254,19 +1240,28 @@
             
             <div class="contact-card">
                 <h2 class="card-title">Our Location</h2>
+                <p class="location-text">XQQR+RWX, Addis Ababa</p>
                 <div class="map-container">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.6175903063953!2d-73.98657908459418!3d40.74844497932764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1646852247219!5m2!1sen!2sus" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5768646468!2d38.7611!3d9.0233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zWFFRUitSV1gsIEFkZGlzIEFiYWJh!5e0!3m2!1sen!2sus!4v1646852247219!5m2!1sen!2sus" 
                         allowfullscreen="" 
                         loading="lazy"
-                        title="Google Maps location of Neon Beauty Palace"
+                        title="Google Maps location of XQQR+RWX, Addis Ababa"
                     ></iframe>
                 </div>
-                <a href="https://maps.google.com/?q=350+5th+Ave,+New+York,+NY+10118" target="_blank" rel="noopener noreferrer" class="btn">Get Directions</a>
+                <a href="https://www.google.com/maps/place/XQQR%2BRWX+Addis+Ababa+Ethiopia" target="_blank" rel="noopener noreferrer" class="btn">Get Directions</a>
             </div>
         </div>
     </div>
-    
+            
+            
+        </div>
+    </div>
+            
+           
+        </div>
+    </div>
+    <!-- testemonial -->
     <section class="testimonial-section section-background">
         <div class="centered-content">
             <h2 class="testimonial-section-title">What Our Clients Say</h2>
