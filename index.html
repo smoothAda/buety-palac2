@@ -61,9 +61,9 @@
         .nav {
             display: flex;
             gap: 3rem; /* Increased gap for spacing */
-            justify-content: center; /* Center the navigation links */
-            flex-grow: 1; /* Allow the nav to take up available space */
-            align-items: center; /* Align items vertically */
+            justify-content: flex-end; /* Changed from center to flex-end */
+            flex-grow: 0; /* Changed from 1 to 0 to prevent nav from taking all space */
+            align-items: center;
         }
 
         .nav-link {
@@ -97,22 +97,31 @@
         }
 
         .academy-btn {
-            background-color: transparent; /* Transparent background */
-            border: 2px solid #fff; /* Border for button */
-            padding: 0.5rem 1rem;
-            border-radius: 25px; /* Rounded button */
-            transition: background-color 0.3s ease, color 0.3s ease;
-            margin-left: 3rem; /* Separate the button from the links */
+            background-color: transparent;
+            border: 2px solid #fff;
+            padding: 0.5rem 1.5rem; /* Adjusted padding */
+            border-radius: 25px;
+            color: #fff; /* Added explicit color */
+            text-decoration: none; /* Added to remove underline */
+            font-weight: 500; /* Added for better visibility */
+            transition: all 0.3s ease; /* Changed to transition all properties */
+            margin-left: 2rem; /* Reduced margin */
+            white-space: nowrap; /* Prevent text wrapping */
         }
 
         .academy-btn:hover {
-            background-color: #fff; /* Invert colors on hover */
-            color: #000; /* Dark text on hover */
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-2px); /* Added subtle lift effect */
         }
 
         @media (max-width: 768px) {
             .nav {
-                display: none; /* Hide navigation on smaller screens */
+                display: none;
+            }
+            
+            .academy-btn {
+                display: none; /* Hide button on mobile */
             }
         }
         .book-btn,
@@ -1009,7 +1018,8 @@
             <a href="#our-work" class="nav-link">Our Work</a>
             <a href="#recently-posted" class="nav-link">Recently Posted</a>
             <a href="#contact" class="nav-link">Contact</a>
-            <a href="/academy" class="academy-btn">Academy</a></nav>
+        </nav>
+        <a href="/academy" class="academy-btn">Academy</a>
     </header>
 
     <section class="hero">
@@ -1091,7 +1101,7 @@
                     <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 3" loading="lazy" />
                 </div>
                 <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Work 4" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1487412947590-4771e78-5cebf100ffc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Work 4" loading="lazy" />
                 </div>
                 <div class="work-item">
                     <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 5" loading="lazy" />
@@ -1222,7 +1232,7 @@
                     
                     <div class="info-item">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2h-3l-4 4z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Follow us on Instagram</a>
