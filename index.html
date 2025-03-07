@@ -383,48 +383,314 @@
             }
         }
 
-        .our-work {
-            padding: 4rem 5rem;
-            overflow: hidden;
-        }
+        .gallery-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 0;
+    }
 
-        .work-grid {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            overscroll-behavior-x: contain;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding: 1rem;
-            width: 100%;
-        }
+    .gallery-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
 
-        .work-grid::-webkit-scrollbar {
-            display: none;
-        }
+    /* Gallery container */
+    .gallery-container {
+      position: relative;
+      padding: 0 1rem;
+    }
 
-        .work-item {
-            flex: 0 0 auto;
-            width: 300px;
-            scroll-snap-align: start;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
+    @media (min-width: 640px) {
+      .gallery-container {
+        padding: 0 2rem;
+      }
+    }
 
-        .work-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-        }
+    @media (min-width: 768px) {
+      .gallery-container {
+        padding: 0 3rem;
+      }
+    }
 
-        .work-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
+    /* Scrollable gallery */
+    .gallery-scroll {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1.5rem;
+      margin: 0 -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      scroll-behavior: smooth; /* Smooth scrolling for the gallery */
+      
+      /* Hide scrollbar */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .gallery-scroll::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+    @media (min-width: 640px) {
+      .gallery-scroll {
+        margin: 0 -2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .gallery-scroll {
+        margin: 0 -3rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+    }
+
+    /* Gallery spacer */
+    .gallery-spacer {
+      flex: none;
+      width: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-spacer {
+        width: 2rem;
+      }
+    }
+
+    /* Gallery item */
+    .gallery-item {
+      flex: none;
+      width: 220px; /* Width */
+      height: 320px; /* Increased height */
+      padding: 0 0.5rem;
+      scroll-snap-align: start;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-item {
+        width: 250px; /* Width */
+        height: 350px; /* Increased height */
+      }
+    }
+
+    /* Image container */
+    .image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s ease;
+      cursor: pointer;
+      height: 100%; /* Full height */
+      background-color: #f3f4f6;
+    }
+
+    .image-container:hover {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Gallery image */
+    .gallery-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.7s ease;
+    }
+
+    .image-container:hover .gallery-image {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    /* Image overlay */
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2) 50%, transparent);
+      opacity: 0.9;
+      transition: opacity 0.5s ease;
+    }
+
+    .image-container:hover .image-overlay {
+      opacity: 0.75;
+    }
+
+    /* Mobile scroll indicator */
+    .mobile-scroll-indicator {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-scroll-indicator {
+        display: none;
+      }
+    }
+
+    /* Fullscreen Preview Styles */
+    #fullscreenPreview {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #fullscreenPreview.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #previewImage {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+    }
+
+    #closePreview {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 1002;
+    }
+
+    #closePreview:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    #closePreview::before,
+    #closePreview::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background-color: white;
+    }
+
+    #closePreview::before {
+      transform: rotate(45deg);
+    }
+
+    #closePreview::after {
+      transform: rotate(-45deg);
+    }
+
+    /* Navigation areas for fullscreen preview */
+    .preview-nav-area {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      z-index: 1001;
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    #previewNavLeft {
+      left: 0;
+    }
+
+    #previewNavRight {
+      right: 0;
+    }
+
+    /* Counter for fullscreen preview */
+    #previewCounter {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+      z-index: 1002;
+      opacity: 0.7;
+    }
+
+    /* Scroll buttons for gallery */
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.3s ease;
+    }
+
+    .gallery-nav:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    #galleryNavLeft {
+      left: 10px;
+    }
+
+    #galleryNavRight {
+      right: 10px;
+    }
+
+    .gallery-nav::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid white;
+      border-left: 2px solid white;
+    }
+
+    #galleryNavLeft::before {
+      transform: rotate(-45deg);
+      margin-left: 3px;
+    }
+
+    #galleryNavRight::before {
+      transform: rotate(135deg);
+      margin-right: 3px;
+    }
+
+    @media (max-width: 640px) {
+      .gallery-nav {
+        width: 30px;
+        height: 30px;
+      }
+    }
 
         .recently-posted {
             padding: 4rem 5rem;
@@ -1013,7 +1279,7 @@
             <img src="New neon logo.png" alt="Neon Beauty Palace Logo">
         </a>        <nav class="nav">
             <a href="/" class="nav-link">Home</a>
-            <a href="#services" class="nav-link">Services</a>
+            <a href="/services" class="nav-link">Services</a>
             <a href="#pmu-artist" class="nav-link">PMU Artist</a>
             <a href="#our-work" class="nav-link">Our Work</a>
             <a href="#recently-posted" class="nav-link">Recently Posted</a>
@@ -1086,50 +1352,96 @@
             </div>
         </div>
     </section>
-
-    <section id="our-work" class="our-work section-background">
-        <div class="centered-content">
-            <h2 class="section-title">Our Work</h2>
-            <div class="work-grid">
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 1" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Work 2" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 3" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1487412947590-4771e78-5cebf100ffc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Work 4" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 5" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1588511210679-a4ca5523fb4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Work 6" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 7" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Work 8" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 9" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1621798744997-30c2d25c6abe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 10" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 11" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 12" loading="lazy" />
-                </div>
-            </div>
+    <section class="gallery-section">
+        <h2 class="gallery-title">Our Work</h2>
+        
+        <div class="gallery-container">
+          <!-- Gallery navigation buttons -->
+          <div class="gallery-nav" id="galleryNavLeft"></div>
+          <div class="gallery-nav" id="galleryNavRight"></div>
+          
+          <!-- Scrollable gallery -->
+          <div class="gallery-scroll" id="galleryScroll">
+            <!-- Spacer for better padding -->
+            <div class="gallery-spacer"></div>
+            
+            <!-- Gallery items -->
+            <figure class="gallery-item">
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beauty treatment 1" class="gallery-image">
+                <div class="image-overlay"></div>
+              </div>
+            </figure>
+            
+            <figure class="gallery-item">
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beauty treatment 2" class="gallery-image">
+                <div class="image-overlay"></div>
+              </div>
+            </figure>
+            
+            <figure class="gallery-item">
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1487412947590-4771e78-5cebf100ffc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beauty treatment 3" class="gallery-image">
+                <div class="image-overlay"></div>
+              </div>
+            </figure>
+            
+            <figure class="gallery-item">
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beauty treatment 4" class="gallery-image">
+                <div class="image-overlay"></div>
+              </div>
+            </figure>
+            
+            <figure class="gallery-item">
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beauty treatment 5" class="gallery-image">
+                <div class="image-overlay"></div>
+              </div>
+            </figure>
+            
+            <figure class="gallery-item">
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beauty treatment 6" class="gallery-image">
+                <div class="image-overlay"></div>
+              </div>
+            </figure>
+            
+            <figure class="gallery-item">
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beauty treatment 7" class="gallery-image">
+                <div class="image-overlay"></div>
+              </div>
+            </figure>
+            
+            <figure class="gallery-item">
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Beauty treatment 8" class="gallery-image">
+                <div class="image-overlay"></div>
+              </div>
+            </figure>
+            
+            <!-- Spacer for better padding -->
+            <div class="gallery-spacer"></div>
+          </div>
+          
+          <!-- Mobile scroll indicator -->
+          <div class="mobile-scroll-indicator">
+            <span>Swipe to see more</span>
+          </div>
         </div>
-    </section>
+      </section>
+    
+      <!-- Fullscreen Preview -->
+      <div id="fullscreenPreview">
+        <img id="previewImage" src="/placeholder.svg" alt="Preview image">
+        <div id="closePreview"></div>
+        <div id="previewNavLeft" class="preview-nav-area"></div>
+        <div id="previewNavRight" class="preview-nav-area"></div>
+        <div id="previewCounter">1 / 8</div>
+      </div>
+    
 
     <section id="recently-posted" class="recently-posted section-background">
         <div class="centered-content">
