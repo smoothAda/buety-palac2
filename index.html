@@ -534,105 +534,89 @@
         }
 
         @media (max-width: 768px) {
-            .pmu-artist {
-                padding: 3rem 1.5rem;
-                margin: 2rem 1rem;
-            }
+    .pmu-artist {
+        padding: 3rem 1.5rem;
+        margin: 0;
+        border-radius: 0;
+        width: 100%;
+    }
 
-            .artist-card {
-                flex-direction: column-reverse; /* Image on top, text below */
-                padding: 1.5rem;
-                gap: 1.5rem;
-                text-align: center;
-            }
+    .artist-card {
+        flex-direction: column-reverse; /* Image on top, text below */
+        padding: 1.5rem;
+        gap: 1.5rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
 
-            .artist-info {
-                padding: 0;
-            }
+    .artist-info {
+        padding: 0.5rem;
+        width: 100%;
+    }
 
-            .artist-info h3 {
-                font-size: 2rem;
-                margin-bottom: 0.8rem;
-            }
+    .artist-info h3 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
 
-            .artist-info p {
-                font-size: 1rem;
-                margin-bottom: 1.2rem;
-                padding: 0 0.5rem;
-            }
+    .artist-info p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+        line-height: 1.6;
+    }
 
-            .artist-image {
-                max-width: 300px;
-                margin: 0 auto;
-            }
+    .artist-image {
+        max-width: 280px;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-            .certificate-btn {
-                width: 80%;
-                max-width: 300px;
-                margin: 0 auto;
-                padding: 0.8rem 1.2rem;
-                font-size: 1rem;
-            }
-        }
+    .certificate-btn {
+        width: 80%;
+        max-width: 250px;
+        margin: 0.5rem auto 0;
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+        display: block;
+    }
+}
 
-        /* Small mobile styles */
-        @media (max-width: 480px) {
-            .pmu-artist {
-                padding: 2rem 1rem;
-                margin: 1.5rem 0.5rem;
-            }
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .pmu-artist {
+        padding: 2.5rem 1.25rem;
+    }
 
-            .artist-card {
-                padding: 1rem;
-                gap: 1rem;
-            }
+    .artist-card {
+        padding: 1.25rem;
+        gap: 1.25rem;
+    }
 
-            .artist-info h3 {
-                font-size: 1.8rem;
-            }
+    .artist-info h3 {
+        font-size: 1.8rem;
+    }
 
-            .artist-info p {
-                font-size: 0.95rem;
-                line-height: 1.5;
-                padding: 0;
-            }
+    .artist-info p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        padding: 0;
+        margin-bottom: 1.2rem;
+    }
 
-            .artist-image {
-                max-width: 250px;
-                border-radius: 10px;
-            }
+    .artist-image {
+        max-width: 240px;
+        border-radius: 8px;
+    }
 
-            .certificate-btn {
-                width: 100%;
-                padding: 0.7rem 1rem;
-                font-size: 0.95rem;
-            }
-        }
-
-        /* Tablet styles */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .pmu-artist {
-                padding: 4rem 2rem;
-            }
-
-            .artist-card {
-                gap: 1.5rem;
-                padding: 1.8rem;
-            }
-
-            .artist-info h3 {
-                font-size: 2.2rem;
-            }
-
-            .artist-info p {
-                font-size: 1.1rem;
-            }
-
-            .artist-image {
-                max-width: 350px;
-            }
-        }
-
+    .certificate-btn {
+        width: 100%;
+        padding: 0.7rem 1rem;
+        font-size: 0.95rem;
+    }
+}
         /* Our Work section styles */
         .our-work {
             padding: 4rem 5rem;
