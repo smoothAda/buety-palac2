@@ -286,172 +286,189 @@
             font-weight: 600;
         }
 
-        /* Services section styles */
-        .services {
-            padding: 5rem 2rem;
-            max-width: 1100px; /* Adjusted max-width for better centering */
-            margin: 0 auto; /* Center the section */
-            background-color: #f7f7f7;
-            border-radius: 15px;
-            position: relative;
+         /* Services Section Styles */
+    .services-section {
+        padding: 5rem 2rem;
+        background-color: #f7f7f7;
+    }
+    
+    .section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .service-card {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    
+    .service-card:hover .service-image img {
+        transform: scale(1.05);
+    }
+    
+    .service-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    
+    .service-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        color: #333;
+    }
+    
+    .service-description {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+    
+    .service-btn {
+        background-color: #000;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        align-self: flex-start;
+    }
+    
+    .service-btn:hover {
+        background-color: #333;
+        transform: translateY(-2px);
+    }
+    
+    .services-cta {
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .cta-button {
+        background-color: transparent;
+        border: 2px solid #000;
+        color: #000;
+        padding: 0.75rem 2rem;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+    
+    .cta-button:hover {
+        background-color: #000;
+        color: white;
+        transform: translateY(-2px);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+        .services-grid {
+            grid-template-columns: repeat(2, 1fr);
         }
-
+    }
+    
+    @media (max-width: 768px) {
+        .services-section {
+            padding: 4rem 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+        }
         
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            max-width: 1100px;
-            margin: 0 auto;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
-
-        .service-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    @media (max-width: 480px) {
+        .services-section {
+            padding: 3rem 1rem;
         }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        
+        .section-title {
+            font-size: 1.8rem;
         }
-
-        .service-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+        
+        .section-subtitle {
+            font-size: 1rem;
         }
-
-        .service-content {
-            padding: 1.25rem;
+        
+        .service-title {
+            font-size: 1.2rem;
         }
-
-        .service-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .service-content p {
+        
+        .service-description {
             font-size: 0.9rem;
-            color: #666;
-            font-weight: 300;
         }
-        /* Mobile styles */
-        @media (max-width: 768px) {
-            .services {
-                padding: 3rem 1.5rem;
-                margin: 0 1rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem; /* Increased gap */
-            }
-
-            .service-card {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                max-height: 200px; /* Increased height */
-                border-radius: 12px; /* Maintain border radius */
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            }
-
-            .service-card img {
-                width: 45%; /* Slightly increased width */
-                height: 200px; /* Increased height */
-                object-fit: cover;
-                border-top-left-radius: 12px; /* Add border radius to image */
-                border-bottom-left-radius: 12px;
-            }
-
-            .service-content {
-                width: 55%;
-                padding: 1.5rem; /* Increased padding */
-            }
-
-            .service-content h3 {
-                font-size: 1.3rem; /* Increased font size */
-                margin-bottom: 0.8rem;
-            }
-
-            .service-content p {
-                font-size: 1rem;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
+        
+        .service-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
         }
-
-        /* Small mobile styles */
-        @media (max-width: 480px) {
-            .services {
-                padding: 2rem 1rem;
-            }
-
-            .service-card {
-                flex-direction: column;
-                max-height: none;
-                border-radius: 12px; /* Maintain border radius */
-            }
-
-            .service-card img {
-                width: 100%;
-                height: 220px; /* Increased height */
-                border-radius: 12px 12px 0 0; /* Adjust border radius for stacked layout */
-            }
-
-            .service-content {
-                width: 100%;
-                padding: 1.5rem;
-                border-radius: 0 0 12px 12px; /* Add border radius to content */
-            }
-
-            .service-content h3 {
-                font-size: 1.4rem; /* Increased font size */
-                text-align: center;
-            }
-
-            .service-content p {
-                font-size: 1.1rem; /* Increased font size */
-                text-align: center;
-                -webkit-line-clamp: 4;
-            }
-        }
-
-        /* Tablet styles */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .service-card {
-                border-radius: 12px; /* Maintain border radius */
-            }
-
-            .service-card img {
-                height: 220px; /* Increased height */
-                border-radius: 12px 12px 0 0;
-            }
-
-            .service-content {
-                padding: 1.8rem; /* Increased padding */
-            }
-
-            .service-content h3 {
-                font-size: 1.4rem; /* Increased font size */
-            }
-
-            .service-content p {
-                font-size: 1.1rem; /* Increased font size */
-            }
-        }
+    }
 
         .pmu-artist {
             padding: 5rem 2rem;
@@ -1680,48 +1697,81 @@
         </div>
     </section>  
 
-    <section id="services" class="services section-background">
-        <div class="centered-content">
+    <!-- Our Services Section -->
+<section id="services" class="services-section">
+    <div class="section-container">
+        <div class="section-header">
             <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows" />
-                    <div class="service-content">
-                        <h3>Ombre Brows</h3>
-                        <p>Gradient eyebrow technique for a soft, natural look.</p>
-                    </div>
+            <p class="section-subtitle">Discover our premium permanent makeup services tailored to enhance your natural beauty</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Ombre Brows -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows">
                 </div>
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows" />
-                    <div class="service-content">
-                        <h3>Nano Brows</h3>
-                        <p>Ultra-fine, hair-like strokes for natural-looking brows.</p>
-                    </div>
+                <div class="service-content">
+                    <h3 class="service-title">Ombre Brows</h3>
+                    <p class="service-description">Create a soft, powdered effect that mimics the look of perfectly applied brow makeup.</p>
+                    <a href="services.html#ombre-brows" class="service-btn">Learn More</a>
                 </div>
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing" alt="Lip Blushing" />
-                    <div class="service-content">
-                        <h3>Lip Blushing</h3>
-                        <p>Subtle, semi-permanent lip color enhancement.</p>
-                    </div>
+            </div>
+            
+            <!-- Nano Brows -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows">
                 </div>
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner" />
-                    <div class="service-content">
-                        <h3>Permanent Eyeliner</h3>
-                        <p>Wake up with perfectly defined eyes every day.</p>
-                    </div>
+                <div class="service-content">
+                    <h3 class="service-title">Nano Brows</h3>
+                    <p class="service-description">Ultra-fine, realistic hair strokes created using nano needles for natural-looking brows.</p>
+                    <a href="services.html#nano-brows" class="service-btn">Learn More</a>
                 </div>
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lash Enhancement" />
-                    <div class="service-content">
-                        <h3>Lash Enhancement</h3>
-                        <p>Create the appearance of fuller, darker lashes.</p>
-                    </div>
+            </div>
+            
+            <!-- Lip Blushing -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Lip Blushing</h3>
+                    <p class="service-description">Enhance your natural lip color with a subtle, semi-permanent tint that adds definition.</p>
+                    <a href="services.html#lip-blushing" class="service-btn">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Permanent Eyeliner -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Permanent Eyeliner</h3>
+                    <p class="service-description">Define your eyes with a subtle or dramatic permanent eyeliner for a flawless look.</p>
+                    <a href="services.html#eyeliner" class="service-btn">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Lash Enhancement -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Lash Enhancement</h3>
+                    <p class="service-description">Create the appearance of fuller, thicker lashes with this subtle technique.</p>
+                    <a href="services.html#lash-enhancement" class="service-btn">Learn More</a>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <div class="services-cta">
+            <a href="services.html" class="cta-button">View All Services</a>
+        </div>
+    </div>
+</section>
 
     <section id="pmu-artist" class="pmu-artist section-background">
         <div class="centered-content">

@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Neon Beauty Palace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            transition: opacity 0.3s ease-in-out;
+            background-color: #f7f7f7;
+            width: 100%;
+        }
+        body.fade-out {
+            opacity: 0;
+        }
+
+        .content {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .content.visible {
+            opacity: 1;
+        }
+        .header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100vw;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            transition: top 0.3s;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 50px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 3rem;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.3s;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #ddd;
+            transform: translateY(-2px);
+        }
+
+        .academy-btn {
+            background-color: transparent;
+            border: 2px solid #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-left: 2rem;
+            white-space: nowrap;
+        }
+
+        .academy-btn:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+                margin: 1rem 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .academy-btn {
+                margin: 1rem 0;
+                width: auto;
+                padding: 0.75rem 2rem;
+            }
+
+            .logo img {
+                max-height: 40px;
+            }
+        }
+
+        /* Page title section */
+        .page-title {
+            margin-top: 0;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background-color: #f0f0f0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            top: 0;
+        }
+
+        .page-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-title p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Category filters */
+        .filter-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-btn {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .filter-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background-color: #000;
+            color: white;
+            border-color: #000;
+        }
+
+        /* Services grid */
+        .services-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            padding-left: 4rem; /* Added extra padding on the left to avoid social icons */
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .service-item {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .service-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-category {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-btn {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .service-btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Service details modal */
+        .service-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-category {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .detail-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .book-btn {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .book-btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #333;
+            font-size: 24px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Social icons */
+        .social-icons {
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            gap: 10px;
+            box-shadow: none;
+            pointer-events: auto;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        .social-icon:hover svg {
+            transform: scale(1.2);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .social-icon:hover {
+            animation: pulse 1s infinite;
+        }
+
+        .social-icon.tiktok:hover::before {
+            background: linear-gradient(45deg, #25fbfb, #701dec);
+        }
+
+        .social-icon.instagram:hover::before {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+
+        .social-icon.telegram:hover::before {
+            background: linear-gradient(45deg, #0088cc, #0088cc);
+        }
+
+        /* Footer */
+        .nbp-footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .nbp-footer-grid {
+            padding: 4rem 5rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .nbp-footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .nbp-footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nbp-footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nbp-footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nbp-footer-links a:hover {
+            color: #ccc;
+        }
+
+        .nbp-footer-bottom {
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #555;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 1001;
+            margin-left: auto;
+            position: relative;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-container {
+                padding-left: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                transition: right 0.3s ease;
+                z-index: 999;
+                padding: 80px 20px 20px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+                margin: 1rem 0;
+                width: 100%;
+                text-align: left;
+                color: #333;
+                font-weight: 600;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-link:hover {
+                color: #555;
+                transform: none;
+            }
+
+            .academy-btn {
+                margin: 1.5rem 0 0;
+                width: 100%;
+                padding: 0.75rem 1rem;
+                background-color: #4a90e2;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                text-align: center;
+            }
+
+            .academy-btn:hover {
+                background-color: #3a7bc8;
+                color: white;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                left: auto;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                gap: 8px;
+            }
+
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                margin-bottom: 8px;
+            }
+
+            .social-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .nbp-footer-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            /* Adjusted services container for mobile */
+            .services-container {
+                padding: 1.5rem;
+                padding-right: 3rem; /* Since social icons are now on the right */
+            }
+            
+            /* Improved filter container for mobile */
+            .filter-container {
+                padding: 1.5rem 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .filter-btn {
+                margin: 0.25rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+                flex: 0 0 auto;
+                min-width: 100px;
+                text-align: center;
+            }
+
+            .modal-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .page-title h1 {
+                font-size: 2.2rem;
+            }
+
+            .filter-container {
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .filter-btn {
+                margin: 0.2rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+                min-width: 90px;
+            }
+
+            .services-container {
+                padding: 1.5rem 0.5rem;
+                padding-right: 2.5rem;
+            }
+
+            .social-icons {
+                right: 5px;
+                gap: 6px;
+            }
+
+            .social-icon {
+                margin-bottom: 6px;
+            }
+
+            .service-title {
+                font-size: 1.3rem;
+            }
+
+            .service-description {
+                font-size: 0.9rem;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animation effects */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-title h1,
+        .page-title p {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .page-title p {
+            animation-delay: 0.2s;
+        }
+
+        .filter-container {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: 0.4s;
+        }
+
+        .service-item {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .service-item:nth-child(1) { animation-delay: 0.5s; }
+        .service-item:nth-child(2) { animation-delay: 0.6s; }
+        .service-item:nth-child(3) { animation-delay: 0.7s; }
+        .service-item:nth-child(4) { animation-delay: 0.8s; }
+        .service-item:nth-child(5) { animation-delay: 0.9s; }
+        .service-item:nth-child(6) { animation-delay: 1.0s; }
+    </style>
+</head>
+<body>
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" aria-label="TikTok">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+            </svg>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+            </svg>
+        </a>
+        <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer" class="social-icon telegram" aria-label="Telegram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="logo">
+            <img src="New neon logo.png" alt="Neon Beauty Palace Logo">
+        </a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/services.html" class="nav-link">Services</a>
+            <a href="/#pmu-artist" class="nav-link">PMU Artist</a>
+            <a href="/our-work.html" class="nav-link">Our Work</a>
+            <a href="/#recently-posted" class="nav-link">Recently Posted</a>
+            <a href="/#contact" class="nav-link">Contact</a>
+            <a href="/academy" class="academy-btn">Academy</a>
+        </nav>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Our Services</h1>
+        <p>Discover our premium permanent makeup services tailored to enhance your natural beauty.</p>
+    </section>
+
+    <!-- Category Filters -->
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All Services</button>
+        <button class="filter-btn" data-filter="ombre-brows">Ombre Brows</button>
+        <button class="filter-btn" data-filter="nano-brows">Nano Brows</button>
+        <button class="filter-btn" data-filter="lip-blushing">Lip Blushing</button>
+        <button class="filter-btn" data-filter="eyeliner">Permanent Eyeliner</button>
+        <button class="filter-btn" data-filter="lash-enhancement">Lash Enhancement</button>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-container">
+        <div class="services-grid">
+            <!-- Ombre Brows -->
+            <div class="service-item" data-category="ombre-brows">
+                <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows Service" class="service-image">
+                <div class="service-info">
+                    <div class="service-category">Ombre Brows</div>
+                    <h3 class="service-title">Powder Ombre Brows</h3>
+                    <p class="service-description">Create a soft, powdered effect that mimics the look of perfectly applied brow makeup. Ideal for those wanting fuller, more defined brows with a gentle gradient effect.</p>
+                    <div class="service-price">From $350</div>
+                    <a href="#" class="service-btn" data-service="ombre-brows">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Nano Brows -->
+            <div class="service-item" data-category="nano-brows">
+                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows Service" class="service-image">
+                <div class="service-info">
+                    <div class="service-category">Nano Brows</div>
+                    <h3 class="service-title">Nano Hair Stroke Brows</h3>
+                    <p class="service-description">Ultra-fine, realistic hair strokes created using nano needles for the most natural-looking brows. Perfect for those wanting to enhance sparse or thinning brows with a natural appearance.</p>
+                    <div class="service-price">From $400</div>
+                    <a href="#" class="service-btn" data-service="nano-brows">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Lip Blushing -->
+            <div class="service-item" data-category="lip-blushing">
+                <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing Service" class="service-image">
+                <div class="service-info">
+                    <div class="service-category">Lip Blushing</div>
+                    <h3 class="service-title">Natural Lip Blush</h3>
+                    <p class="service-description">Enhance your natural lip color with a subtle, semi-permanent tint that adds definition and fullness. Perfect for correcting asymmetry and adding a natural flush of color.</p>
+                    <div class="service-price">From $450</div>
+                    <a href="#" class="service-btn" data-service="lip-blushing">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Permanent Eyeliner -->
+            <div class="service-item" data-category="eyeliner">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Service" class="service-image">
+                <div class="service-info">
+                    <div class="service-category">Permanent Eyeliner</div>
+                    <h3 class="service-title">Classic Eyeliner Enhancement</h3>
+                    <p class="service-description">Define your eyes with a subtle or dramatic permanent eyeliner. Choose from lash line enhancement for a natural look or a classic winged liner for added definition.</p>
+                    <div class="service-price">From $300</div>
+                    <a href="#" class="service-btn" data-service="eyeliner">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Lash Enhancement -->
+            <div class="service-item" data-category="lash-enhancement">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement Service" class="service-image">
+                <div class="service-info">
+                    <div class="service-category">Lash Enhancement</div>
+                    <h3 class="service-title">Lash Line Intensification</h3>
+                    <p class="service-description">Create the appearance of fuller, thicker lashes with this subtle technique that places pigment between the lashes. Perfect for those wanting definition without the look of eyeliner.</p>
+                    <div class="service-price">From $250</div>
+                    <a href="#" class="service-btn" data-service="lash-enhancement">View Details</a>
+                </div>
+            </div>
+            
+            <!-- Combo Service -->
+            <div class="service-item" data-category="ombre-brows nano-brows">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Combo Brows Service" class="service-image">
+                <div class="service-info">
+                    <div class="service-category">Combo Brows</div>
+                    <h3 class="service-title">Hybrid Brow Technique</h3>
+                    <p class="service-description">The best of both worlds: combining nano hair strokes with ombre shading for a defined yet natural look. Ideal for those wanting the most customized and dimensional brow enhancement.</p>
+                    <div class="service-price">From $500</div>
+                    <a href="#" class="service-btn" data-service="combo-brows">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Modal -->
+    <div class="service-modal">
+        <div class="modal-content">
+            <div class="close-modal">&times;</div>
+            <div class="modal-header">
+                <h2 class="modal-title">Service Title</h2>
+                <div class="modal-category">Category</div>
+            </div>
+            <div class="modal-body">
+                <img src="/placeholder.svg" alt="" class="modal-image">
+                <div class="modal-description">
+                    Service description will appear here.
+                </div>
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value duration-value">2-3 hours</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Touch-up Required</div>
+                        <div class="detail-value touchup-value">After 4-6 weeks</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Longevity</div>
+                        <div class="detail-value longevity-value">1-3 years</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Pain Level</div>
+                        <div class="detail-value pain-value">Mild to moderate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-price">$350</div>
+                <a href="/#contact" class="book-btn">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="nbp-footer">
+        <div class="nbp-footer-grid">
+            <div class="nbp-footer-column">
+                <h3>Quick Links</h3>
+                <ul class="nbp-footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services.html">Services</a></li>
+                    <li><a href="/#about">About Us</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nbp-footer-column">
+                <h3>Services</h3>
+                <ul class="nbp-footer-links">
+                    <li><a href="#">Ombre Brows</a></li>
+                    <li><a href="#">Lip Blushing</a></li>
+                    <li><a href="#">Eyeliner</a></li>
+                    <li><a href="#">Lash Enhancement</a></li>
+                </ul>
+            </div>
+            <div class="nbp-footer-column">
+                <h3>Contact Us</h3>
+                <ul class="nbp-footer-links">
+                    <li>XQQR+RWX, Addis Ababa</li>
+                    <li>+1 (555) 123-4567</li>
+                    <li><a href="mailto:info@neonbeautypalace.com">info@neonbeautypalace.com</a></li>
+                </ul>
+            </div>
+            <div class="nbp-footer-column">
+                <h3>Follow Us</h3>
+                <ul class="nbp-footer-links">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">TikTok</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nbp-footer-bottom">
+            <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('.nav');
+            const body = document.body;
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('active');
+                body.classList.toggle('menu-open');
+            });
+
+            // Close menu when clicking a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    body.classList.remove('menu-open');
+                });
+            });
+
+            // Category filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const serviceItems = document.querySelectorAll('.service-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get filter value
+                    const filterValue = button.getAttribute('data-filter');
+                    
+                    // Filter service items
+                    serviceItems.forEach(item => {
+                        const categories = item.getAttribute('data-category').split(' ');
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Service Modal
+            const serviceModal = document.querySelector('.service-modal');
+            const modalImage = document.querySelector('.modal-image');
+            const modalTitle = document.querySelector('.modal-title');
+            const modalCategory = document.querySelector('.modal-category');
+            const modalDescription = document.querySelector('.modal-description');
+            const modalPrice = document.querySelector('.modal-price');
+            const closeModal = document.querySelector('.close-modal');
+            const durationValue = document.querySelector('.duration-value');
+            const touchupValue = document.querySelector('.touchup-value');
+            const longevityValue = document.querySelector('.longevity-value');
+            const painValue = document.querySelector('.pain-value');
+
+            // Service details data
+            const serviceDetails = {
+                'ombre-brows': {
+                    title: 'Powder Ombre Brows',
+                    category: 'Ombre Brows',
+                    description: 'Our Powder Ombre Brows technique creates a soft, powdered effect that mimics the look of perfectly applied brow makeup. The result is fuller, more defined brows with a gentle gradient effect from light to dark. This technique is perfect for those with oily skin, sparse brows, or anyone wanting a more defined, makeup-like finish that still looks natural. The procedure involves depositing pigment into the skin using a specialized machine to create a soft-focus, airbrushed effect.',
+                    price: '$350',
+                    duration: '2-3 hours',
+                    touchup: '4-6 weeks after initial session',
+                    longevity: '1-3 years depending on skin type and aftercare',
+                    pain: 'Mild to moderate (numbing cream applied)'
+                },
+                'nano-brows': {
+                    title: 'Nano Hair Stroke Brows',
+                    category: 'Nano Brows',
+                    description: 'Nano Hair Stroke Brows use ultra-fine needles to create the most realistic, hair-like strokes possible. This advanced technique mimics natural brow hairs with incredible precision, making it impossible to distinguish from real hair. Ideal for those wanting to enhance sparse or thinning brows while maintaining the most natural appearance possible. Our nano technique creates crisp, defined strokes that heal beautifully without blurring.',
+                    price: '$400',
+                    duration: '2-3 hours',
+                    touchup: '4-6 weeks after initial session',
+                    longevity: '1-2 years depending on skin type and aftercare',
+                    pain: 'Mild (numbing cream applied)'
+                },
+                'lip-blushing': {
+                    title: 'Natural Lip Blush',
+                    category: 'Lip Blushing',
+                    description: 'Our Natural Lip Blush treatment enhances your lips with a subtle, semi-permanent tint that adds definition and fullness. This technique can correct asymmetry, add color to pale lips, and create the appearance of fuller lips without fillers. The result is a soft, natural flush of color that looks like your lips but better. We customize the color to complement your skin tone and enhance your natural beauty.',
+                    price: '$450',
+                    duration: '2-3 hours',
+                    touchup: '6-8 weeks after initial session',
+                    longevity: '1-2 years depending on lifestyle factors',
+                    pain: 'Moderate (strong numbing cream applied)'
+                },
+                'eyeliner': {
+                    title: 'Classic Eyeliner Enhancement',
+                    category: 'Permanent Eyeliner',
+                    description: 'Our Classic Eyeliner Enhancement defines your eyes with a subtle or dramatic permanent eyeliner. Choose from lash line enhancement for a natural look or a classic winged liner for added definition. This treatment saves you time on your daily makeup routine and ensures your eyeliner is always perfect. We use specialized techniques to ensure comfort during the procedure and beautiful, long-lasting results.',
+                    price: '$300',
+                    duration: '1-2 hours',
+                    touchup: '4-6 weeks after initial session',
+                    longevity: '1-3 years depending on skin type',
+                    pain: 'Moderate (numbing cream applied)'
+                },
+                'lash-enhancement': {
+                    title: 'Lash Line Intensification',
+                    category: 'Lash Enhancement',
+                    description: 'Our Lash Line Intensification creates the appearance of fuller, thicker lashes by placing pigment between the lashes. This subtle technique adds definition without the look of obvious eyeliner. Perfect for those wanting to enhance their eyes in the most natural way possible. The result is eyes that appear more defined and lashes that look thicker, even without mascara.',
+                    price: '$250',
+                    duration: '1-2 hours',
+                    touchup: '4-6 weeks after initial session',
+                    longevity: '1-2 years depending on skin type',
+                    pain: 'Mild to moderate (numbing cream applied)'
+                },
+                'combo-brows': {
+                    title: 'Hybrid Brow Technique',
+                    category: 'Combo Brows',
+                    description: 'Our Hybrid Brow Technique combines the best of both worlds: nano hair strokes with ombre shading for a defined yet natural look. This customized approach gives you the most dimensional brow enhancement possible, with realistic hair strokes in the front and a soft powder effect through the arch and tail. Ideal for those wanting the most comprehensive brow transformation with both definition and natural texture.',
+                    price: '$500',
+                    duration: '3-4 hours',
+                    touchup: '4-6 weeks after initial session',
+                    longevity: '1-3 years depending on skin type and aftercare',
+                    pain: 'Mild to moderate (numbing cream applied)'
+                }
+            };
+
+            // Open modal when clicking service button
+            const serviceButtons = document.querySelectorAll('.service-btn');
+            serviceButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const serviceType = button.getAttribute('data-service');
+                    const service = serviceDetails[serviceType];
+                    const serviceItem = button.closest('.service-item');
+                    const image = serviceItem.querySelector('.service-image');
+                    
+                    // Populate modal with service details
+                    modalImage.src = image.src;
+                    modalImage.alt = image.alt;
+                    modalTitle.textContent = service.title;
+                    modalCategory.textContent = service.category;
+                    modalDescription.textContent = service.description;
+                    modalPrice.textContent = service.price;
+                    durationValue.textContent = service.duration;
+                    touchupValue.textContent = service.touchup;
+                    longevityValue.textContent = service.longevity;
+                    painValue.textContent = service.pain;
+                    
+                    // Show modal
+                    serviceModal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                });
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                serviceModal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+
+            // Close modal when clicking outside
+            serviceModal.addEventListener('click', (e) => {
+                if (e.target === serviceModal) {
+                    serviceModal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && serviceModal.classList.contains('active')) {
+                    serviceModal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+
+            // Header scroll effect
+            let lastScrollTop = 0;
+            const header = document.querySelector('.header');
+
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop) {
+                    // Scroll down
+                    header.style.top = '-100px'; // Hide the header
+                } else {
+                    // Scroll up
+                    header.style.top = '0'; // Show the header
+                }
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
+</body>
+</html>
