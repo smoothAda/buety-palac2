@@ -6,7 +6,7 @@
     <title>Our Services - Neon Beauty Palace</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        * {
+         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -229,22 +229,29 @@
             padding-left: 4rem; /* Added extra padding on the left to avoid social icons */
         }
 
+        /* Update the services-grid to make cards smaller and add better spacing */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .service-item {
             background-color: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            max-width: 320px; /* Make cards smaller */
+            height: 100%;
+            margin: 0 auto; /* Center cards */
         }
 
+        /* Add hover effects similar to index.html */
         .service-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
@@ -252,8 +259,13 @@
 
         .service-image {
             width: 100%;
-            height: 250px;
+            height: 220px; /* Reduced height */
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-item:hover .service-image {
+            transform: scale(1.05);
         }
 
         .service-info {
@@ -678,8 +690,18 @@
 
             .services-grid {
                 grid-template-columns: 1fr;
+                justify-items: center; /* Center items in the grid */
             }
-
+            
+            .service-item {
+                max-width: 300px;
+                margin: 0 auto; /* Center the card */
+            }
+            
+            .service-info {
+                text-align: center; /* Center text on mobile */
+            }
+            
             .social-icons {
                 left: auto;
                 right: 10px;
@@ -707,7 +729,14 @@
             /* Adjusted services container for mobile */
             .services-container {
                 padding: 1.5rem;
-                padding-right: 3rem; /* Since social icons are now on the right */
+                padding-right: 3rem; /* Since social icons are on the right */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .service-btn {
+                margin: 0 auto; /* Center the button */
             }
             
             /* Improved filter container for mobile */
@@ -775,6 +804,14 @@
 
             .modal-title {
                 font-size: 1.5rem;
+            }
+            
+            .service-item {
+                max-width: 280px;
+            }
+            
+            .service-image {
+                height: 200px;
             }
         }
 
