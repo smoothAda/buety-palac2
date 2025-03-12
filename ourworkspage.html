@@ -162,16 +162,18 @@
             }
         }
 
-        /* Page title section */
+        /* Page title section - Fixed to cover to the top */
         .page-title {
-            margin-top: 80px;
-            padding: 4rem 2rem;
+            margin-top: 0;
+            padding: 8rem 2rem 4rem;
             text-align: center;
             background-color: #f0f0f0;
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
             background-size: cover;
             background-position: center;
             color: white;
+            position: relative;
+            top: 0;
         }
 
         .page-title h1 {
@@ -186,7 +188,7 @@
             margin: 0 auto;
         }
 
-        /* Category filters */
+        /* Category filters - Improved alignment for mobile */
         .filter-container {
             padding: 2rem;
             max-width: 1200px;
@@ -205,6 +207,7 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
         }
 
         .filter-btn:hover {
@@ -218,11 +221,12 @@
             border-color: #000;
         }
 
-        /* Work grid */
+        /* Work grid - Adjusted to center content away from social icons */
         .work-container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem;
+            padding-left: 4rem; /* Added extra padding on the left to avoid social icons */
         }
 
         .work-grid {
@@ -507,6 +511,10 @@
             .work-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .work-container {
+                padding-left: 3rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -596,11 +604,33 @@
                 grid-template-columns: 1fr;
                 padding: 2rem 1rem;
             }
+            
+            /* Adjusted work container for mobile */
+            .work-container {
+                padding: 1.5rem;
+                padding-right: 3rem; /* Since social icons are now on the right */
+            }
+            
+            /* Improved filter container for mobile */
+            .filter-container {
+                padding: 1.5rem 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .filter-btn {
+                margin: 0.25rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+                flex: 0 0 auto;
+                min-width: 100px;
+                text-align: center;
+            }
         }
 
         @media (max-width: 480px) {
             .page-title {
-                padding: 3rem 1rem;
+                padding: 6rem 1rem 3rem;
             }
 
             .page-title h1 {
@@ -608,11 +638,19 @@
             }
 
             .filter-container {
-                padding: 1.5rem 1rem;
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .filter-btn {
+                margin: 0.2rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+                min-width: 90px;
             }
 
             .work-container {
-                padding: 1.5rem 1rem;
+                padding: 1.5rem 0.5rem;
+                padding-right: 2.5rem;
             }
 
             .social-icons {
