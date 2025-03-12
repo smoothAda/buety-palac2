@@ -1521,25 +1521,77 @@
             z-index: 1001;
             margin-left: auto;
             position: relative;
+            background: none;
+            border: none;
+            padding: 0;
         }
 
         .hamburger span {
             width: 100%;
-            height: 2px;
+            height: 3px;
             background-color: white;
             transition: all 0.3s ease;
         }
 
-        .hamburger.active span:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
 
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                transition: right 0.3s ease;
+                z-index: 999;
+                padding: 80px 20px 20px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
 
-        .hamburger.active span:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
+            .nav.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+                margin: 1rem 0;
+                width: 100%;
+                text-align: left;
+                color: #333;
+                font-weight: 600;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-link:hover {
+                color: #555;
+                transform: none;
+            }
+
+            .academy-btn {
+                margin: 1.5rem 0 0;
+                width: 100%;
+                padding: 0.75rem 1rem;
+                background-color: #4a90e2;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                text-align: center;
+            }
+
+            .academy-btn:hover {
+                background-color: #3a7bc8;
+                color: white;
+            }
         }
 
         /* Update body to prevent scrolling when menu is open */
@@ -1693,7 +1745,10 @@
                     <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 1" loading="lazy" />
                 </div>
                 <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Work 2" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx\`\`\`
+src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx
+\`\`\`
+waG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Work 2" loading="lazy" />
                 </div>
                 <div class="work-item">
                     <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 3" loading="lazy" />
@@ -2178,7 +2233,7 @@
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 nav.classList.toggle('active');
-                body.classList.toggle('menu-open'); // Toggle body scroll
+                body.classList.toggle('menu-open');
             });
 
             // Close menu when clicking a link
@@ -2186,16 +2241,16 @@
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('active');
                     nav.classList.remove('active');
-                    body.classList.remove('menu-open'); // Enable body scroll
+                    body.classList.remove('menu-open');
                 });
             });
 
             // Close menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                if (!nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('active')) {
                     hamburger.classList.remove('active');
                     nav.classList.remove('active');
-                    body.classList.remove('menu-open'); // Enable body scroll
+                    body.classList.remove('menu-open');
                 }
             });
         });
