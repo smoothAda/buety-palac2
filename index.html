@@ -1599,66 +1599,142 @@
         }
 
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        cursor: pointer;
+        z-index: 1001;
+        margin-left: auto;
+        position: relative;
+        background: none;
+        border: none;
+        padding: 0;
+    }
 
-            .nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background-color: white;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                transition: right 0.3s ease;
-                z-index: 999;
-                padding: 80px 20px 20px;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            }
+    .hamburger span {
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
 
-            .nav.active {
-                right: 0;
-            }
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
 
-            .nav-link {
-                font-size: 1.2rem;
-                margin: 1rem 0;
-                width: 100%;
-                text-align: left;
-                color: #333;
-                font-weight: 600;
-            }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
 
-            .nav-link::after {
-                display: none;
-            }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 
-            .nav-link:hover {
-                color: #555;
-                transform: none;
-            }
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+        z-index: 999;
+        padding: 80px 20px 20px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
 
-            .academy-btn {
-                margin: 1.5rem 0 0;
-                width: 100%;
-                padding: 0.75rem 1rem;
-                background-color: #4a90e2;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                text-align: center;
-            }
+    .nav.active {
+        right: 0;
+    }
 
-            .academy-btn:hover {
-                background-color: #3a7bc8;
-                color: white;
-            }
-        }
+    .nav-link {
+        font-size: 1.1rem;
+        margin: 0.8rem 0;
+        width: 100%;
+        text-align: center;
+        color: #333;
+        font-weight: 500;
+        padding: 0.8rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
 
+    .nav-link:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #000;
+        transform: translateX(5px);
+    }
+
+    .academy-btn {
+        margin: 1.5rem 0 0;
+        width: 80%;
+        padding: 0.75rem 1.5rem;
+        background-color: #000;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        text-align: center;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .academy-btn:hover {
+        background-color: #333;
+        transform: translateY(-2px);
+    }
+
+    /* Prevent body scroll when menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* Overlay when menu is open */
+    .nav::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: -1;
+    }
+
+    .nav.active::before {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .nav {
+        width: 85%;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.7rem;
+    }
+
+    .academy-btn {
+        width: 90%;
+        padding: 0.7rem 1.2rem;
+    }
+}
         /* Update body to prevent scrolling when menu is open */
         body.menu-open {
             overflow: hidden;
