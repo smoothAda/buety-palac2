@@ -334,6 +334,8 @@
         display: flex;
         flex-direction: column;
         max-width: 320px; /* Limit the maximum width */
+        text-decoration: none; /* Added for link */
+        color: inherit; /* Keep text color consistent */
     }
     
     .service-card:hover {
@@ -391,9 +393,9 @@
         background-color: #000;
         color: white;
         border: none;
-        padding: 0.6rem 1.2rem;
+        padding: 0.5rem 1rem; /* Decreased button size */
         border-radius: 20px;
-        font-size: 0.85rem;
+        font-size: 0.8rem; /* Smaller font size */
         cursor: pointer;
         transition: all 0.3s ease;
         text-decoration: none;
@@ -514,8 +516,8 @@
         }
         
         .service-btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem; /* Further decrease button size on mobile */
+            font-size: 0.75rem;
         }
     }
         .pmu-artist {
@@ -1831,64 +1833,74 @@
         
         <div class="services-grid">
             <!-- Ombre Brows -->
-            <div class="service-card">
+            <a href="Our Services.html" class="service-card">
                 <div class="service-image">
                     <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows">
                 </div>
                 <div class="service-content">
                     <h3 class="service-title">Ombre Brows</h3>
                     <p class="service-description">Create a soft, powdered effect that mimics the look of perfectly applied brow makeup.</p>
-                    <a href="Our Services.html" class="service-btn">Learn More</a>
+                    <div class="button-container">
+                        <span class="service-btn">Learn More</span>
+                    </div>
                 </div>
-            </div>
+            </a>
             
             <!-- Nano Brows -->
-            <div class="service-card">
+            <a href="Our Services.html" class="service-card">
                 <div class="service-image">
                     <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows">
                 </div>
                 <div class="service-content">
                     <h3 class="service-title">Nano Brows</h3>
                     <p class="service-description">Ultra-fine, realistic hair strokes created using nano needles for natural-looking brows.</p>
-                    <a href="Our Services.html" class="service-btn">Learn More</a>
+                    <div class="button-container">
+                        <span class="service-btn">Learn More</span>
+                    </div>
                 </div>
-            </div>
+            </a>
             
             <!-- Lip Blushing -->
-            <div class="service-card">
+            <a href="Our Services.html" class="service-card">
                 <div class="service-image">
                     <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing">
                 </div>
                 <div class="service-content">
                     <h3 class="service-title">Lip Blushing</h3>
                     <p class="service-description">Enhance your natural lip color with a subtle, semi-permanent tint that adds definition.</p>
-                    <a href="Our Services.html" class="service-btn">Learn More</a>
+                    <div class="button-container">
+                        <span class="service-btn">Learn More</span>
+                    </div>
                 </div>
-            </div>
+            </a>
             
             <!-- Permanent Eyeliner -->
-            <div class="service-card">
+            <a href="Our Services.html" class="service-card">
                 <div class="service-image">
                     <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner">
                 </div>
                 <div class="service-content">
                     <h3 class="service-title">Permanent Eyeliner</h3>
                     <p class="service-description">Define your eyes with a subtle or dramatic permanent eyeliner for a flawless look.</p>
-                    <a href="Our Services.html" class="service-btn">Learn More</a>
+                    <div class="button-container">
+                        <span class="service-btn">Learn More</span>
+                    </div>
                 </div>
-            </div>
+            </a>
             
             <!-- Lash Enhancement -->
-            <div class="service-card">
+            <a href="Our Services.html" class="service-card">
                 <div class="service-image">
                     <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement">
                 </div>
                 <div class="service-content">
                     <h3 class="service-title">Lash Enhancement</h3>
                     <p class="service-description">Create the appearance of fuller, thicker lashes with this subtle technique.</p>
-                    <a href="Our Services.html" class="service-btn">Learn More</a>
+                    <div class="button-container">
+                        <span class="service-btn">Learn More</span>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         
         <div class="services-cta">
@@ -2430,4 +2442,3 @@
     </script>
 </body>
 </html>
-
