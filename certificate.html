@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMU Artists - Neon Beauty Palace</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        transition: opacity 0.3s ease-in-out;
+        background-color: #f7f7f7;
+        width: 100%;
+    }
+    body.fade-out {
+        opacity: 0;
+    }
+
+    .content {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    .content.visible {
+        opacity: 1;
+    }
+    .header {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+        transition: top 0.3s;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        max-height: 50px;
+    }
+
+    .nav {
+        display: flex;
+        gap: 3rem;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .nav-link {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+        position: relative;
+    }
+
+    .nav-link::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #fff;
+        transition: width 0.3s;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .nav-link:hover {
+        color: #ddd;
+        transform: translateY(-2px);
+    }
+
+    .academy-btn {
+        background-color: transparent;
+        border: 2px solid #fff;
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin-left: 2rem;
+        white-space: nowrap;
+    }
+
+    .academy-btn:hover {
+        background-color: #fff;
+        color: #000;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            padding: 1rem;
+        }
+
+        .hamburger {
+            display: flex;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.3s ease;
+            z-index: 999;
+        }
+
+        .nav.active {
+            right: 0;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .academy-btn {
+            margin: 1rem 0;
+            width: auto;
+            padding: 0.75rem 2rem;
+        }
+
+        .logo img {
+            max-height: 40px;
+        }
+    }
+
+    /* Page title section */
+    .page-title {
+        margin-top: 0;
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        background-color: #f0f0f0;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560750588-73207b1ef5b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        position: relative;
+        top: 0;
+    }
+
+    .page-title h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .page-title p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Artists section */
+    .artists-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+    }
+
+    .artists-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+
+    .artist-card {
+        background-color: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .artist-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .artist-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .artist-info {
+        padding: 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .artist-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .artist-title {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .artist-bio {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .artist-specialties {
+        margin-bottom: 1.5rem;
+    }
+
+    .specialty-tag {
+        display: inline-block;
+        background-color: #f0f0f0;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+    }
+
+    .certificate-btn {
+        background-color: #000;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .certificate-btn:hover {
+        background-color: #333;
+        transform: translateY(-2px);
+    }
+
+    /* Certificate modal */
+    .certificate-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .certificate-modal.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .modal-content {
+        background-color: white;
+        max-width: 800px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 12px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .modal-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-subtitle {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .certificate-image {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .certificate-details {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .certificate-info {
+        font-size: 1rem;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    .certificate-date {
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: #333;
+        font-size: 24px;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 50%;
+        transition: background 0.3s ease;
+    }
+
+    .close-modal:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Social icons */
+    .social-icons {
+        position: fixed;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        z-index: 1000;
+        gap: 10px;
+        box-shadow: none;
+        pointer-events: auto;
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .social-icon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #ff00ff, #00ffff);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .social-icon:hover::before {
+        opacity: 1;
+    }
+
+    .social-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: #fff;
+        transition: transform 0.3s ease;
+        z-index: 1;
+    }
+
+    .social-icon:hover svg {
+        transform: scale(1.2);
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    .social-icon:hover {
+        animation: pulse 1s infinite;
+    }
+
+    .social-icon.tiktok:hover::before {
+        background: linear-gradient(45deg, #25fbfb, #701dec);
+    }
+
+    .social-icon.instagram:hover::before {
+        background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    }
+
+    .social-icon.telegram:hover::before {
+        background: linear-gradient(45deg, #0088cc, #0088cc);
+    }
+
+    /* Footer */
+    .nbp-footer {
+        background-color: #333;
+        color: #fff;
+        padding: 2rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nbp-footer-grid {
+        padding: 4rem 5rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    .nbp-footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .nbp-footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .nbp-footer-links li {
+        margin-bottom: 0.5rem;
+    }
+
+    .nbp-footer-links a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .nbp-footer-links a:hover {
+        color: #ccc;
+    }
+
+    .nbp-footer-bottom {
+        margin-top: 2rem;
+        text-align: center;
+        padding-top: 1rem;
+        border-top: 1px solid #555;
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1001;
+        margin-left: auto;
+        position: relative;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    .hamburger span {
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        transition: all 0.3s ease;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+        .artists-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hamburger {
+            display: flex;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: white;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: right 0.3s ease;
+            z-index: 999;
+            padding: 80px 20px 20px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav.active {
+            right: 0;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            width: 100%;
+            text-align: left;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .nav-link::after {
+            display: none;
+        }
+
+        .nav-link:hover {
+            color: #555;
+            transform: none;
+        }
+
+        .academy-btn {
+            margin: 1.5rem 0 0;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .academy-btn:hover {
+            background-color: #3a7bc8;
+            color: white;
+        }
+
+        .artists-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .social-icons {
+            left: auto;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            gap: 8px;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            margin-bottom: 8px;
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nbp-footer-grid {
+            grid-template-columns: 1fr;
+            padding: 2rem 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .page-title {
+            padding: 6rem 1rem 3rem;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+        }
+
+        .artists-container {
+            padding: 2rem 1rem;
+        }
+
+        .artist-name {
+            font-size: 1.3rem;
+        }
+
+        .artist-bio {
+            font-size: 0.9rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+        }
+    }
+
+    /* Animation effects */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .page-title h1,
+    .page-title p {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .page-title p {
+        animation-delay: 0.2s;
+    }
+
+    .artist-card {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .artist-card:nth-child(1) { animation-delay: 0.3s; }
+    .artist-card:nth-child(2) { animation-delay: 0.4s; }
+    .artist-card:nth-child(3) { animation-delay: 0.5s; }
+    .artist-card:nth-child(4) { animation-delay: 0.6s; }
+    .artist-card:nth-child(5) { animation-delay: 0.7s; }
+    .artist-card:nth-child(6) { animation-delay: 0.8s; }
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="logo">
+        <a href="index.html">
+            <img src="https://via.placeholder.com/150x50/000000/FFFFFF/?text=Neon+Beauty" alt="Neon Beauty Palace Logo">
+        </a>
+    </div>
+    <button class="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="Our Services.html" class="nav-link">Services</a>
+        <a href="pmu-artists.html" class="nav-link">PMU Artists</a>
+        <a href="#" class="nav-link">Gallery</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="academy-btn">Academy</a>
+    </nav>
+</header>
+
+<!-- Social Icons -->
+<div class="social-icons">
+    <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" aria-label="TikTok">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+        </svg>
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+        </svg>
+    </a>
+    <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer" class="social-icon telegram" aria-label="Telegram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.562-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
+        </svg>
+    </a>
+</div>
+
+<!-- Page Title -->
+<section class="page-title">
+    <h1>Our PMU Artists</h1>
+    <p>Meet our talented team of Permanent Makeup artists who are dedicated to enhancing your natural beauty</p>
+</section>
+
+<!-- Artists Section -->
+<section class="artists-container">
+    <div class="artists-grid">
+        <!-- Artist 1 -->
+        <div class="artist-card">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Sophia Johnson" class="artist-image">
+            <div class="artist-info">
+                <h3 class="artist-name">Sophia Johnson</h3>
+                <p class="artist-title">Senior PMU Artist & Trainer</p>
+                <p class="artist-bio">With over 8 years of experience in permanent makeup, Sophia specializes in creating natural-looking brows and lips. Her attention to detail and artistic approach have made her one of our most sought-after artists.</p>
+                <div class="artist-specialties">
+                    <span class="specialty-tag">Microblading</span>
+                    <span class="specialty-tag">Ombre Brows</span>
+                    <span class="specialty-tag">Lip Blush</span>
+                </div>
+                <button class="certificate-btn" data-artist="sophia">See Certificate</button>
+            </div>
+        </div>
+
+        <!-- Artist 2 -->
+        <div class="artist-card">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1061&q=80" alt="Emma Rodriguez" class="artist-image">
+            <div class="artist-info">
+                <h3 class="artist-name">Emma Rodriguez</h3>
+                <p class="artist-title">PMU Artist & Color Specialist</p>
+                <p class="artist-bio">Emma is known for her exceptional color matching skills and gentle technique. She has trained internationally and brings a unique perspective to permanent makeup artistry with her background in fine arts.</p>
+                <div class="artist-specialties">
+                    <span class="specialty-tag">Powder Brows</span>
+                    <span class="specialty-tag">Eyeliner</span>
+                    <span class="specialty-tag">Color Correction</span>
+                </div>
+                <button class="certificate-btn" data-artist="emma">See Certificate</button>
+            </div>
+        </div>
+
+        <!-- Artist 3 -->
+        <div class="artist-card">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" alt="Olivia Chen" class="artist-image">
+            <div class="artist-info">
+                <h3 class="artist-name">Olivia Chen</h3>
+                <p class="artist-title">Advanced PMU Specialist</p>
+                <p class="artist-bio">Olivia brings a fresh perspective to permanent makeup with her innovative techniques. She specializes in creating dimensional brows and has developed her own approach to natural-looking results.</p>
+                <div class="artist-specialties">
+                    <span class="specialty-tag">Combo Brows</span>
+                    <span class="specialty-tag">Nano Brows</span>
+                    <span class="specialty-tag">Lip Neutralization</span>
+                </div>
+                <button class="certificate-btn" data-artist="olivia">See Certificate</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certificate Modal -->
+<div class="certificate-modal" id="certificateModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" id="modalArtistName">Artist Name</h2>
+            <p class="modal-subtitle" id="modalArtistTitle">Artist Title</p>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <img src="/placeholder.svg" alt="Certificate" class="certificate-image" id="certificateImage">
+            <div class="certificate-details">
+                <p class="certificate-info" id="certificateInfo">Certificate details will appear here.</p>
+                <p class="certificate-date" id="certificateDate">Issue date will appear here.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="nbp-footer">
+    <div class="nbp-footer-grid">
+        <div class="nbp-footer-column">
+            <h3>Neon Beauty Palace</h3>
+            <ul class="nbp-footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Our Services.html">Services</a></li>
+                <li><a href="pmu-artists.html">PMU Artists</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nbp-footer-column">
+            <h3>Services</h3>
+            <ul class="nbp-footer-links">
+                <li><a href="Our Services.html?filter=brows">Brows</a></li>
+                <li><a href="Our Services.html?filter=lips">Lips</a></li>
+                <li><a href="Our Services.html?filter=eyes">Eyes</a></li>
+                <li><a href="Our Services.html?filter=skin">Skin</a></li>
+            </ul>
+        </div>
+        <div class="nbp-footer-column">
+            <h3>Contact</h3>
+            <ul class="nbp-footer-links">
+                <li>123 Beauty Street</li>
+                <li>New York, NY 10001</li>
+                <li>Phone: (123) 456-7890</li>
+                <li>Email: info@neonbeauty.com</li>
+            </ul>
+        </div>
+        <div class="nbp-footer-column">
+            <h3>Hours</h3>
+            <ul class="nbp-footer-links">
+                <li>Monday - Friday: 10am - 8pm</li>
+                <li>Saturday: 10am - 6pm</li>
+                <li>Sunday: Closed</li>
+            </ul>
+        </div>
+    </div>
+    <div class="nbp-footer-bottom">
+        <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
+
+    // Certificate modal functionality
+    const modal = document.getElementById('certificateModal');
+    const certificateBtns = document.querySelectorAll('.certificate-btn');
+    const closeModal = document.querySelector('.close-modal');
+    const modalArtistName = document.getElementById('modalArtistName');
+    const modalArtistTitle = document.getElementById('modalArtistTitle');
+    const certificateImage = document.getElementById('certificateImage');
+    const certificateInfo = document.getElementById('certificateInfo');
+    const certificateDate = document.getElementById('certificateDate');
+
+    // Certificate data
+    const certificateData = {
+        sophia: {
+            name: "Sophia Johnson",
+            title: "Senior PMU Artist & Trainer",
+            image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology.",
+            date: "Certification: January 2018 • Last Updated: March 2023"
+        },
+        emma: {
+            name: "Emma Rodriguez",
+            title: "PMU Artist & Color Specialist",
+            image: "https://images.unsplash.com/photo-1584552517825-9e5980ab8591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+            info: "Certified by the Society of Permanent Cosmetic Professionals. Specialized training in color theory and correction. International certification in advanced eyeliner techniques.",
+            date: "Certification: March 2019 • Last Updated: November 2022"
+        },
+        olivia: {
+            name: "Olivia Chen",
+            title: "Advanced PMU Specialist",
+            image: "https://images.unsplash.com/photo-1584553421349-3557471bed79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+            info: "Certified by the International Permanent Makeup Association. Advanced training in nano brows and combination techniques. Specialized certification in lip neutralization and color correction.",
+            date: "Certification: June 2020 • Last Updated: April 2023"
+        }
+    };
+
+    // Open modal with certificate data
+    certificateBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const artist = btn.getAttribute('data-artist');
+            const data = certificateData[artist];
+            
+            if (data) {
+                modalArtistName.textContent = data.name;
+                modalArtistTitle.textContent = data.title;
+                certificateImage.src = data.image;
+                certificateImage.alt = `${data.name}'s Certificate`;
+                certificateInfo.textContent = data.info;
+                certificateDate.textContent = data.date;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close modal
+    closeModal.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Page transition effect
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.remove('fade-out');
+        const content = document.querySelector('.content');
+        if (content) {
+            content.classList.add('visible');
+        }
+    });
+</script>
+</body>
+</html>
+
