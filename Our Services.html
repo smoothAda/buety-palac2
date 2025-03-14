@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -708,14 +707,17 @@
             /* Adjusted services container for mobile */
             .services-container {
                 padding: 1.5rem 1rem;
+                padding-right: 3rem; /* Add right padding to avoid overlap with social icons */
             }
-            
+
             .service-item {
                 margin-bottom: 1.5rem;
+                max-width: 100%;
+                transform: scale(0.95); /* Make services slightly smaller */
             }
-            
+
             .service-info {
-                padding: 1.5rem;
+                padding: 1.2rem;
                 text-align: center;
             }
             
@@ -781,20 +783,33 @@
 
             .services-container {
                 padding: 1rem;
+                padding-right: 2.5rem; /* Add right padding to avoid overlap with social icons */
             }
-            
+
             .service-item {
                 border-radius: 8px;
                 margin-bottom: 1rem;
+                transform: scale(0.9); /* Make services even smaller on very small screens */
             }
 
             .social-icons {
+                left: auto;
                 right: 5px;
-                gap: 6px;
+                top: 50%;
+                transform: translateY(-50%);
+                gap: 8px;
+                z-index: 100; /* Ensure icons stay on top */
             }
 
             .social-icon {
-                margin-bottom: 6px;
+                width: 32px; /* Make icons slightly smaller */
+                height: 32px;
+                margin-bottom: 8px;
+            }
+
+            .social-icon svg {
+                width: 20px;
+                height: 20px;
             }
 
             .service-title {
@@ -807,6 +822,10 @@
 
             .modal-title {
                 font-size: 1.5rem;
+            }
+
+            .service-image {
+                height: 200px; /* Reduce image height on small screens */
             }
         }
 
@@ -866,7 +885,8 @@
         </a>
         <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer" class="social-icon telegram" aria-label="Telegram">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
+                <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,13\`\`\`
+C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
             </svg>
         </a>
     </div>
@@ -949,7 +969,7 @@
             
             <!-- Permanent Eyeliner -->
             <div class="service-item" data-category="eyeliner">
-                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Service" class="service-image">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Service" class="service-image">
                 <div class="service-info">
                     <div class="service-category">Permanent Eyeliner</div>
                     <h3 class="service-title">Classic Eyeliner Enhancement</h3>
@@ -961,7 +981,7 @@
             
             <!-- Lash Enhancement -->
             <div class="service-item" data-category="lash-enhancement">
-                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement Service" class="service-image">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement Service" class="service-image">
                 <div class="service-info">
                     <div class="service-category">Lash Enhancement</div>
                     <h3 class="service-title">Lash Line Intensification</h3>
@@ -973,7 +993,7 @@
             
             <!-- Combo Service -->
             <div class="service-item" data-category="ombre-brows nano-brows">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Combo Brows Service" class="service-image">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Combo Brows Service" class="service-image">
                 <div class="service-info">
                     <div class="service-category">Combo Brows</div>
                     <h3 class="service-title">Hybrid Brow Technique</h3>
@@ -1050,7 +1070,7 @@
                 <ul class="nbp-footer-links">
                     <li>XQQR+RWX, Addis Ababa</li>
                     <li>+1 (555) 123-4567</li>
-                    <li><a href="mailto:info@neonbeautypalace.com">info@neonbeautypalace.com</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#81e8efe7eec1efe4eeefe3e4e0f4f5f8f1e0ede0e2e4afe2eeec"><span class="__cf_email__" data-cfemail="89e0e7efe6c9e7ece6e7ebece8fcfdf0f9e8e5e8eaeca7eae6e4">[email&#160;protected]</span></a></li>
                 </ul>
             </div>
             <div class="nbp-footer-column">
@@ -1067,7 +1087,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Toggle mobile menu
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.querySelector('.hamburger');
@@ -1263,3 +1283,5 @@
     </script>
 </body>
 </html>
+\`\`\`
+
