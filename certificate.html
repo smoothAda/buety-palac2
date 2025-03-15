@@ -193,12 +193,18 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 4rem 2rem;
+        /* Center the container with margin auto */
+        display: flex;
+        justify-content: center;
     }
 
     .artists-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2.5rem;
+        /* Add margin to ensure it doesn't touch social icons */
+        margin-left: 60px;
+        margin-right: 60px;
     }
 
     .artist-card {
@@ -605,6 +611,16 @@
 
         .artists-grid {
             grid-template-columns: 1fr;
+            margin-left: 0;
+            margin-right: 0;
+            /* Center the content on mobile */
+            justify-items: center;
+        }
+        
+        /* Center the artist cards on mobile */
+        .artist-card {
+            width: 100%;
+            max-width: 400px;
         }
 
         .social-icons {
@@ -745,19 +761,19 @@
 <!-- Artists Section -->
 <section class="artists-container">
     <div class="artists-grid">
-        <!-- Artist 1 -->
+        <!-- Artist 1 - Seble -->
         <div class="artist-card">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Sophia Johnson" class="artist-image">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Seble Tefera" class="artist-image">
             <div class="artist-info">
-                <h3 class="artist-name">Sophia Johnson</h3>
+                <h3 class="artist-name">Seble Tefera</h3>
                 <p class="artist-title">Senior PMU Artist & Trainer</p>
-                <p class="artist-bio">With over 8 years of experience in permanent makeup, Sophia specializes in creating natural-looking brows and lips. Her attention to detail and artistic approach have made her one of our most sought-after artists.</p>
+                <p class="artist-bio">With over 8 years of experience in permanent makeup, Seble specializes in creating natural-looking brows and lips. Her attention to detail and artistic approach have made her one of our most sought-after artists.</p>
                 <div class="artist-specialties">
                     <span class="specialty-tag">Microblading</span>
                     <span class="specialty-tag">Ombre Brows</span>
                     <span class="specialty-tag">Lip Blush</span>
                 </div>
-                <button class="certificate-btn" data-artist="sophia">See Certificate</button>
+                <button class="certificate-btn" data-artist="seble">See Certificate</button>
             </div>
         </div>
 
@@ -773,7 +789,7 @@
                     <span class="specialty-tag">Eyeliner</span>
                     <span class="specialty-tag">Color Correction</span>
                 </div>
-                <button class="certificate-btn" data-artist="emma">See Certificate</button>
+                <!-- Removed certificate button for other artists -->
             </div>
         </div>
 
@@ -789,7 +805,7 @@
                     <span class="specialty-tag">Nano Brows</span>
                     <span class="specialty-tag">Lip Neutralization</span>
                 </div>
-                <button class="certificate-btn" data-artist="olivia">See Certificate</button>
+                <!-- Removed certificate button for other artists -->
             </div>
         </div>
     </div>
@@ -842,7 +858,7 @@
                 <li>123 Beauty Street</li>
                 <li>New York, NY 10001</li>
                 <li>Phone: (123) 456-7890</li>
-                <li>Email: info@neonbeauty.com</li>
+                <li>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fb92959d94bb959e9495999e9a8e8f82d5989496">[email&#160;protected]</a></li>
             </ul>
         </div>
         <div class="nbp-footer-column">
@@ -859,7 +875,7 @@
     </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.nav');
@@ -881,28 +897,14 @@
     const certificateInfo = document.getElementById('certificateInfo');
     const certificateDate = document.getElementById('certificateDate');
 
-    // Certificate data
+    // Certificate data - Only for Seble
     const certificateData = {
-        sophia: {
-            name: "Sophia Johnson",
+        seble: {
+            name: "Seble Tefera",
             title: "Senior PMU Artist & Trainer",
             image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
             info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology.",
             date: "Certification: January 2018 • Last Updated: March 2023"
-        },
-        emma: {
-            name: "Emma Rodriguez",
-            title: "PMU Artist & Color Specialist",
-            image: "https://images.unsplash.com/photo-1584552517825-9e5980ab8591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-            info: "Certified by the Society of Permanent Cosmetic Professionals. Specialized training in color theory and correction. International certification in advanced eyeliner techniques.",
-            date: "Certification: March 2019 • Last Updated: November 2022"
-        },
-        olivia: {
-            name: "Olivia Chen",
-            title: "Advanced PMU Specialist",
-            image: "https://images.unsplash.com/photo-1584553421349-3557471bed79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-            info: "Certified by the International Permanent Makeup Association. Advanced training in nano brows and combination techniques. Specialized certification in lip neutralization and color correction.",
-            date: "Certification: June 2020 • Last Updated: April 2023"
         }
     };
 
@@ -951,4 +953,3 @@
 </script>
 </body>
 </html>
-
