@@ -118,10 +118,6 @@
         }
 
         @media (max-width: 768px) {
-            .header {
-                padding: 1rem;
-            }
-
             .hamburger {
                 display: flex;
             }
@@ -130,14 +126,17 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 100vw;
+                width: 80%;
+                max-width: 300px;
                 height: 100vh;
-                background-color: rgba(0, 0, 0, 0.95);
+                background-color: white;
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
+                justify-content: flex-start;
+                align-items: flex-start;
                 transition: right 0.3s ease;
                 z-index: 999;
+                padding: 80px 20px 20px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             }
 
             .nav.active {
@@ -148,17 +147,104 @@
                 font-size: 1.2rem;
                 margin: 1rem 0;
                 width: 100%;
-                text-align: center;
+                text-align: left;
+                color: #333;
+                font-weight: 600;
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-link:hover {
+                color: #555;
+                transform: none;
             }
 
             .academy-btn {
-                margin: 1rem 0;
-                width: auto;
-                padding: 0.75rem 2rem;
+                margin: 1.5rem 0 0;
+                width: 100%;
+                padding: 0.75rem 1rem;
+                background-color: #4a90e2;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                text-align: center;
             }
 
-            .logo img {
-                max-height: 40px;
+            .academy-btn:hover {
+                background-color: #3a7bc8;
+                color: white;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                left: auto;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                gap: 8px;
+            }
+
+            .social-icon {
+                width: 30px; /* Smaller icons on mobile */
+                height: 30px;
+                margin-bottom: 8px;
+            }
+
+            .social-icon svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .nbp-footer-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
+            }
+            
+            /* Adjusted work container for mobile */
+            .work-container {
+                padding: 1.5rem;
+                padding-left: 2rem; /* Add padding on the left */
+                padding-right: 3rem; /* Since social icons are now on the right */
+            }
+            
+            /* Make all work items equal size on mobile */
+            .work-item {
+                width: 90%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .work-image {
+                height: 250px; /* Same image height for all items */
+            }
+            
+            .work-info {
+                padding: 1.2rem;
+                height: 140px; /* Fixed height for all info boxes */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            
+            /* Improved filter container for mobile */
+            .filter-container {
+                padding: 1.5rem 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .filter-btn {
+                margin: 0.25rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+                flex: 0 0 auto;
+                min-width: 100px;
+                text-align: center;
             }
         }
 
@@ -242,6 +328,9 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            height: 100%; /* Make all items take full height */
+            display: flex;
+            flex-direction: column;
         }
 
         .work-item:hover {
@@ -257,6 +346,11 @@
 
         .work-info {
             padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1; /* Allow info section to grow to fill available space */
+            height: 160px; /* Set a fixed height for all info sections */
         }
 
         .work-category {
@@ -515,6 +609,10 @@
             .work-container {
                 padding-left: 3rem;
             }
+            
+            .work-info {
+                height: 150px; /* Adjusted for tablet */
+            }
         }
 
         @media (max-width: 768px) {
@@ -590,14 +688,14 @@
             }
 
             .social-icon {
-                width: 35px;
-                height: 35px;
+                width: 30px; /* Smaller icons on mobile */
+                height: 30px;
                 margin-bottom: 8px;
             }
 
             .social-icon svg {
-                width: 20px;
-                height: 20px;
+                width: 16px;
+                height: 16px;
             }
 
             .nbp-footer-grid {
@@ -608,7 +706,27 @@
             /* Adjusted work container for mobile */
             .work-container {
                 padding: 1.5rem;
+                padding-left: 2rem; /* Add padding on the left */
                 padding-right: 3rem; /* Since social icons are now on the right */
+            }
+            
+            /* Make all work items equal size on mobile */
+            .work-item {
+                width: 90%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            .work-image {
+                height: 250px; /* Same image height for all items */
+            }
+            
+            .work-info {
+                padding: 1.2rem;
+                height: 140px; /* Fixed height for all info boxes */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
             }
             
             /* Improved filter container for mobile */
@@ -650,7 +768,31 @@
 
             .work-container {
                 padding: 1.5rem 0.5rem;
-                padding-right: 2.5rem;
+                padding-left: 2.5rem; /* More padding on the left */
+                padding-right: 2.5rem; /* More padding on the right */
+            }
+            
+            /* All work items equal size on small mobile */
+            .work-item {
+                width: 85%;
+                max-width: 280px;
+            }
+            
+            .work-image {
+                height: 220px; /* Same but smaller image height for all items */
+            }
+            
+            .work-info {
+                padding: 1rem;
+                height: 130px; /* Fixed height for all info boxes */
+            }
+            
+            .work-title {
+                font-size: 1.1rem;
+            }
+            
+            .work-category, .work-artist {
+                font-size: 0.8rem;
             }
 
             .social-icons {
@@ -659,7 +801,14 @@
             }
 
             .social-icon {
+                width: 25px; /* Even smaller icons on small mobile */
+                height: 25px;
                 margin-bottom: 6px;
+            }
+            
+            .social-icon svg {
+                width: 14px;
+                height: 14px;
             }
         }
 
@@ -722,7 +871,7 @@
         </a>
         <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer" class="social-icon telegram" aria-label="Telegram">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
+                <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
             </svg>
         </a>
     </div>
@@ -809,7 +958,7 @@
             
             <!-- Lash Enhancement -->
             <div class="work-item" data-category="lash-enhancement">
-                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement Work" class="work-image">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement Work" class="work-image">
                 <div class="work-info">
                     <div class="work-category">Lash Enhancement</div>
                     <h3 class="work-title">Subtle Lash Definition</h3>
@@ -819,7 +968,7 @@
             
             <!-- Ombre Brows -->
             <div class="work-item" data-category="ombre-brows">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows Work" class="work-image">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows Work" class="work-image">
                 <div class="work-info">
                     <div class="work-category">Ombre Brows</div>
                     <h3 class="work-title">Bold Statement Brows</h3>
@@ -829,7 +978,7 @@
             
             <!-- Nano Brows -->
             <div class="work-item" data-category="nano-brows">
-                <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Nano Brows Work" class="work-image">
+                <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Nano Brows Work" class="work-image">
                 <div class="work-info">
                     <div class="work-category">Nano Brows</div>
                     <h3 class="work-title">Feathered Arch Brows</h3>
@@ -839,7 +988,7 @@
             
             <!-- Lip Blushing -->
             <div class="work-item" data-category="lip-blushing">
-                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lip Blushing Work" class="work-image">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lip Blushing Work" class="work-image">
                 <div class="work-info">
                     <div class="work-category">Lip Blushing</div>
                     <h3 class="work-title">Full Volume Lips</h3>
@@ -849,7 +998,7 @@
             
             <!-- Permanent Eyeliner -->
             <div class="work-item" data-category="eyeliner">
-                <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Work" class="work-image">
+                <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Work" class="work-image">
                 <div class="work-info">
                     <div class="work-category">Permanent Eyeliner</div>
                     <h3 class="work-title">Subtle Lash Line Enhancement</h3>
@@ -898,7 +1047,7 @@
                 <ul class="nbp-footer-links">
                     <li>XQQR+RWX, Addis Ababa</li>
                     <li>+1 (555) 123-4567</li>
-                    <li><a href="mailto:info@neonbeautypalace.com">info@neonbeautypalace.com</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#9df4f3fbf2ddf3f8f2f3fff8fce8e9e4edfcf1fcfef8b3fef2f0"><span class="__cf_email__" data-cfemail="1d74737b725d737872737f787c6869646d7c717c7e78337e7270">[email&#160;protected]</span></a></li>
                 </ul>
             </div>
             <div class="nbp-footer-column">
@@ -915,7 +1064,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Toggle mobile menu
         document.addEventListener('DOMContentLoaded', () => {
             const hamburger = document.querySelector('.hamburger');
