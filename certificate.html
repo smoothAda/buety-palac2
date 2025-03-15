@@ -620,7 +620,22 @@
         /* Center the artist cards on mobile */
         .artist-card {
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
+        }
+
+        /* Make the modal content smaller on mobile */
+        .modal-content {
+            max-width: 85%;
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .certificate-image {
+            max-width: 100%;
+        }
+
+        .certificate-details {
+            max-width: 100%;
         }
 
         .social-icons {
@@ -671,6 +686,12 @@
 
         .modal-title {
             font-size: 1.5rem;
+        }
+        
+        /* Make the modal even smaller on very small screens */
+        .modal-content {
+            max-width: 80%;
+            width: 80%;
         }
     }
 
@@ -789,7 +810,7 @@
                     <span class="specialty-tag">Eyeliner</span>
                     <span class="specialty-tag">Color Correction</span>
                 </div>
-                <!-- Removed certificate button for other artists -->
+                <button class="certificate-btn" data-artist="seble">See Certificate</button>
             </div>
         </div>
 
@@ -805,7 +826,7 @@
                     <span class="specialty-tag">Nano Brows</span>
                     <span class="specialty-tag">Lip Neutralization</span>
                 </div>
-                <!-- Removed certificate button for other artists -->
+                <button class="certificate-btn" data-artist="seble">See Certificate</button>
             </div>
         </div>
     </div>
@@ -911,8 +932,8 @@
     // Open modal with certificate data
     certificateBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const artist = btn.getAttribute('data-artist');
-            const data = certificateData[artist];
+            // Always show Seble's certificate regardless of which button is clicked
+            const data = certificateData.seble;
             
             if (data) {
                 modalArtistName.textContent = data.name;
