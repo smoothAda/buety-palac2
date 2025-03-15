@@ -617,16 +617,18 @@
             justify-items: center;
         }
         
-        /* Center the artist cards on mobile */
+        /* Center the artist cards on mobile and add padding for social icons */
         .artist-card {
-            width: 100%;
-            max-width: 350px;
+            width: 90%;
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Make the modal content smaller on mobile */
         .modal-content {
-            max-width: 85%;
-            width: 85%;
+            max-width: 80%;
+            width: 80%;
             margin: 0 auto;
         }
 
@@ -638,23 +640,31 @@
             max-width: 100%;
         }
 
+        /* Adjust social icons position on mobile */
         .social-icons {
             left: auto;
-            right: 10px;
+            right: 5px;
             top: 50%;
             transform: translateY(-50%);
             gap: 8px;
+            z-index: 990; /* Lower z-index than modal */
         }
 
         .social-icon {
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             margin-bottom: 8px;
         }
 
         .social-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Adjust artists container padding */
+        .artists-container {
+            padding: 2rem 0.5rem;
+            padding-right: 45px; /* Add extra padding on the right for social icons */
         }
 
         .nbp-footer-grid {
@@ -673,7 +683,8 @@
         }
 
         .artists-container {
-            padding: 2rem 1rem;
+            padding: 2rem 0.5rem;
+            padding-right: 45px; /* Add extra padding on the right for social icons */
         }
 
         .artist-name {
@@ -690,8 +701,20 @@
         
         /* Make the modal even smaller on very small screens */
         .modal-content {
-            max-width: 80%;
-            width: 80%;
+            max-width: 75%;
+            width: 75%;
+        }
+
+        /* Make certificate buttons smaller on mobile */
+        .certificate-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+        }
+        
+        /* Adjust artist card width for small screens */
+        .artist-card {
+            width: 92%;
+            max-width: 360px;
         }
     }
 
@@ -810,7 +833,7 @@
                     <span class="specialty-tag">Eyeliner</span>
                     <span class="specialty-tag">Color Correction</span>
                 </div>
-                <button class="certificate-btn" data-artist="seble">See Certificate</button>
+                <button class="certificate-btn" data-artist="emma">See Certificate</button>
             </div>
         </div>
 
@@ -826,7 +849,7 @@
                     <span class="specialty-tag">Nano Brows</span>
                     <span class="specialty-tag">Lip Neutralization</span>
                 </div>
-                <button class="certificate-btn" data-artist="seble">See Certificate</button>
+                <button class="certificate-btn" data-artist="olivia">See Certificate</button>
             </div>
         </div>
     </div>
@@ -921,6 +944,20 @@
     // Certificate data - Only for Seble
     const certificateData = {
         seble: {
+            name: "Seble Tefera",
+            title: "Senior PMU Artist & Trainer",
+            image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology.",
+            date: "Certification: January 2018 • Last Updated: March 2023"
+        },
+        emma: {
+            name: "Seble Tefera",
+            title: "Senior PMU Artist & Trainer",
+            image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology.",
+            date: "Certification: January 2018 • Last Updated: March 2023"
+        },
+        olivia: {
             name: "Seble Tefera",
             title: "Senior PMU Artist & Trainer",
             image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
