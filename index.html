@@ -1583,83 +1583,59 @@
                 padding: 1.5rem 0.75rem;
             }
         }
+/* Simplified Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
 
-        /* Add these styles for the hamburger menu and mobile nav */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 20px;
-            cursor: pointer;
-            z-index: 1001;
-            margin-left: auto;
-            position: relative;
-            background: none;
-            border: none;
-            padding: 0;
-        }
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 2px;
+}
 
-        .hamburger span {
-            width: 100%;
-            height: 3px;
-            background-color: white;
-            transition: all 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
     .hamburger {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         width: 24px;
         height: 18px;
-        cursor: pointer;
-        z-index: 1001;
-        margin-left: auto;
-        position: relative;
-        background: none;
-        border: none;
-        padding: 0;
-    }
-
-    .hamburger span {
-        width: 100%;
-        height: 2px;
-        background-color: white;
-        transition: all 0.3s ease;
-        border-radius: 2px;
     }
 
     /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+        transform: rotate(45deg) translate(5px, 5px);
     }
-
     .hamburger.active span:nth-child(2) {
         opacity: 0;
     }
-
     .hamburger.active span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        transform: rotate(-45deg) translate(5px, -5px);
     }
 
+    /* Mobile Navigation */
     .nav {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 80%;
-        max-width: 300px;
+        width: 250px;
         height: 100vh;
-        background-color: rgba(255, 255, 255, 0.98);
+        background: white;
+        display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        transition: right 0.3s ease;
-        z-index: 999;
-        padding: 80px 20px 20px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
+        transition: 0.3s;
+        padding-top: 60px;
+        backdrop-filter: blur(10px); /* Blurry effect added */
     }
 
     .nav.active {
@@ -1667,39 +1643,15 @@
     }
 
     .nav-link {
-        font-size: 1.1rem;
-        margin: 0.8rem 0;
-        width: 100%;
-        text-align: center;
+        padding: 10px;
         color: #333;
-        font-weight: 500;
-        padding: 0.8rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-    }
-
-    .nav-link:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-        color: #000;
-        transform: translateX(5px);
-    }
-
-    .academy-btn {
-        margin: 1.5rem 0 0;
-        width: 80%;
-        padding: 0.75rem 1.5rem;
-        background-color: #000;
-        color: white;
-        border: none;
-        border-radius: 25px;
+        font-size: 1.1rem;
         text-align: center;
-        font-weight: 500;
-        transition: all 0.3s ease;
+        transition: 0.3s;
     }
-
-    .academy-btn:hover {
-        background-color: #333;
-        transform: translateY(-2px);
+    
+    .nav-link:hover {
+        background: rgba(0, 0, 0, 0.05);
     }
 
     /* Prevent body scroll when menu is open */
@@ -1707,81 +1659,26 @@
         overflow: hidden;
     }
 
-    /* Overlay when menu is open */
-    .nav::before {
-        content: '';
+    /* Blurry background when menu is open */
+    .menu-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: -1;
+        transition: 0.3s;
     }
-
-    .nav.active::before {
+    .menu-overlay.active {
         opacity: 1;
         visibility: visible;
     }
 }
 
-/* Small mobile styles */
-@media (max-width: 480px) {
-    .nav {
-        width: 85%;
-    }
 
-    .nav-link {
-        font-size: 1rem;
-        padding: 0.7rem;
-    }
-
-    .academy-btn {
-        width: 90%;
-        padding: 0.7rem 1.2rem;
-    }
-}
-        /* Update body to prevent scrolling when menu is open */
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        .view-more-container {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .view-more-btn {
-            display: inline-block;
-            background-color: #000;
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .view-more-btn:hover {
-            background-color: #333;
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 480px) {
-            .view-more-container {
-                margin-top: 1.5rem;
-            }
-            
-            .view-more-btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-                width: 80%;
-                max-width: 200px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -2447,7 +2344,6 @@
             });
         });
 
-        
     </script>
 </body>
 </html>
