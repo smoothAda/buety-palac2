@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -940,155 +939,145 @@
         </a>
     </div>
 
-    <!-- Header -->
     <header class="header">
         <a href="/" class="logo">
             <img src="New neon logo.png" alt="Neon Beauty Palace Logo">
         </a>
-        <div class="hamburger">
+        <button class="hamburger" aria-label="Menu" type="button">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
         <nav class="nav">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/services.html" class="nav-link">Services</a>
-            <a href="/#pmu-artist" class="nav-link">PMU Artist</a>
-            <a href="/our-work.html" class="nav-link">Our Work</a>
-            <a href="/#recently-posted" class="nav-link">Recently Posted</a>
-            <a href="/#contact" class="nav-link">Contact</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#" class="nav-link">PMU Artist</a>
+            <a href="#" class="nav-link">Our Work</a>
+            <a href="#" class="nav-link">Recently Posted</a>
+            <a href="#" class="nav-link">Contact</a>
             <a href="/academy" class="academy-btn">Academy</a>
         </nav>
     </header>
 
-    <!-- Page Title -->
     <section class="page-title">
         <h1>Our Services</h1>
-        <p>Discover our premium permanent makeup services tailored to enhance your natural beauty.</p>
+        <p>Discover our premium permanent makeup services tailored to enhance your natural beauty</p>
     </section>
 
-    <!-- Category Filters -->
-    <div class="filter-container">
+    <div class="filter-container" id="services">
         <button class="filter-btn active" data-filter="all">All Services</button>
         <button class="filter-btn" data-filter="ombre-brows">Ombre Brows</button>
         <button class="filter-btn" data-filter="nano-brows">Nano Brows</button>
         <button class="filter-btn" data-filter="lip-blushing">Lip Blushing</button>
-        <button class="filter-btn" data-filter="eyeliner">Permanent Eyeliner</button>
+        <button class="filter-btn" data-filter="eyeliner">Eyeliner</button>
         <button class="filter-btn" data-filter="lash-enhancement">Lash Enhancement</button>
     </div>
 
-    <!-- Services Grid -->
     <div class="services-container">
         <div class="services-grid">
             <!-- Ombre Brows -->
             <div class="service-item" data-category="ombre-brows">
-                <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows Service" class="service-image">
+                <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows" class="service-image">
                 <div class="service-info">
-                    <div class="service-category">Ombre Brows</div>
-                    <h3 class="service-title">Powder Ombre Brows</h3>
-                    <p class="service-description">Create a soft, powdered effect that mimics the look of perfectly applied brow makeup. Ideal for those wanting fuller, more defined brows with a gentle gradient effect.</p>
-                    <div class="service-price">From $350</div>
-                    <a href="#" class="service-btn" data-service="ombre-brows">View Details</a>
+                    <h3 class="service-title">Ombre Brows</h3>
+                    <p class="service-description">Create a soft, powdered effect that mimics the look of perfectly applied brow makeup.</p>
+                    <p class="service-price">$250</p>
+                    <button class="service-btn">Book Now</button>
                 </div>
             </div>
             
             <!-- Nano Brows -->
             <div class="service-item" data-category="nano-brows">
-                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows Service" class="service-image">
+                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows" class="service-image">
                 <div class="service-info">
-                    <div class="service-category">Nano Brows</div>
-                    <h3 class="service-title">Nano Hair Stroke Brows</h3>
-                    <p class="service-description">Ultra-fine, realistic hair strokes created using nano needles for the most natural-looking brows. Perfect for those wanting to enhance sparse or thinning brows with a natural appearance.</p>
-                    <div class="service-price">From $400</div>
-                    <a href="#" class="service-btn" data-service="nano-brows">View Details</a>
+                    <h3 class="service-title">Nano Brows</h3>
+                    <p class="service-description">Ultra-fine, realistic hair strokes created using nano needles for natural-looking brows.</p>
+                    <p class="service-price">$280</p>
+                    <button class="service-btn">Book Now</button>
                 </div>
             </div>
             
             <!-- Lip Blushing -->
             <div class="service-item" data-category="lip-blushing">
-                <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing Service" class="service-image">
+                <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing" class="service-image">
                 <div class="service-info">
-                    <div class="service-category">Lip Blushing</div>
-                    <h3 class="service-title">Natural Lip Blush</h3>
-                    <p class="service-description">Enhance your natural lip color with a subtle, semi-permanent tint that adds definition and fullness. Perfect for correcting asymmetry and adding a natural flush of color.</p>
-                    <div class="service-price">From $450</div>
-                    <a href="#" class="service-btn" data-service="lip-blushing">View Details</a>
+                    <h3 class="service-title">Lip Blushing</h3>
+                    <p class="service-description">Enhance your natural lip color with a subtle, semi-permanent tint that adds definition.</p>
+                    <p class="service-price">$300</p>
+                    <button class="service-btn">Book Now</button>
                 </div>
             </div>
             
             <!-- Permanent Eyeliner -->
             <div class="service-item" data-category="eyeliner">
-                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Service" class="service-image">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner" class="service-image">
                 <div class="service-info">
-                    <div class="service-category">Permanent Eyeliner</div>
-                    <h3 class="service-title">Classic Eyeliner Enhancement</h3>
-                    <p class="service-description">Define your eyes with a subtle or dramatic permanent eyeliner. Choose from lash line enhancement for a natural look or a classic winged liner for added definition.</p>
-                    <div class="service-price">From $300</div>
-                    <a href="#" class="service-btn" data-service="eyeliner">View Details</a>
+                    <h3 class="service-title">Permanent Eyeliner</h3>
+                    <p class="service-description">Define your eyes with a subtle or dramatic permanent eyeliner for a flawless look.</p>
+                    <p class="service-price">$220</p>
+                    <button class="service-btn">Book Now</button>
                 </div>
             </div>
             
             <!-- Lash Enhancement -->
             <div class="service-item" data-category="lash-enhancement">
-                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement Service" class="service-image">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement" class="service-image">
                 <div class="service-info">
-                    <div class="service-category">Lash Enhancement</div>
-                    <h3 class="service-title">Lash Line Intensification</h3>
-                    <p class="service-description">Create the appearance of fuller, thicker lashes with this subtle technique that places pigment between the lashes. Perfect for those wanting definition without the look of eyeliner.</p>
-                    <div class="service-price">From $250</div>
-                    <a href="#" class="service-btn" data-service="lash-enhancement">View Details</a>
+                    <h3 class="service-title">Lash Enhancement</h3>
+                    <p class="service-description">Create the appearance of fuller, thicker lashes with this subtle technique.</p>
+                    <p class="service-price">$180</p>
+                    <button class="service-btn">Book Now</button>
                 </div>
             </div>
             
-            <!-- Combo Service -->
-            <div class="service-item" data-category="ombre-brows nano-brows">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Combo Brows Service" class="service-image">
+            <!-- Combo: Ombre Brows + Eyeliner -->
+            <div class="service-item" data-category="ombre-brows eyeliner">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Combo: Ombre Brows + Eyeliner" class="service-image">
                 <div class="service-info">
-                    <div class="service-category">Combo Brows</div>
-                    <h3 class="service-title">Hybrid Brow Technique</h3>
-                    <p class="service-description">The best of both worlds: combining nano hair strokes with ombre shading for a defined yet natural look. Ideal for those wanting the most customized and dimensional brow enhancement.</p>
-                    <div class="service-price">From $500</div>
-                    <a href="#" class="service-btn" data-service="combo-brows">View Details</a>
+                    <h3 class="service-title">Combo: Ombre Brows + Eyeliner</h3>
+                    <p class="service-description">Get both ombre brows and permanent eyeliner in one session for a complete look.</p>
+                    <p class="service-price">$420</p>
+                    <button class="service-btn">Book Now</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Service Modal -->
+    <!-- Service Modal (Hidden by default) -->
     <div class="service-modal">
         <div class="modal-content">
             <div class="close-modal">&times;</div>
             <div class="modal-header">
                 <h2 class="modal-title">Service Title</h2>
-                <div class="modal-category">Category</div>
+                <p class="modal-category">Category</p>
             </div>
             <div class="modal-body">
-                <img src="/placeholder.svg" alt="" class="modal-image">
+                <img src="/placeholder.svg" alt="Service" class="modal-image">
                 <div class="modal-description">
-                    Service description will appear here.
+                    <p>Service description will appear here.</p>
                 </div>
                 <div class="modal-details">
                     <div class="detail-item">
-                        <div class="detail-label">Duration</div>
-                        <div class="detail-value duration-value">2-3 hours</div>
+                        <span class="detail-label">Duration</span>
+                        <span class="detail-value">2 hours</span>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">Touch-up Required</div>
-                        <div class="detail-value touchup-value">After 4-6 weeks</div>
+                        <span class="detail-label">Healing Time</span>
+                        <span class="detail-value">7-10 days</span>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">Longevity</div>
-                        <div class="detail-value longevity-value">1-3 years</div>
+                        <span class="detail-label">Longevity</span>
+                        <span class="detail-value">1-3 years</span>
                     </div>
                     <div class="detail-item">
-                        <div class="detail-label">Pain Level</div>
-                        <div class="detail-value pain-value">Mild to moderate</div>
+                        <span class="detail-label">Touch-up</span>
+                        <span class="detail-value">Recommended after 4-6 weeks</span>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="modal-price">$350</div>
-                <a href="/#contact" class="book-btn">Book Now</a>
+                <div class="modal-price">$250</div>
+                <a href="/book" class="book-btn">Book Now</a>
             </div>
         </div>
     </div>
@@ -1099,10 +1088,10 @@
             <div class="nbp-footer-column">
                 <h3>Quick Links</h3>
                 <ul class="nbp-footer-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/services.html">Services</a></li>
-                    <li><a href="/#about">About Us</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
             <div class="nbp-footer-column">
@@ -1137,196 +1126,154 @@
     </footer>
 
     <script>
-        // Toggle mobile menu
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburger = document.querySelector('.hamburger');
-            const nav = document.querySelector('.nav');
-            const body = document.body;
-
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                nav.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            });
-
-            // Close menu when clicking a link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    nav.classList.remove('active');
-                    body.classList.remove('menu-open');
-                });
-            });
-
-            // Category filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters to check for filter
+            const urlParams = new URLSearchParams(window.location.search);
+            const filterParam = urlParams.get('filter');
+            
+            // Filter buttons
+            const filterBtns = document.querySelectorAll('.filter-btn');
             const serviceItems = document.querySelectorAll('.service-item');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Function to filter services
+            function filterServices(category) {
+                serviceItems.forEach(item => {
+                    const itemCategories = item.getAttribute('data-category').split(' ');
                     
-                    // Add active class to clicked button
-                    button.classList.add('active');
+                    if (category === 'all' || itemCategories.includes(category)) {
+                        item.style.display = 'flex';
+                        // Reset animation to make items fade in again
+                        item.style.animation = 'none';
+                        item.offsetHeight; // Trigger reflow
+                        item.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Apply filter from URL parameter if it exists
+            if (filterParam) {
+                // Remove 'active' class from all buttons
+                filterBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add 'active' class to the matching button
+                const matchingBtn = document.querySelector(`.filter-btn[data-filter="${filterParam}"]`);
+                if (matchingBtn) {
+                    matchingBtn.classList.add('active');
+                }
+                
+                // Apply the filter
+                filterServices(filterParam);
+                
+                // Scroll to the services section
+                const servicesSection = document.getElementById('services');
+                if (servicesSection) {
+                    setTimeout(() => {
+                        servicesSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 500);
+                }
+            }
+            
+            // Add click event to filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filterValue = this.getAttribute('data-filter');
                     
-                    // Get filter value
-                    const filterValue = button.getAttribute('data-filter');
-                    
-                    // Filter service items
-                    serviceItems.forEach(item => {
-                        const categories = item.getAttribute('data-category').split(' ');
-                        if (filterValue === 'all' || categories.includes(filterValue)) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
+                    // Update active button
+                    filterBtns.forEach(btn => {
+                        btn.classList.remove('active');
                     });
+                    this.classList.add('active');
+                    
+                    // Filter services
+                    filterServices(filterValue);
                 });
             });
-
-            // Service Modal
+            
+            // Service modal functionality
             const serviceModal = document.querySelector('.service-modal');
-            const modalImage = document.querySelector('.modal-image');
-            const modalTitle = document.querySelector('.modal-title');
-            const modalCategory = document.querySelector('.modal-category');
-            const modalDescription = document.querySelector('.modal-description');
-            const modalPrice = document.querySelector('.modal-price');
             const closeModal = document.querySelector('.close-modal');
-            const durationValue = document.querySelector('.duration-value');
-            const touchupValue = document.querySelector('.touchup-value');
-            const longevityValue = document.querySelector('.longevity-value');
-            const painValue = document.querySelector('.pain-value');
-
-            // Service details data
-            const serviceDetails = {
-                'ombre-brows': {
-                    title: 'Powder Ombre Brows',
-                    category: 'Ombre Brows',
-                    description: 'Our Powder Ombre Brows technique creates a soft, powdered effect that mimics the look of perfectly applied brow makeup. The result is fuller, more defined brows with a gentle gradient effect from light to dark. This technique is perfect for those with oily skin, sparse brows, or anyone wanting a more defined, makeup-like finish that still looks natural. The procedure involves depositing pigment into the skin using a specialized machine to create a soft-focus, airbrushed effect.',
-                    price: '$350',
-                    duration: '2-3 hours',
-                    touchup: '4-6 weeks after initial session',
-                    longevity: '1-3 years depending on skin type and aftercare',
-                    pain: 'Mild to moderate (numbing cream applied)'
-                },
-                'nano-brows': {
-                    title: 'Nano Hair Stroke Brows',
-                    category: 'Nano Brows',
-                    description: 'Nano Hair Stroke Brows use ultra-fine needles to create the most realistic, hair-like strokes possible. This advanced technique mimics natural brow hairs with incredible precision, making it impossible to distinguish from real hair. Ideal for those wanting to enhance sparse or thinning brows while maintaining the most natural appearance possible. Our nano technique creates crisp, defined strokes that heal beautifully without blurring.',
-                    price: '$400',
-                    duration: '2-3 hours',
-                    touchup: '4-6 weeks after initial session',
-                    longevity: '1-2 years depending on skin type and aftercare',
-                    pain: 'Mild (numbing cream applied)'
-                },
-                'lip-blushing': {
-                    title: 'Natural Lip Blush',
-                    category: 'Lip Blushing',
-                    description: 'Our Natural Lip Blush treatment enhances your lips with a subtle, semi-permanent tint that adds definition and fullness. This technique can correct asymmetry, add color to pale lips, and create the appearance of fuller lips without fillers. The result is a soft, natural flush of color that looks like your lips but better. We customize the color to complement your skin tone and enhance your natural beauty.',
-                    price: '$450',
-                    duration: '2-3 hours',
-                    touchup: '6-8 weeks after initial session',
-                    longevity: '1-2 years depending on lifestyle factors',
-                    pain: 'Moderate (strong numbing cream applied)'
-                },
-                'eyeliner': {
-                    title: 'Classic Eyeliner Enhancement',
-                    category: 'Permanent Eyeliner',
-                    description: 'Our Classic Eyeliner Enhancement defines your eyes with a subtle or dramatic permanent eyeliner. Choose from lash line enhancement for a natural look or a classic winged liner for added definition. This treatment saves you time on your daily makeup routine and ensures your eyeliner is always perfect. We use specialized techniques to ensure comfort during the procedure and beautiful, long-lasting results.',
-                    price: '$300',
-                    duration: '1-2 hours',
-                    touchup: '4-6 weeks after initial session',
-                    longevity: '1-3 years depending on skin type',
-                    pain: 'Moderate (numbing cream applied)'
-                },
-                'lash-enhancement': {
-                    title: 'Lash Line Intensification',
-                    category: 'Lash Enhancement',
-                    description: 'Our Lash Line Intensification creates the appearance of fuller, thicker lashes by placing pigment between the lashes. This subtle technique adds definition without the look of obvious eyeliner. Perfect for those wanting to enhance their eyes in the most natural way possible. The result is eyes that appear more defined and lashes that look thicker, even without mascara.',
-                    price: '$250',
-                    duration: '1-2 hours',
-                    touchup: '4-6 weeks after initial session',
-                    longevity: '1-2 years depending on skin type',
-                    pain: 'Mild to moderate (numbing cream applied)'
-                },
-                'combo-brows': {
-                    title: 'Hybrid Brow Technique',
-                    category: 'Combo Brows',
-                    description: 'Our Hybrid Brow Technique combines the best of both worlds: nano hair strokes with ombre shading for a defined yet natural look. This customized approach gives you the most dimensional brow enhancement possible, with realistic hair strokes in the front and a soft powder effect through the arch and tail. Ideal for those wanting the most comprehensive brow transformation with both definition and natural texture.',
-                    price: '$500',
-                    duration: '3-4 hours',
-                    touchup: '4-6 weeks after initial session',
-                    longevity: '1-3 years depending on skin type and aftercare',
-                    pain: 'Mild to moderate (numbing cream applied)'
-                }
-            };
-
-            // Open modal when clicking service button
-            const serviceButtons = document.querySelectorAll('.service-btn');
-            serviceButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
+            const serviceBtns = document.querySelectorAll('.service-btn');
+            
+            // Open modal when service button is clicked
+            serviceBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const serviceType = button.getAttribute('data-service');
-                    const service = serviceDetails[serviceType];
-                    const serviceItem = button.closest('.service-item');
-                    const image = serviceItem.querySelector('.service-image');
+                    const serviceItem = this.closest('.service-item');
+                    const title = serviceItem.querySelector('.service-title').textContent;
+                    const description = serviceItem.querySelector('.service-description').textContent;
+                    const price = serviceItem.querySelector('.service-price').textContent;
+                    const image = serviceItem.querySelector('.service-image').src;
+                    const category = serviceItem.getAttribute('data-category');
                     
-                    // Populate modal with service details
-                    modalImage.src = image.src;
-                    modalImage.alt = image.alt;
-                    modalTitle.textContent = service.title;
-                    modalCategory.textContent = service.category;
-                    modalDescription.textContent = service.description;
-                    modalPrice.textContent = service.price;
-                    durationValue.textContent = service.duration;
-                    touchupValue.textContent = service.touchup;
-                    longevityValue.textContent = service.longevity;
-                    painValue.textContent = service.pain;
+                    // Update modal content
+                    document.querySelector('.modal-title').textContent = title;
+                    document.querySelector('.modal-category').textContent = category.replace('-', ' ').toUpperCase();
+                    document.querySelector('.modal-description p').textContent = description;
+                    document.querySelector('.modal-image').src = image;
+                    document.querySelector('.modal-image').alt = title;
+                    document.querySelector('.modal-price').textContent = price;
                     
                     // Show modal
                     serviceModal.classList.add('active');
                     document.body.style.overflow = 'hidden'; // Prevent scrolling
                 });
             });
-
+            
             // Close modal
-            closeModal.addEventListener('click', () => {
+            closeModal.addEventListener('click', function() {
                 serviceModal.classList.remove('active');
                 document.body.style.overflow = ''; // Restore scrolling
             });
-
-            // Close modal when clicking outside
-            serviceModal.addEventListener('click', (e) => {
+            
+            // Close modal when clicking outside content
+            serviceModal.addEventListener('click', function(e) {
                 if (e.target === serviceModal) {
                     serviceModal.classList.remove('active');
                     document.body.style.overflow = ''; // Restore scrolling
                 }
             });
-
-            // Close on escape key
-            document.addEventListener('keydown', (e) => {
+            
+            // Close modal on escape key
+            document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && serviceModal.classList.contains('active')) {
                     serviceModal.classList.remove('active');
                     document.body.style.overflow = ''; // Restore scrolling
                 }
             });
-
-            // Header scroll effect
-            let lastScrollTop = 0;
-            const header = document.querySelector('.header');
-
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > lastScrollTop) {
-                    // Scroll down
-                    header.style.top = '-100px'; // Hide the header
-                } else {
-                    // Scroll up
-                    header.style.top = '0'; // Show the header
+            
+            // Hamburger menu functionality
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('.nav');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+            
+            // Close menu when clicking a nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (nav.classList.contains('active') && 
+                    !nav.contains(e.target) && 
+                    !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
                 }
-                lastScrollTop = scrollTop;
             });
         });
     </script>
