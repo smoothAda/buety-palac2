@@ -434,9 +434,19 @@
 
         .modal-image {
             width: 100%;
-            height: auto;
+            max-height: 400px;
+            object-fit: contain;
             border-radius: 8px;
+        }
+
+        .modal-image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 1rem;
+            overflow: hidden;
+            border-radius: 8px;
         }
 
         .modal-description {
@@ -1079,63 +1089,57 @@
                 <div class="service-info">
                     <h3 class="service-title">Ombre Brows</h3>
                     <p class="service-description">Create a soft, powdered effect that mimics the look of perfectly applied brow makeup.</p>
-                    <p class="service-price">$250</p>
-                    <button class="service-btn">Book Now</button>
+                    <button class="service-btn">See More</button>
                 </div>
             </div>
-            
+
             <!-- Nano Brows -->
             <div class="service-item" data-category="nano-brows">
                 <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows" class="service-image">
                 <div class="service-info">
                     <h3 class="service-title">Nano Brows</h3>
                     <p class="service-description">Ultra-fine, realistic hair strokes created using nano needles for natural-looking brows.</p>
-                    <p class="service-price">$280</p>
-                    <button class="service-btn">Book Now</button>
+                    <button class="service-btn">See More</button>
                 </div>
             </div>
-            
+
             <!-- Lip Blushing -->
             <div class="service-item" data-category="lip-blushing">
-                <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing" class="service-image">
+                <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing" class="service-image">
                 <div class="service-info">
                     <h3 class="service-title">Lip Blushing</h3>
                     <p class="service-description">Enhance your natural lip color with a subtle, semi-permanent tint that adds definition.</p>
-                    <p class="service-price">$300</p>
-                    <button class="service-btn">Book Now</button>
+                    <button class="service-btn">See More</button>
                 </div>
             </div>
-            
+
             <!-- Permanent Eyeliner -->
             <div class="service-item" data-category="eyeliner">
-                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner" class="service-image">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner" class="service-image">
                 <div class="service-info">
                     <h3 class="service-title">Permanent Eyeliner</h3>
                     <p class="service-description">Define your eyes with a subtle or dramatic permanent eyeliner for a flawless look.</p>
-                    <p class="service-price">$220</p>
-                    <button class="service-btn">Book Now</button>
+                    <button class="service-btn">See More</button>
                 </div>
             </div>
-            
+
             <!-- Lash Enhancement -->
             <div class="service-item" data-category="lash-enhancement">
                 <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement" class="service-image">
                 <div class="service-info">
                     <h3 class="service-title">Lash Enhancement</h3>
                     <p class="service-description">Create the appearance of fuller, thicker lashes with this subtle technique.</p>
-                    <p class="service-price">$180</p>
-                    <button class="service-btn">Book Now</button>
+                    <button class="service-btn">See More</button>
                 </div>
             </div>
-            
+
             <!-- Combo: Ombre Brows + Eyeliner -->
             <div class="service-item" data-category="ombre-brows eyeliner">
                 <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Combo: Ombre Brows + Eyeliner" class="service-image">
                 <div class="service-info">
                     <h3 class="service-title">Combo: Ombre Brows + Eyeliner</h3>
                     <p class="service-description">Get both ombre brows and permanent eyeliner in one session for a complete look.</p>
-                    <p class="service-price">$420</p>
-                    <button class="service-btn">Book Now</button>
+                    <button class="service-btn">See More</button>
                 </div>
             </div>
         </div>
@@ -1150,7 +1154,9 @@
                 <p class="modal-category">Category</p>
             </div>
             <div class="modal-body">
-                <img src="/placeholder.svg" alt="Service" class="modal-image">
+                <div class="modal-image-container">
+                    <img src="/placeholder.svg" alt="Service" class="modal-image">
+                </div>
                 <div class="modal-description">
                     <p>Service description will appear here.</p>
                 </div>
@@ -1175,7 +1181,7 @@
             </div>
             <div class="modal-footer">
                 <div class="modal-price">$250</div>
-                <a href="/book" class="book-btn">Book Now</a>
+                <a href="tel:+15551234567" class="book-btn">Call Us to Book</a>
             </div>
         </div>
     </div>
@@ -1196,11 +1202,11 @@
                 <div class="nbp-footer-column">
                     <h3>Services</h3>
                     <ul class="nbp-footer-links">
-                        <li><a href="services.html?filter=ombre-brows">Ombre Brows</a></li>
-                        <li><a href="services.html?filter=nano-brows">Nano Brows</a></li>
-                        <li><a href="services.html?filter=lip-blushing">Lip Blushing</a></li>
-                        <li><a href="services.html?filter=eyeliner">Eyeliner</a></li>
-                        <li><a href="services.html?filter=lash-enhancement">Lash Enhancement</a></li>
+                        <li><a href="#" onclick="filterServicesByCategory('ombre-brows'); return false;">Ombre Brows</a></li>
+                        <li><a href="#" onclick="filterServicesByCategory('nano-brows'); return false;">Nano Brows</a></li>
+                        <li><a href="#" onclick="filterServicesByCategory('lip-blushing'); return false;">Lip Blushing</a></li>
+                        <li><a href="#" onclick="filterServicesByCategory('eyeliner'); return false;">Eyeliner</a></li>
+                        <li><a href="#" onclick="filterServicesByCategory('lash-enhancement'); return false;">Lash Enhancement</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
@@ -1227,6 +1233,32 @@
     </footer>
 
     <script>
+        // Function to filter services by category
+        function filterServicesByCategory(category) {
+            // Remove 'active' class from all buttons
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add 'active' class to the matching button
+            const matchingBtn = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+            if (matchingBtn) {
+                matchingBtn.classList.add('active');
+            }
+            
+            // Apply the filter
+            filterServices(category);
+            
+            // Scroll to the services section
+            const servicesSection = document.getElementById('services');
+            if (servicesSection) {
+                servicesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Make the function available globally
+        window.filterServicesByCategory = filterServicesByCategory;
+
         document.addEventListener('DOMContentLoaded', function() {
             // Get URL parameters to check for filter
             const urlParams = new URLSearchParams(window.location.search);
@@ -1306,7 +1338,6 @@
                     const serviceItem = this.closest('.service-item');
                     const title = serviceItem.querySelector('.service-title').textContent;
                     const description = serviceItem.querySelector('.service-description').textContent;
-                    const price = serviceItem.querySelector('.service-price').textContent;
                     const image = serviceItem.querySelector('.service-image').src;
                     const category = serviceItem.getAttribute('data-category');
                     
@@ -1316,7 +1347,7 @@
                     document.querySelector('.modal-description p').textContent = description;
                     document.querySelector('.modal-image').src = image;
                     document.querySelector('.modal-image').alt = title;
-                    document.querySelector('.modal-price').textContent = price;
+                    document.querySelector('.modal-price').textContent = '$250';
                     
                     // Show modal
                     serviceModal.classList.add('active');
