@@ -346,6 +346,7 @@
   .services-section {
       padding: 4.5rem 2rem; /* Increased from 4rem 2rem */
       background-color: #f7f7f7;
+      scroll-margin-top: 70px; /* Reduced from 100px */
   }
   
   .section-container {
@@ -606,6 +607,7 @@
           background-color: #f7f7f7;
           border-radius: 15px;
           position: relative;
+          scroll-margin-top: 70px; /* Reduced from 100px */
       }
 
       .artist-card {
@@ -769,6 +771,7 @@
           padding: 4.5rem 5rem; /* Increased from 4rem */
           overflow: hidden;
           background-color: #f7f7f7;
+          scroll-margin-top: 70px; /* Reduced from 100px */
       }
 
       .work-grid {
@@ -958,6 +961,7 @@
           overflow: hidden;
           background-color: #f7f7f7;
           border-radius: 15px;
+          scroll-margin-top: 70px; /* Reduced from 100px */
       }
 
       @media (max-width: 768px) {
@@ -1106,7 +1110,7 @@
           margin: 90px auto 0; /* Increased from 80px */
           padding: 5.5rem 2rem; /* Increased from 5rem */
           text-align: center;
-          scroll-margin-top: 80px;
+          scroll-margin-top: 70px; /* Reduced from 100px */
       }
 
       .container {
@@ -1245,6 +1249,7 @@
           padding: 4.5rem 5rem; /* Increased from 4rem */
           max-width: 1200px;
           margin: 0 auto;
+          scroll-margin-top: 70px; /* Reduced from 100px */
       }
 
       .testimonial-section-title {
@@ -1592,7 +1597,7 @@
           max-width: 1000px;
           margin: 70px auto; /* Increased from 60px */
           opacity: 1;
-          scroll-margin-top: 80px;
+          scroll-margin-top: 70px; /* Reduced from 100px */
       }
 
       /* Add these media queries for section-background to ensure full width on mobile */
@@ -2308,19 +2313,20 @@
                 <div class="nbp-footer-column">
                     <h3>Quick Links</h3>
                     <ul class="nbp-footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#pmu-artist">PMU Artist</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
                     <h3>Services</h3>
                     <ul class="nbp-footer-links">
-                        <li><a href="#">Ombre Brows</a></li>
-                        <li><a href="#">Lip Blushing</a></li>
-                        <li><a href="#">Eyeliner</a></li>
-                        <li><a href="#">Lash Enhancement</a></li>
+                        <li><a href="Our Services.html?filter=ombre-brows">Ombre Brows</a></li>
+                        <li><a href="Our Services.html?filter=nano-brows">Nano Brows</a></li>
+                        <li><a href="Our Services.html?filter=lip-blushing">Lip Blushing</a></li>
+                        <li><a href="Our Services.html?filter=eyeliner">Eyeliner</a></li>
+                        <li><a href="Our Services.html?filter=lash-enhancement">Lash Enhancement</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
@@ -2460,11 +2466,9 @@
                     const targetElement = document.getElementById(targetId);
 
                     if (targetElement) {
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - header.offsetHeight;
-
+                        // Scroll to the section with the section title at the top
                         window.scrollTo({
-                            top: offsetPosition,
+                            top: targetElement.offsetTop - 70, // 70px offset to show the section title
                             behavior: 'smooth'
                         });
                     }
