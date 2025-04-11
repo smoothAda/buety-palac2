@@ -277,8 +277,8 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: flex;
         flex-direction: column;
-        /* Make boxes smaller */
-        max-width: 260px;
+        /* Adjusted dimensions - wider but shorter */
+        max-width: 320px;
         margin: 0 auto;
     }
 
@@ -289,7 +289,7 @@
 
     .artist-image {
         width: 100%;
-        height: 220px; /* Reduced height */
+        height: 180px; /* Further reduced height */
         object-fit: cover;
     }
 
@@ -564,7 +564,7 @@
         /* Center the artist cards on mobile and add padding for social icons */
         .artist-card {
             width: 90%;
-            max-width: 240px; /* Reduced from 380px */
+            max-width: 300px; /* Increased width for tablets */
             margin-left: auto;
             margin-right: auto;
         }
@@ -642,7 +642,7 @@
         /* Adjust artist card width for small screens */
         .artist-card {
             width: 92%;
-            max-width: 220px; /* Reduced from 360px */
+            max-width: 280px; /* Increased width for mobile */
         }
     }
 
@@ -799,10 +799,10 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="Our Services.html" class="nav-link">Services</a>
         <a href="pmu-artists.html" class="nav-link">PMU Artists</a>
-        <a href="#" class="nav-link">Gallery</a>
-        <a href="#" class="nav-link">About</a>
-        <a href="#" class="nav-link">Contact</a>
-        <a href="#" class="academy-btn">Academy</a>
+        <a href="gallery.html" class="nav-link">Gallery</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="academy.html" class="academy-btn">Academy</a>
     </nav>
 </header>
 
@@ -910,9 +910,9 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="Our Services.html">Services</a></li>
                 <li><a href="pmu-artists.html">PMU Artists</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
         <div class="nbp-footer-column">
@@ -989,7 +989,7 @@
     const certificateImage = document.getElementById('certificateImage');
     const certificateInfo = document.getElementById('certificateInfo');
 
-    // Certificate data - Only for Seble
+    // Certificate data
     const certificateData = {
         seble: {
             name: "Seble Tefera",
@@ -998,16 +998,16 @@
             info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology."
         },
         emma: {
-            name: "Seble Tefera",
-            title: "Senior PMU Artist & Trainer",
+            name: "Emma Rodriguez",
+            title: "PMU Artist & Color Specialist",
             image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology."
+            info: "Certified by the International Permanent Makeup Association. Specialized training in color theory and correction techniques. Expert in powder brows and eyeliner applications."
         },
         olivia: {
-            name: "Seble Tefera",
-            title: "Senior PMU Artist & Trainer",
+            name: "Olivia Chen",
+            title: "Advanced PMU Specialist",
             image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology."
+            info: "Certified by the Society of Permanent Cosmetic Professionals. Advanced training in nano brows and combination techniques. Specialized in lip neutralization and enhancement procedures."
         }
     };
 
