@@ -119,25 +119,29 @@
 
     @media (max-width: 768px) {
         .header {
-            padding: 1rem;
+            padding: 1.2rem; /* Increased padding */
         }
 
         .hamburger {
             display: flex;
         }
 
+        /* Update the mobile navigation styles to make menu items bigger */
         .nav {
             position: fixed;
             top: 0;
             right: -100%;
-            width: 100vw;
+            width: 75%; /* Slightly increased from 70% */
+            max-width: 300px; /* Increased from 280px */
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.9);
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             transition: right 0.3s ease;
             z-index: 999;
+            padding: 80px 20px 30px; /* Increased padding */
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
         }
 
         .nav.active {
@@ -145,21 +149,79 @@
         }
 
         .nav-link {
-            font-size: 1.2rem;
-            margin: 1rem 0;
+            font-size: 1.1rem; /* Increased from 0.95rem */
+            margin: 0.7rem 0; /* Increased from 0.5rem */
             width: 100%;
             text-align: center;
+            color: #fff;
+            font-weight: 500; /* Increased from 400 */
+            padding: 0.8rem; /* Increased from 0.6rem */
+            border-radius: 6px; /* Increased from 4px */
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15); /* Slightly brighter */
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        /* Update the academy button in the mobile navigation to center-align text */
+        .academy-btn {
+            margin: 1.5rem 0 0; /* Increased from 1rem */
+            width: 80%; /* Increased from 70% */
+            padding: 0.8rem 1.5rem; /* Increased from 0.6rem 1.2rem */
+            background-color: transparent;
+            color: white;
+            border: 2px solid white; /* Thicker border */
+            border-radius: 25px; /* Increased from 20px */
+            font-size: 1.05rem; /* Increased from 0.9rem */
+            text-align: center; /* Ensure text is centered */
+            display: block; /* Make it a block element */
+            margin-left: auto; /* Center the button itself */
+            margin-right: auto;
+        }
+
+        /* Make hamburger icon bigger */
+        .hamburger {
+            width: 28px; /* Increased from 22px */
+            height: 20px; /* Increased from 16px */
+        }
+
+        .hamburger span {
+            height: 3px; /* Increased from 2px */
+        }
+    }
+
+    /* Further adjust size for smaller screens */
+    @media (max-width: 480px) {
+        .nav {
+            width: 80%; /* Increased from 65% */
+            max-width: 280px; /* Increased from 250px */
+            padding: 70px 15px 25px; /* Adjusted padding */
+        }
+
+        .nav-link {
+            font-size: 1.05rem; /* Increased from 0.9rem */
+            padding: 0.7rem; /* Increased from 0.5rem */
+            margin: 0.6rem 0; /* Increased from 0.4rem */
         }
 
         .academy-btn {
-            margin: 1rem 0;
-            width: auto;
-            padding: 0.75rem 2rem;
+            width: 75%; /* Increased from 65% */
+            padding: 0.7rem 1.2rem; /* Increased from 0.5rem 1rem */
+            font-size: 1rem; /* Increased from 0.85rem */
         }
+        
+        /* Make hamburger icon bigger on small screens */
+        .hamburger {
+            width: 26px; /* Increased from 20px */
+            height: 18px; /* Increased from 14px */
+        }
+    }
 
-        .logo img {
-            max-height: 40px;
-        }
+    .logo img {
+        max-height: 45px; /* Increased from 40px */
     }
 
     /* Page title section */
@@ -215,6 +277,9 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: flex;
         flex-direction: column;
+        /* Make boxes smaller */
+        max-width: 260px;
+        margin: 0 auto;
     }
 
     .artist-card:hover {
@@ -224,12 +289,12 @@
 
     .artist-image {
         width: 100%;
-        height: 300px;
+        height: 220px; /* Reduced height */
         object-fit: cover;
     }
 
     .artist-info {
-        padding: 1.5rem;
+        padding: 1.2rem; /* Reduced padding */
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -237,35 +302,35 @@
 
     .artist-name {
         font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
+        font-size: 1.3rem; /* Reduced size */
         margin-bottom: 0.5rem;
     }
 
     .artist-title {
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* Reduced size */
         color: #666;
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem; /* Reduced margin */
     }
 
     .artist-bio {
-        font-size: 0.95rem;
+        font-size: 0.9rem; /* Reduced size */
         color: #555;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem; /* Reduced margin */
         flex-grow: 1;
     }
 
     .artist-specialties {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem; /* Reduced margin */
     }
 
     .specialty-tag {
         display: inline-block;
         background-color: #f0f0f0;
-        padding: 0.3rem 0.8rem;
+        padding: 0.25rem 0.7rem; /* Reduced padding */
         border-radius: 15px;
-        font-size: 0.8rem;
-        margin-right: 0.5rem;
-        margin-bottom: 0.5rem;
+        font-size: 0.75rem; /* Reduced size */
+        margin-right: 0.4rem; /* Reduced margin */
+        margin-bottom: 0.4rem; /* Reduced margin */
         color: #333;
     }
 
@@ -273,9 +338,9 @@
         background-color: #000;
         color: white;
         border: none;
-        padding: 0.75rem 1.5rem;
+        padding: 0.6rem 1.2rem; /* Reduced padding */
         border-radius: 25px;
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* Reduced size */
         cursor: pointer;
         transition: all 0.3s ease;
         text-decoration: none;
@@ -312,7 +377,7 @@
 
     .modal-content {
         background-color: white;
-        max-width: 800px;
+        max-width: 600px; /* Reduced width */
         width: 90%;
         max-height: 90vh;
         overflow-y: auto;
@@ -323,23 +388,23 @@
     }
 
     .modal-header {
-        padding: 1.5rem;
+        padding: 1.2rem; /* Reduced padding */
         border-bottom: 1px solid #eee;
     }
 
     .modal-title {
         font-family: 'Playfair Display', serif;
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.6rem; /* Reduced size */
+        margin-bottom: 0.4rem; /* Reduced margin */
     }
 
     .modal-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* Reduced size */
         color: #666;
     }
 
     .modal-body {
-        padding: 1.5rem;
+        padding: 1.2rem; /* Reduced padding */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -347,29 +412,23 @@
 
     .certificate-image {
         width: 100%;
-        max-width: 600px;
+        max-width: 450px; /* Reduced width */
         height: auto;
         border-radius: 8px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .certificate-details {
-        margin-top: 1.5rem;
+        margin-top: 1.2rem; /* Reduced margin */
         width: 100%;
-        max-width: 600px;
+        max-width: 450px; /* Reduced width */
     }
 
     .certificate-info {
-        font-size: 1rem;
+        font-size: 0.95rem; /* Reduced size */
         color: #333;
         line-height: 1.6;
         margin-bottom: 1rem;
-    }
-
-    .certificate-date {
-        font-size: 0.9rem;
-        color: #666;
-        font-style: italic;
     }
 
     .close-modal {
@@ -396,25 +455,25 @@
     /* Social icons */
     .social-icons {
         position: fixed;
-        left: 10px;
+        left: 15px; /* Increased from 10px */
         top: 50%;
         transform: translateY(-50%);
         display: flex;
         flex-direction: column;
         z-index: 1000;
-        gap: 10px;
+        gap: 12px; /* Increased from 10px */
         box-shadow: none;
         pointer-events: auto;
     }
 
     .social-icon {
-        width: 40px;
-        height: 40px;
+        width: 45px; /* Increased from 40px */
+        height: 45px; /* Increased from 40px */
         background-color: #000;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 12px; /* Increased from 10px */
         border-radius: 50%;
         transition: all 0.3s ease;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -439,8 +498,8 @@
     }
 
     .social-icon svg {
-        width: 24px;
-        height: 24px;
+        width: 28px; /* Increased from 24px */
+        height: 28px; /* Increased from 24px */
         fill: #fff;
         transition: transform 0.3s ease;
         z-index: 1;
@@ -461,7 +520,7 @@
     }
 
     .social-icon.tiktok:hover::before {
-        background: linear-gradient(45deg, #25fbfb, #701dec);
+        background: linear-gradient(45deg, #25F4EE, #FE2C55);
     }
 
     .social-icon.instagram:hover::before {
@@ -470,6 +529,121 @@
 
     .social-icon.telegram:hover::before {
         background: linear-gradient(45deg, #0088cc, #0088cc);
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+        /* Social icons mobile position (right side) */
+        .social-icons {
+            left: auto;
+            right: 15px; /* Increased from 10px */
+            top: 50%;
+            transform: translateY(-50%);
+            gap: 10px; /* Increased from 8px */
+        }
+
+        .social-icon {
+            width: 40px; /* Increased from 35px */
+            height: 40px; /* Increased from 35px */
+            margin-bottom: 10px; /* Increased from 8px */
+        }
+
+        .social-icon svg {
+            width: 24px; /* Increased from 20px */
+            height: 24px; /* Increased from 20px */
+        }
+        
+        .artists-grid {
+            grid-template-columns: 1fr;
+            margin-left: 0;
+            margin-right: 0;
+            /* Center the content on mobile */
+            justify-items: center;
+        }
+        
+        /* Center the artist cards on mobile and add padding for social icons */
+        .artist-card {
+            width: 90%;
+            max-width: 240px; /* Reduced from 380px */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Make the modal content smaller on mobile */
+        .modal-content {
+            max-width: 80%;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .certificate-image {
+            max-width: 100%;
+        }
+
+        .certificate-details {
+            max-width: 100%;
+        }
+
+        /* Adjust artists container padding */
+        .artists-container {
+            padding: 2rem 0.5rem;
+            padding-right: 45px; /* Add extra padding on the right for social icons */
+        }
+    }
+
+    /* Even smaller screens */
+    @media (max-width: 480px) {
+        .social-icons {
+            right: 10px; /* Increased from 5px */
+            gap: 8px; /* Increased from 6px */
+        }
+
+        .social-icon {
+            margin-bottom: 8px; /* Increased from 6px */
+        }
+        
+        .page-title {
+            padding: 6rem 1rem 3rem;
+        }
+
+        .page-title h1 {
+            font-size: 2.2rem;
+        }
+
+        .artists-container {
+            padding: 2rem 2rem;
+            padding-right: 45px; /* Add extra padding on the right for social icons */
+        }
+
+        .artist-name {
+            font-size: 1.3rem;
+        }
+
+        .artist-bio {
+            font-size: 0.9rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+        }
+        
+        /* Make the modal even smaller on very small screens */
+        .modal-content {
+            max-width: 75%;
+            width: 75%;
+        }
+
+        /* Make certificate buttons smaller on mobile */
+        .certificate-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
+        }
+        
+        /* Adjust artist card width for small screens */
+        .artist-card {
+            width: 92%;
+            max-width: 220px; /* Reduced from 360px */
+        }
     }
 
     /* Footer */
@@ -524,8 +698,8 @@
         display: none;
         flex-direction: column;
         justify-content: space-between;
-        width: 30px;
-        height: 20px;
+        width: 28px; /* Increased from 24px */
+        height: 22px; /* Increased from 18px */
         cursor: pointer;
         z-index: 1001;
         margin-left: auto;
@@ -537,12 +711,25 @@
 
     .hamburger span {
         width: 100%;
-        height: 3px;
+        height: 3px; /* Increased from 2px */
         background-color: white;
         transition: all 0.3s ease;
+        border-radius: 3px; /* Increased from 2px */
     }
 
-    /* Responsive styles */
+    /* Hamburger animation */
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg); /* Adjusted for increased size */
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg); /* Adjusted for increased size */
+    }
+
     @media (max-width: 1024px) {
         .artists-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -554,167 +741,9 @@
             display: flex;
         }
 
-        .nav {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background-color: white;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            transition: right 0.3s ease;
-            z-index: 999;
-            padding: 80px 20px 20px;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav.active {
-            right: 0;
-        }
-
-        .nav-link {
-            font-size: 1.2rem;
-            margin: 1rem 0;
-            width: 100%;
-            text-align: left;
-            color: #333;
-            font-weight: 600;
-        }
-
-        .nav-link::after {
-            display: none;
-        }
-
-        .nav-link:hover {
-            color: #555;
-            transform: none;
-        }
-
-        .academy-btn {
-            margin: 1.5rem 0 0;
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        .academy-btn:hover {
-            background-color: #3a7bc8;
-            color: white;
-        }
-
-        .artists-grid {
-            grid-template-columns: 1fr;
-            margin-left: 0;
-            margin-right: 0;
-            /* Center the content on mobile */
-            justify-items: center;
-        }
-        
-        /* Center the artist cards on mobile and add padding for social icons */
-        .artist-card {
-            width: 90%;
-            max-width: 380px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Make the modal content smaller on mobile */
-        .modal-content {
-            max-width: 80%;
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .certificate-image {
-            max-width: 100%;
-        }
-
-        .certificate-details {
-            max-width: 100%;
-        }
-
-        /* Adjust social icons position on mobile */
-        .social-icons {
-            left: auto;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            gap: 8px;
-            z-index: 990; /* Lower z-index than modal */
-        }
-
-        .social-icon {
-            width: 30px;
-            height: 30px;
-            margin-bottom: 8px;
-        }
-
-        .social-icon svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Adjust artists container padding */
-        .artists-container {
-            padding: 2rem 0.5rem;
-            padding-right: 45px; /* Add extra padding on the right for social icons */
-        }
-
         .nbp-footer-grid {
             grid-template-columns: 1fr;
             padding: 2rem 1rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .page-title {
-            padding: 6rem 1rem 3rem;
-        }
-
-        .page-title h1 {
-            font-size: 2.2rem;
-        }
-
-        .artists-container {
-            padding: 2rem 2rem;
-            padding-right: 45px; /* Add extra padding on the right for social icons */
-        }
-
-        .artist-name {
-            font-size: 1.3rem;
-        }
-
-        .artist-bio {
-            font-size: 0.9rem;
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-        }
-        
-        /* Make the modal even smaller on very small screens */
-        .modal-content {
-            max-width: 75%;
-            width: 75%;
-        }
-
-        /* Make certificate buttons smaller on mobile */
-        .certificate-btn {
-            padding: 0.6rem 1.2rem;
-            font-size: 0.85rem;
-        }
-        
-        /* Adjust artist card width for small screens */
-        .artist-card {
-            width: 92%;
-            max-width: 360px;
         }
     }
 
@@ -761,7 +790,7 @@
             <img src="New neon logo.png" alt="Neon Beauty Palace Logo">
         </a>
     </div>
-    <button class="hamburger" aria-label="Menu">
+    <button class="hamburger" aria-label="Menu" type="button">
         <span></span>
         <span></span>
         <span></span>
@@ -867,7 +896,6 @@
             <img src="/placeholder.svg" alt="Certificate" class="certificate-image" id="certificateImage">
             <div class="certificate-details">
                 <p class="certificate-info" id="certificateInfo">Certificate details will appear here.</p>
-                <p class="certificate-date" id="certificateDate">Issue date will appear here.</p>
             </div>
         </div>
     </div>
@@ -923,13 +951,34 @@
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.nav');
+    const body = document.body;
 
     if (hamburger) {
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
             nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
+            body.classList.toggle('menu-open');
         });
     }
+
+    // Close menu when clicking a nav link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+            body.classList.remove('menu-open');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (nav && hamburger && !nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
 
     // Certificate modal functionality
     const modal = document.getElementById('certificateModal');
@@ -939,7 +988,6 @@
     const modalArtistTitle = document.getElementById('modalArtistTitle');
     const certificateImage = document.getElementById('certificateImage');
     const certificateInfo = document.getElementById('certificateInfo');
-    const certificateDate = document.getElementById('certificateDate');
 
     // Certificate data - Only for Seble
     const certificateData = {
@@ -947,30 +995,27 @@
             name: "Seble Tefera",
             title: "Senior PMU Artist & Trainer",
             image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology.",
-            date: "Certification: January 2018 • Last Updated: March 2023"
+            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology."
         },
         emma: {
             name: "Seble Tefera",
             title: "Senior PMU Artist & Trainer",
             image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology.",
-            date: "Certification: January 2018 • Last Updated: March 2023"
+            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology."
         },
         olivia: {
             name: "Seble Tefera",
             title: "Senior PMU Artist & Trainer",
             image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology.",
-            date: "Certification: January 2018 • Last Updated: March 2023"
+            info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology."
         }
     };
 
     // Open modal with certificate data
     certificateBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Always show Seble's certificate regardless of which button is clicked
-            const data = certificateData.seble;
+            const artistId = btn.getAttribute('data-artist');
+            const data = certificateData[artistId];
             
             if (data) {
                 modalArtistName.textContent = data.name;
@@ -978,7 +1023,6 @@
                 certificateImage.src = data.image;
                 certificateImage.alt = `${data.name}'s Certificate`;
                 certificateInfo.textContent = data.info;
-                certificateDate.textContent = data.date;
                 
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
