@@ -1,1121 +1,1138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Work - Neon Beauty Palace</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.5;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            transition: opacity 0.3s ease-in-out;
-            background-color: #f7f7f7;
-            width: 100%;
-        }
-        body.fade-out {
-            opacity: 0;
-        }
-
-        .content {
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .content.visible {
-            opacity: 1;
-        }
-        .header {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100vw;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
-            transition: top 0.3s;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            max-height: 50px;
-        }
-
-        .nav {
-            display: flex;
-            gap: 3rem;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: #fff;
-            transition: width 0.3s;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: #ddd;
-            transform: translateY(-2px);
-        }
-
-        .academy-btn {
-            background-color: transparent;
-            border: 2px solid #fff;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            margin-left: 2rem;
-            white-space: nowrap;
-        }
-
-        .academy-btn:hover {
-            background-color: #fff;
-            color: #000;
-            transform: translateY(-2px);
-        }
-
-        /* Updated hamburger menu styles from index.html */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 20px;
-            cursor: pointer;
-            z-index: 1001;
-            margin-left: auto;
-            position: relative;
-            background: none;
-            border: none;
-            padding: 0;
-        }
-
-        .hamburger span {
-            width: 100%;
-            height: 3px;
-            background-color: white;
-            transition: all 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 1.2rem; /* Increased padding */
-            }
-
-            .hamburger {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 28px; /* Increased from 24px */
-                height: 22px; /* Increased from 18px */
-                cursor: pointer;
-                z-index: 1001;
-                margin-left: auto;
-                position: relative;
-                background: none;
-                border: none;
-                padding: 0;
-            }
-
-            .hamburger span {
-                width: 100%;
-                height: 3px; /* Increased from 2px */
-                background-color: white;
-                transition: all 0.3s ease;
-                border-radius: 3px; /* Increased from 2px */
-            }
-
-            /* Hamburger animation */
-            .hamburger.active span:nth-child(1) {
-                transform: translateY(9px) rotate(45deg); /* Adjusted for increased size */
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: translateY(-9px) rotate(-45deg); /* Adjusted for increased size */
-            }
-
-            .nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 75%; /* Increased from 70% */
-                max-width: 300px; /* Increased from 280px */
-                height: 100vh;
-                background-color: rgba(0, 0, 0, 0.9);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                transition: right 0.3s ease;
-                z-index: 999;
-                padding: 80px 20px 30px; /* Increased padding */
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-            }
-
-            .nav.active {
-                right: 0;
-            }
-
-            .nav-link {
-                font-size: 1.1rem; /* Increased from 0.95rem */
-                margin: 0.7rem 0; /* Increased from 0.5rem */
-                width: 100%;
-                text-align: center;
-                color: #fff;
-                font-weight: 500; /* Increased from 400 */
-                padding: 0.8rem; /* Increased from 0.6rem */
-                border-radius: 6px; /* Increased from 4px */
-                transition: all 0.3s ease;
-            }
-
-            .nav-link:hover {
-                background-color: rgba(255, 255, 255, 0.15); /* Slightly brighter */
-                color: #fff;
-                transform: translateX(3px);
-            }
-
-            /* Update the academy button in the mobile navigation to center-align text */
-            .academy-btn {
-                margin: 1.5rem 0 0; /* Increased from 1rem */
-                width: 80%; /* Increased from 70% */
-                padding: 0.8rem 1.5rem; /* Increased from 0.6rem 1.2rem */
-                background-color: transparent;
-                color: white;
-                border: 2px solid white; /* Thicker border */
-                border-radius: 25px; /* Increased from 20px */
-                font-size: 1.05rem; /* Increased from 0.9rem */
-                text-align: center; /* Ensure text is centered */
-                display: block; /* Make it a block element */
-                margin-left: auto; /* Center the button itself */
-                margin-right: auto;
-            }
-
-            .academy-btn:hover {
-                background-color: white;
-                color: black;
-            }
-
-            .logo img {
-                max-height: 45px; /* Increased from 40px */
-            }
-        }
-
-        /* Small mobile styles */
-        @media (max-width: 480px) {
-            .nav {
-                width: 80%; /* Increased from 65% */
-                max-width: 280px; /* Increased from 250px */
-                padding: 70px 15px 25px; /* Adjusted padding */
-            }
-
-            .nav-link {
-                font-size: 1.05rem; /* Increased from 0.9rem */
-                padding: 0.7rem; /* Increased from 0.5rem */
-                margin: 0.6rem 0; /* Increased from 0.4rem */
-            }
-
-            .academy-btn {
-                width: 75%; /* Increased from 65% */
-                padding: 0.7rem 1.2rem; /* Increased from 0.5rem 1rem */
-                font-size: 1rem; /* Increased from 0.85rem */
-            }
-        }
-
-        /* Page title section - Fixed to cover to the top */
-        .page-title {
-            margin-top: 0;
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            background-color: #f0f0f0;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            position: relative;
-            top: 0;
-        }
-
-        .page-title h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .page-title p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Category filters - Improved alignment for mobile */
-        .filter-container {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .filter-btn {
-            background-color: white;
-            border: 1px solid #ddd;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 0.5rem;
-        }
-
-        .filter-btn:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-2px);
-        }
-
-        .filter-btn.active {
-            background-color: #000;
-            color: white;
-            border-color: #000;
-        }
-
-        /* Work grid - Adjusted to center content away from social icons */
-        .work-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
-            padding-left: 4rem; /* Added extra padding on the left to avoid social icons */
-        }
-
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .work-item {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            height: 100%; /* Make all items take full height */
-            display: flex;
-            flex-direction: column;
-        }
-
-        .work-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .work-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .work-info {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            flex-grow: 1; /* Allow info section to grow to fill available space */
-            height: 160px; /* Set a fixed height for all info sections */
-        }
-
-        .work-category {
-            font-size: 0.8rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .work-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .work-artist {
-            font-size: 0.9rem;
-            color: #333;
-        }
-
-        /* Fullscreen preview */
-        .fullscreen-preview {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .fullscreen-preview.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .preview-content {
-            max-width: 90%;
-            max-height: 90vh;
-            position: relative;
-        }
-
-        .preview-image {
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 4px;
-        }
-
-        .preview-info {
-            color: white;
-            margin-top: 1rem;
-            text-align: center;
-        }
-
-        .preview-category {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .preview-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .preview-artist {
-            font-size: 1rem;
-        }
-
-        .close-preview {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-
-        .close-preview:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-   /* Social icons */
-   .social-icons {
-            position: fixed;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            z-index: 1000;
-            gap: 10px;
-            box-shadow: none;
-            pointer-events: auto;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .social-icon::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-icon:hover::before {
-            opacity: 1;
-        }
-
-        .social-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: #fff;
-            transition: transform 0.3s ease;
-            z-index: 1;
-        }
-
-        .social-icon:hover svg {
-            transform: scale(1.2);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .social-icon:hover {
-            animation: pulse 1s infinite;
-        }
-
-        .social-icon.tiktok:hover::before {
-            background: linear-gradient(45deg, #25fbfb, #701dec);
-        }
-
-        .social-icon.instagram:hover::before {
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-        }
-
-        .social-icon.telegram:hover::before {
-            background: linear-gradient(45deg, #0088cc, #0088cc);
-        }
-        /* Footer */
-        .nbp-footer {
-            background-color: #333;
-            color: #fff;
-            padding: 2rem;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .nbp-footer-grid {
-            padding: 4rem 5rem;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .nbp-footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .nbp-footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .nbp-footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .nbp-footer-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nbp-footer-links a:hover {
-            color: #ccc;
-        }
-
-        .nbp-footer-bottom {
-            margin-top: 2rem;
-            text-align: center;
-            padding-top: 1rem;
-            border-top: 1px solid #555;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 1024px) {
-            .work-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .work-container {
-                padding-left: 3rem;
-            }
-            
-            .work-info {
-                height: 150px; /* Adjusted for tablet */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .work-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .social-icons {
-                left: auto;
-                right: 10px;
-                top: 50%;
-                transform: translateY(-50%);
-                gap: 8px;
-            }
-
-            .social-icon {
-                width: 30px; /* Smaller icons on mobile */
-                height: 30px;
-                margin-bottom: 8px;
-            }
-
-            .social-icon svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            .nbp-footer-grid {
-                grid-template-columns: 1fr;
-                padding: 2rem 1rem;
-            }
-            
-            /* Adjusted work container for mobile */
-            .work-container {
-                padding: 1.5rem;
-                padding-left: 2rem; /* Add padding on the left */
-                padding-right: 3rem; /* Since social icons are now on the right */
-            }
-            
-            /* Make all work items equal size on mobile */
-            .work-item {
-                width: 90%;
-                max-width: 300px;
-                margin: 0 auto;
-            }
-            
-            .work-image {
-                height: 250px; /* Same image height for all items */
-            }
-            
-            .work-info {
-                padding: 1.2rem;
-                height: 140px; /* Fixed height for all info boxes */
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-            
-            /* Improved filter container for mobile */
-            .filter-container {
-                padding: 1.5rem 1rem;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .filter-btn {
-                margin: 0.25rem;
-                padding: 0.5rem 1rem;
-                font-size: 0.85rem;
-                flex: 0 0 auto;
-                min-width: 100px;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-title {
-                padding: 6rem 1rem 3rem;
-            }
-
-            .page-title h1 {
-                font-size: 2.2rem;
-            }
-
-            .filter-container {
-                padding: 1.5rem 0.5rem;
-            }
-            
-            .filter-btn {
-                margin: 0.2rem;
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
-                min-width: 90px;
-            }
-
-            .work-container {
-                padding: 1.5rem 0.5rem;
-                padding-left: 2.5rem; /* More padding on the left */
-                padding-right: 2.5rem; /* More padding on the right */
-            }
-            
-            /* All work items equal size on small mobile */
-            .work-item {
-                width: 85%;
-                max-width: 280px;
-            }
-            
-            .work-image {
-                height: 220px; /* Same but smaller image height for all items */
-            }
-            
-            .work-info {
-                padding: 1rem;
-                height: 130px; /* Fixed height for all info boxes */
-            }
-            
-            .work-title {
-                font-size: 1.1rem;
-            }
-            
-            .work-category, .work-artist {
-                font-size: 0.8rem;
-            }
-
-            .social-icons {
-                right: 5px;
-                gap: 6px;
-            }
-
-            .social-icon {
-                width: 25px; /* Even smaller icons on small mobile */
-                height: 25px;
-                margin-bottom: 6px;
-            }
-            
-            .social-icon svg {
-                width: 14px;
-                height: 14px;
-            }
-        }
-
-        /* Animation effects */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .page-title h1,
-        .page-title p {
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .page-title p {
-            animation-delay: 0.2s;
-        }
-
-        .filter-container {
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-            animation-delay: 0.4s;
-        }
-
-        .work-item {
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .work-item:nth-child(1) { animation-delay: 0.5s; }
-        .work-item:nth-child(2) { animation-delay: 0.6s; }
-        .work-item:nth-child(3) { animation-delay: 0.7s; }
-        .work-item:nth-child(4) { animation-delay: 0.8s; }
-        .work-item:nth-child(5) { animation-delay: 0.9s; }
-        .work-item:nth-child(6) { animation-delay: 1.0s; }
-        .work-item:nth-child(7) { animation-delay: 1.1s; }
-        .work-item:nth-child(8) { animation-delay: 1.2s; }
-        .work-item:nth-child(9) { animation-delay: 1.3s; }
-        
-        /* Update body to prevent scrolling when menu is open */
-        body.menu-open {
-            overflow: hidden;
-        }
-    </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Our Work - Neon Beauty Palace</title>
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+ <style>
+     * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         scroll-behavior: smooth;
+     }
+
+     body {
+         font-family: 'Montserrat', sans-serif;
+         line-height: 1.5;
+         margin: 0;
+         padding: 0;
+         overflow-x: hidden;
+         transition: opacity 0.3s ease-in-out;
+         background-color: #f7f7f7;
+         width: 100%;
+     }
+     body.fade-out {
+         opacity: 0;
+     }
+
+     .content {
+         opacity: 0;
+         transition: opacity 0.3s ease-in-out;
+     }
+
+     .content.visible {
+         opacity: 1;
+     }
+     .header {
+         background-color: rgba(0, 0, 0, 0.7);
+         padding: 1rem 2rem;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         position: fixed;
+         width: 100vw;
+         top: 0;
+         left: 0;
+         right: 0;
+         z-index: 1000;
+         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+         backdrop-filter: blur(5px);
+         transition: top 0.3s;
+     }
+
+     .logo {
+         display: flex;
+         align-items: center;
+     }
+
+     .logo img {
+         max-height: 50px;
+     }
+
+     .nav {
+         display: flex;
+         gap: 3rem;
+         justify-content: flex-end;
+         align-items: center;
+     }
+
+     .nav-link {
+         color: #fff;
+         text-decoration: none;
+         font-weight: 500;
+         font-size: 1rem;
+         transition: color 0.3s ease, transform 0.3s ease;
+         position: relative;
+     }
+
+     .nav-link::after {
+         content: '';
+         display: block;
+         width: 0;
+         height: 2px;
+         background: #fff;
+         transition: width 0.3s;
+         position: absolute;
+         bottom: -5px;
+         left: 0;
+     }
+
+     .nav-link:hover::after {
+         width: 100%;
+     }
+
+     .nav-link:hover {
+         color: #ddd;
+         transform: translateY(-2px);
+     }
+
+     .academy-btn {
+         background-color: transparent;
+         border: 2px solid #fff;
+         padding: 0.5rem 1.5rem;
+         border-radius: 25px;
+         color: #fff;
+         text-decoration: none;
+         font-weight: 500;
+         transition: all 0.3s ease;
+         margin-left: 2rem;
+         white-space: nowrap;
+     }
+
+     .academy-btn:hover {
+         background-color: #fff;
+         color: #000;
+         transform: translateY(-2px);
+     }
+
+     /* Updated hamburger menu styles from index.html */
+     .hamburger {
+         display: none;
+         flex-direction: column;
+         justify-content: space-between;
+         width: 30px;
+         height: 20px;
+         cursor: pointer;
+         z-index: 1001;
+         margin-left: auto;
+         position: relative;
+         background: none;
+         border: none;
+         padding: 0;
+     }
+
+     .hamburger span {
+         width: 100%;
+         height: 3px;
+         background-color: white;
+         transition: all 0.3s ease;
+     }
+
+     @media (max-width: 768px) {
+         .header {
+             padding: 1.2rem; /* Increased padding */
+         }
+
+         .hamburger {
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+             width: 28px; /* Increased from 24px */
+             height: 22px; /* Increased from 18px */
+             cursor: pointer;
+             z-index: 1001;
+             margin-left: auto;
+             position: relative;
+             background: none;
+             border: none;
+             padding: 0;
+         }
+
+         .hamburger span {
+             width: 100%;
+             height: 3px; /* Increased from 2px */
+             background-color: white;
+             transition: all 0.3s ease;
+             border-radius: 3px; /* Increased from 2px */
+         }
+
+         /* Hamburger animation */
+         .hamburger.active span:nth-child(1) {
+             transform: translateY(9px) rotate(45deg); /* Adjusted for increased size */
+         }
+
+         .hamburger.active span:nth-child(2) {
+             opacity: 0;
+         }
+
+         .hamburger.active span:nth-child(3) {
+             transform: translateY(-9px) rotate(-45deg); /* Adjusted for increased size */
+         }
+
+         .nav {
+             position: fixed;
+             top: 0;
+             right: -100%;
+             width: 75%; /* Increased from 70% */
+             max-width: 300px; /* Increased from 280px */
+             height: 100vh;
+             background-color: rgba(0, 0, 0, 0.9);
+             flex-direction: column;
+             justify-content: flex-start;
+             align-items: center;
+             transition: right 0.3s ease;
+             z-index: 999;
+             padding: 80px 20px 30px; /* Increased padding */
+             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+         }
+
+         .nav.active {
+             right: 0;
+         }
+
+         .nav-link {
+             font-size: 1.1rem; /* Increased from 0.95rem */
+             margin: 0.7rem 0; /* Increased from 0.5rem */
+             width: 100%;
+             text-align: center;
+             color: #fff;
+             font-weight: 500; /* Increased from 400 */
+             padding: 0.8rem; /* Increased from 0.6rem */
+             border-radius: 6px; /* Increased from 4px */
+             transition: all 0.3s ease;
+         }
+
+         .nav-link:hover {
+             background-color: rgba(255, 255, 255, 0.15); /* Slightly brighter */
+             color: #fff;
+             transform: translateX(3px);
+         }
+
+         /* Update the academy button in the mobile navigation to center-align text */
+         .academy-btn {
+             margin: 1.5rem 0 0; /* Increased from 1rem */
+             width: 80%; /* Increased from 70% */
+             padding: 0.8rem 1.5rem; /* Increased from 0.6rem 1.2rem */
+             background-color: transparent;
+             color: white;
+             border: 2px solid white; /* Thicker border */
+             border-radius: 25px; /* Increased from 20px */
+             font-size: 1.05rem; /* Increased from 0.9rem */
+             text-align: center; /* Ensure text is centered */
+             display: block; /* Make it a block element */
+             margin-left: auto; /* Center the button itself */
+             margin-right: auto;
+         }
+
+         .academy-btn:hover {
+             background-color: white;
+             color: black;
+         }
+
+         .logo img {
+             max-height: 45px; /* Increased from 40px */
+         }
+     }
+
+     /* Small mobile styles */
+     @media (max-width: 480px) {
+         .nav {
+             width: 80%; /* Increased from 65% */
+             max-width: 280px; /* Increased from 250px */
+             padding: 70px 15px 25px; /* Adjusted padding */
+         }
+
+         .nav-link {
+             font-size: 1.05rem; /* Increased from 0.9rem */
+             padding: 0.7rem; /* Increased from 0.5rem */
+             margin: 0.6rem 0; /* Increased from 0.4rem */
+         }
+
+         .academy-btn {
+             width: 75%; /* Increased from 65% */
+             padding: 0.7rem 1.2rem; /* Increased from 0.5rem 1rem */
+             font-size: 1rem; /* Increased from 0.85rem */
+         }
+     }
+
+     /* Page title section - Fixed to cover to the top */
+     .page-title {
+         margin-top: 0;
+         padding: 8rem 2rem 4rem;
+         text-align: center;
+         background-color: #f0f0f0;
+         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+         background-size: cover;
+         background-position: center;
+         color: white;
+         position: relative;
+         top: 0;
+     }
+
+     .page-title h1 {
+         font-family: 'Playfair Display', serif;
+         font-size: 3rem;
+         margin-bottom: 1rem;
+     }
+
+     .page-title p {
+         font-size: 1.2rem;
+         max-width: 800px;
+         margin: 0 auto;
+     }
+
+     /* Updated Category filters to match Our Services page */
+     .filter-container {
+         padding: 2rem;
+         max-width: 1200px;
+         margin: 0 auto;
+         display: flex;
+         justify-content: center;
+         flex-wrap: wrap;
+         gap: 1rem;
+     }
+
+     .filter-btn {
+         background-color: white;
+         border: 1px solid #ddd;
+         padding: 0.5rem 1.5rem;
+         border-radius: 25px;
+         font-size: 0.9rem;
+         cursor: pointer;
+         transition: all 0.3s ease;
+         margin-bottom: 0.5rem;
+     }
+
+     .filter-btn:hover {
+         background-color: #f0f0f0;
+         transform: translateY(-2px);
+     }
+
+     .filter-btn.active {
+         background-color: #000;
+         color: white;
+         border-color: #000;
+     }
+
+     /* Update the filter container and buttons for better mobile display */
+     @media (max-width: 768px) {
+         .filter-container {
+             padding: 2rem 1rem;
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: center;
+             gap: 0.5rem;
+         }
+         
+         .filter-btn {
+             flex: 0 0 calc(33.33% - 0.5rem);
+             min-width: 0;
+             padding: 0.6rem 0.5rem;
+             font-size: 0.85rem;
+             text-align: center;
+             margin: 0;
+             white-space: nowrap;
+             overflow: hidden;
+             text-overflow: ellipsis;
+         }
+     }
+
+     @media (max-width: 480px) {
+         .filter-container {
+             padding: 1.5rem 1rem;
+             gap: 0.4rem;
+         }
+         
+         .filter-btn {
+             flex: 0 0 calc(50% - 0.4rem);
+             padding: 0.7rem 0.5rem;
+             font-size: 0.8rem;
+             border-radius: 20px;
+             margin: 0;
+         }
+         
+         /* Make the "All" button full width for emphasis */
+         .filter-btn[data-filter="all"] {
+             flex: 0 0 100%;
+             margin-bottom: 0.4rem;
+         }
+     }
+
+     /* Work grid - Adjusted to center content away from social icons */
+     .work-container {
+         max-width: 1100px;
+         margin: 0 auto;
+         padding: 2rem;
+         padding-left: 4rem; /* Added extra padding on the left to avoid social icons */
+     }
+
+     .work-grid {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 2rem;
+     }
+
+     .work-item {
+         background-color: white;
+         border-radius: 12px;
+         overflow: hidden;
+         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+         cursor: pointer;
+         height: 100%; /* Make all items take full height */
+         display: flex;
+         flex-direction: column;
+     }
+
+     .work-item:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+     }
+
+     .work-image {
+         width: 100%;
+         height: 300px;
+         object-fit: cover;
+     }
+
+     .work-info {
+         padding: 1.5rem;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         flex-grow: 1; /* Allow info section to grow to fill available space */
+         height: 160px; /* Set a fixed height for all info sections */
+     }
+
+     .work-category {
+         font-size: 0.8rem;
+         color: #666;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         margin-bottom: 0.5rem;
+     }
+
+     .work-title {
+         font-family: 'Playfair Display', serif;
+         font-size: 1.2rem;
+         margin-bottom: 0.5rem;
+     }
+
+     .work-artist {
+         font-size: 0.9rem;
+         color: #333;
+     }
+
+     /* Fullscreen preview */
+     .fullscreen-preview {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.9);
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         z-index: 1001;
+         opacity: 0;
+         pointer-events: none;
+         transition: opacity 0.3s ease;
+     }
+
+     .fullscreen-preview.active {
+         opacity: 1;
+         pointer-events: auto;
+     }
+
+     .preview-content {
+         max-width: 90%;
+         max-height: 90vh;
+         position: relative;
+     }
+
+     .preview-image {
+         max-width: 100%;
+         max-height: 80vh;
+         object-fit: contain;
+         border-radius: 4px;
+     }
+
+     .preview-info {
+         color: white;
+         margin-top: 1rem;
+         text-align: center;
+     }
+
+     .preview-category {
+         font-size: 0.9rem;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         margin-bottom: 0.5rem;
+     }
+
+     .preview-title {
+         font-family: 'Playfair Display', serif;
+         font-size: 1.5rem;
+         margin-bottom: 0.5rem;
+     }
+
+     .preview-artist {
+         font-size: 1rem;
+     }
+
+     .close-preview {
+         position: absolute;
+         top: 20px;
+         right: 20px;
+         color: white;
+         font-size: 30px;
+         cursor: pointer;
+         width: 40px;
+         height: 40px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background: rgba(0, 0, 0, 0.5);
+         border-radius: 50%;
+         transition: background 0.3s ease;
+     }
+
+     .close-preview:hover {
+         background: rgba(0, 0, 0, 0.8);
+     }
+
+/* Social icons */
+.social-icons {
+         position: fixed;
+         left: 10px;
+         top: 50%;
+         transform: translateY(-50%);
+         display: flex;
+         flex-direction: column;
+         z-index: 1000;
+         gap: 10px;
+         box-shadow: none;
+         pointer-events: auto;
+     }
+
+     .social-icon {
+         width: 40px;
+         height: 40px;
+         background-color: #000;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin-bottom: 10px;
+         border-radius: 50%;
+         transition: all 0.3s ease;
+         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         overflow: hidden;
+         position: relative;
+     }
+
+     .social-icon::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: linear-gradient(45deg, #ff00ff, #00ffff);
+         opacity: 0;
+         transition: opacity 0.3s ease;
+     }
+
+     .social-icon:hover::before {
+         opacity: 1;
+     }
+
+     .social-icon svg {
+         width: 24px;
+         height: 24px;
+         fill: #fff;
+         transition: transform 0.3s ease;
+         z-index: 1;
+     }
+
+     .social-icon:hover svg {
+         transform: scale(1.2);
+     }
+
+     @keyframes pulse {
+         0% { transform: scale(1); }
+         50% { transform: scale(1.1); }
+         100% { transform: scale(1); }
+     }
+
+     .social-icon:hover {
+         animation: pulse 1s infinite;
+     }
+
+     .social-icon.tiktok:hover::before {
+         background: linear-gradient(45deg, #25fbfb, #701dec);
+     }
+
+     .social-icon.instagram:hover::before {
+         background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+     }
+
+     .social-icon.telegram:hover::before {
+         background: linear-gradient(45deg, #0088cc, #0088cc);
+     }
+     /* Footer */
+     .nbp-footer {
+         background-color: #333;
+         color: #fff;
+         padding: 2rem;
+         width: 100%;
+         box-sizing: border-box;
+     }
+
+     .nbp-footer-grid {
+         padding: 4rem 5rem;
+         display: grid;
+         grid-template-columns: repeat(4, 1fr);
+         gap: 2rem;
+     }
+
+     .nbp-footer-column h3 {
+         font-size: 1.2rem;
+         margin-bottom: 1rem;
+     }
+
+     .nbp-footer-links {
+         list-style: none;
+         padding: 0;
+     }
+
+     .nbp-footer-links li {
+         margin-bottom: 0.5rem;
+     }
+
+     .nbp-footer-links a {
+         color: #fff;
+         text-decoration: none;
+         transition: color 0.3s ease;
+     }
+
+     .nbp-footer-links a:hover {
+         color: #ccc;
+     }
+
+     .nbp-footer-bottom {
+         margin-top: 2rem;
+         text-align: center;
+         padding-top: 1rem;
+         border-top: 1px solid #555;
+     }
+
+     /* Responsive styles */
+     @media (max-width: 1024px) {
+         .work-grid {
+             grid-template-columns: repeat(2, 1fr);
+         }
+         
+         .work-container {
+             padding-left: 3rem;
+         }
+         
+         .work-info {
+             height: 150px; /* Adjusted for tablet */
+         }
+     }
+
+     @media (max-width: 768px) {
+         .work-grid {
+             grid-template-columns: 1fr;
+         }
+
+         .social-icons {
+             left: auto;
+             right: 10px;
+             top: 50%;
+             transform: translateY(-50%);
+             gap: 8px;
+         }
+
+         .social-icon {
+             width: 30px; /* Smaller icons on mobile */
+             height: 30px;
+             margin-bottom: 8px;
+         }
+
+         .social-icon svg {
+             width: 16px;
+             height: 16px;
+         }
+
+         .nbp-footer-grid {
+             grid-template-columns: 1fr;
+             padding: 2rem 1rem;
+         }
+         
+         /* Adjusted work container for mobile */
+         .work-container {
+             padding: 1.5rem;
+             padding-left: 2rem; /* Add padding on the left */
+             padding-right: 3rem; /* Since social icons are now on the right */
+         }
+         
+         /* Make all work items equal size on mobile */
+         .work-item {
+             width: 90%;
+             max-width: 300px;
+             margin: 0 auto;
+         }
+         
+         .work-image {
+             height: 250px; /* Same image height for all items */
+         }
+         
+         .work-info {
+             padding: 1.2rem;
+             height: 140px; /* Fixed height for all info boxes */
+             display: flex;
+             flex-direction: column;
+             justify-content: space-between;
+         }
+     }
+
+     @media (max-width: 480px) {
+         .page-title {
+             padding: 6rem 1rem 3rem;
+         }
+
+         .page-title h1 {
+             font-size: 2.2rem;
+         }
+
+         .work-container {
+             padding: 1.5rem 0.5rem;
+             padding-left: 2.5rem; /* More padding on the left */
+             padding-right: 2.5rem; /* More padding on the right */
+         }
+         
+         /* All work items equal size on small mobile */
+         .work-item {
+             width: 85%;
+             max-width: 280px;
+         }
+         
+         .work-image {
+             height: 220px; /* Same but smaller image height for all items */
+         }
+         
+         .work-info {
+             padding: 1rem;
+             height: 130px; /* Fixed height for all info boxes */
+         }
+         
+         .work-title {
+             font-size: 1.1rem;
+         }
+         
+         .work-category, .work-artist {
+             font-size: 0.8rem;
+         }
+
+         .social-icons {
+             right: 5px;
+             gap: 6px;
+         }
+
+         .social-icon {
+             width: 25px; /* Even smaller icons on small mobile */
+             height: 25px;
+             margin-bottom: 6px;
+         }
+         
+         .social-icon svg {
+             width: 14px;
+             height: 14px;
+         }
+     }
+
+     /* Animation effects */
+     @keyframes fadeInUp {
+         from {
+             opacity: 0;
+             transform: translateY(20px);
+         }
+         to {
+             opacity: 1;
+             transform: translateY(0);
+         }
+     }
+
+     .page-title h1,
+     .page-title p {
+         opacity: 0;
+         animation: fadeInUp 0.6s ease-out forwards;
+     }
+
+     .page-title p {
+         animation-delay: 0.2s;
+     }
+
+     .filter-container {
+         opacity: 0;
+         animation: fadeInUp 0.6s ease-out forwards;
+         animation-delay: 0.4s;
+     }
+
+     .work-item {
+         opacity: 0;
+         animation: fadeInUp 0.6s ease-out forwards;
+     }
+
+     .work-item:nth-child(1) { animation-delay: 0.5s; }
+     .work-item:nth-child(2) { animation-delay: 0.6s; }
+     .work-item:nth-child(3) { animation-delay: 0.7s; }
+     .work-item:nth-child(4) { animation-delay: 0.8s; }
+     .work-item:nth-child(5) { animation-delay: 0.9s; }
+     .work-item:nth-child(6) { animation-delay: 1.0s; }
+     .work-item:nth-child(7) { animation-delay: 1.1s; }
+     .work-item:nth-child(8) { animation-delay: 1.2s; }
+     .work-item:nth-child(9) { animation-delay: 1.3s; }
+     
+     /* Update body to prevent scrolling when menu is open */
+     body.menu-open {
+         overflow: hidden;
+     }
+ </style>
 </head>
 <body>
-    <!-- Social Icons - Updated to match index.html -->
-    <div class="social-icons">
-        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" aria-label="TikTok">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path fill="#ffffff" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
-            </svg>
-        </a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-            </svg>
-        </a>
-        <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer" class="social-icon telegram" aria-label="Telegram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
-            </svg>
-        </a>
-    </div>
+ <!-- Social Icons - Updated to match index.html -->
+ <div class="social-icons">
+     <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" aria-label="TikTok">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+             <path fill="#ffffff" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+         </svg>
+     </a>
+     <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+             <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+         </svg>
+     </a>
+     <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer" class="social-icon telegram" aria-label="Telegram">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+             <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
+         </svg>
+     </a>
+ </div>
 
-    <!-- Header - Updated navigation links to match index.html -->
-    <header class="header">
-        <a href="/" class="logo">
-            <img src="New neon logo.png" alt="Neon Beauty Palace Logo">
-        </a>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav class="nav">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="index.html#services" class="nav-link">Services</a>
-            <a href="index.html#pmu-artist" class="nav-link">PMU Artist</a>
-            <a href="ourworkspage.html" class="nav-link">Our Work</a>
-            <a href="index.html#recently-posted" class="nav-link">Recently Posted</a>
-            <a href="index.html#contact" class="nav-link">Contact</a>
-            <a href="/academy" class="academy-btn">Academy</a>
-        </nav>
-    </header>
+ <!-- Header - Updated navigation links to match index.html -->
+ <header class="header">
+     <a href="/" class="logo">
+         <img src="New neon logo.png" alt="Neon Beauty Palace Logo">
+     </a>
+     <div class="hamburger">
+         <span></span>
+         <span></span>
+         <span></span>
+     </div>
+     <nav class="nav">
+         <a href="index.html" class="nav-link">Home</a>
+         <a href="index.html#services" class="nav-link">Services</a>
+         <a href="index.html#pmu-artist" class="nav-link">PMU Artist</a>
+         <a href="ourworkspage.html" class="nav-link">Our Work</a>
+         <a href="index.html#recently-posted" class="nav-link">Recently Posted</a>
+         <a href="index.html#contact" class="nav-link">Contact</a>
+         <a href="/academy" class="academy-btn">Academy</a>
+     </nav>
+ </header>
 
-    <!-- Page Title -->
-    <section class="page-title">
-        <h1>Our Work</h1>
-        <p>Explore our portfolio of permanent makeup transformations and be inspired by our artistry.</p>
-    </section>
+ <!-- Page Title -->
+ <section class="page-title">
+     <h1>Our Work</h1>
+     <p>Explore our portfolio of permanent makeup transformations and be inspired by our artistry.</p>
+ </section>
 
-    <!-- Category Filters -->
-    <div class="filter-container">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ombre-brows">Ombre Brows</button>
-        <button class="filter-btn" data-filter="nano-brows">Nano Brows</button>
-        <button class="filter-btn" data-filter="lip-blushing">Lip Blushing</button>
-        <button class="filter-btn" data-filter="eyeliner">Permanent Eyeliner</button>
-        <button class="filter-btn" data-filter="lash-enhancement">Lash Enhancement</button>
-    </div>
+ <!-- Category Filters - Updated to match Our Services page -->
+ <div class="filter-container" id="work">
+     <button class="filter-btn active" data-filter="all">All</button>
+     <button class="filter-btn" data-filter="ombre-brows">Ombre Brows</button>
+     <button class="filter-btn" data-filter="nano-brows">Nano Brows</button>
+     <button class="filter-btn" data-filter="lip-blushing">Lip Blushing</button>
+     <button class="filter-btn" data-filter="eyeliner">Permanent Eyeliner</button>
+     <button class="filter-btn" data-filter="lash-enhancement">Lash Enhancement</button>
+ </div>
 
-    <!-- Work Grid -->
-    <div class="work-container">
-        <div class="work-grid">
-            <!-- Ombre Brows -->
-            <div class="work-item" data-category="ombre-brows">
-                <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Ombre Brows</div>
-                    <h3 class="work-title">Natural Gradient Brows</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-            
-            <!-- Nano Brows -->
-            <div class="work-item" data-category="nano-brows">
-                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Nano Brows</div>
-                    <h3 class="work-title">Precision Hair Strokes</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-            
-            <!-- Lip Blushing -->
-            <div class="work-item" data-category="lip-blushing">
-                <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Lip Blushing</div>
-                    <h3 class="work-title">Natural Lip Enhancement</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-            
-            <!-- Permanent Eyeliner -->
-            <div class="work-item" data-category="eyeliner">
-                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Permanent Eyeliner</div>
-                    <h3 class="work-title">Classic Winged Liner</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-            
-            <!-- Lash Enhancement -->
-            <div class="work-item" data-category="lash-enhancement">
-                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Lash Enhancement</div>
-                    <h3 class="work-title">Subtle Lash Definition</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-            
-            <!-- Ombre Brows -->
-            <div class="work-item" data-category="ombre-brows">
-                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Ombre Brows</div>
-                    <h3 class="work-title">Bold Statement Brows</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-            
-            <!-- Nano Brows -->
-            <div class="work-item" data-category="nano-brows">
-                <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Nano Brows Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Nano Brows</div>
-                    <h3 class="work-title">Feathered Arch Brows</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-            
-            <!-- Lip Blushing -->
-            <div class="work-item" data-category="lip-blushing">
-                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lip Blushing Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Lip Blushing</div>
-                    <h3 class="work-title">Full Volume Lips</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-            
-            <!-- Permanent Eyeliner -->
-            <div class="work-item" data-category="eyeliner">
-                <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Work" class="work-image">
-                <div class="work-info">
-                    <div class="work-category">Permanent Eyeliner</div>
-                    <h3 class="work-title">Subtle Lash Line Enhancement</h3>
-                    <div class="work-artist">Artist: Seble</div>
-                </div>
-            </div>
-        </div>
-    </div>
+ <!-- Work Grid -->
+ <div class="work-container">
+     <div class="work-grid">
+         <!-- Ombre Brows -->
+         <div class="work-item" data-category="ombre-brows">
+             <img src="https://images.unsplash.com/photo-1619975101918-6d27886e8c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Ombre Brows</div>
+                 <h3 class="work-title">Natural Gradient Brows</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+         
+         <!-- Nano Brows -->
+         <div class="work-item" data-category="nano-brows">
+             <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Nano Brows Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Nano Brows</div>
+                 <h3 class="work-title">Precision Hair Strokes</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+         
+         <!-- Lip Blushing -->
+         <div class="work-item" data-category="lip-blushing">
+             <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lip Blushing Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Lip Blushing</div>
+                 <h3 class="work-title">Natural Lip Enhancement</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+         
+         <!-- Permanent Eyeliner -->
+         <div class="work-item" data-category="eyeliner">
+             <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Permanent Eyeliner</div>
+                 <h3 class="work-title">Classic Winged Liner</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+         
+         <!-- Lash Enhancement -->
+         <div class="work-item" data-category="lash-enhancement">
+             <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lash Enhancement Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Lash Enhancement</div>
+                 <h3 class="work-title">Subtle Lash Definition</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+         
+         <!-- Ombre Brows -->
+         <div class="work-item" data-category="ombre-brows">
+             <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Ombre Brows Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Ombre Brows</div>
+                 <h3 class="work-title">Bold Statement Brows</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+         
+         <!-- Nano Brows -->
+         <div class="work-item" data-category="nano-brows">
+             <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Nano Brows Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Nano Brows</div>
+                 <h3 class="work-title">Feathered Arch Brows</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+         
+         <!-- Lip Blushing -->
+         <div class="work-item" data-category="lip-blushing">
+             <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Lip Blushing Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Lip Blushing</div>
+                 <h3 class="work-title">Full Volume Lips</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+         
+         <!-- Permanent Eyeliner -->
+         <div class="work-item" data-category="eyeliner">
+             <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Permanent Eyeliner Work" class="work-image">
+             <div class="work-info">
+                 <div class="work-category">Permanent Eyeliner</div>
+                 <h3 class="work-title">Subtle Lash Line Enhancement</h3>
+                 <div class="work-artist">Artist: Seble</div>
+             </div>
+         </div>
+     </div>
+ </div>
 
-    <!-- Fullscreen Preview -->
-    <div class="fullscreen-preview">
-        <div class="close-preview">&times;</div>
-        <div class="preview-content">
-            <img src="/placeholder.svg" alt="" class="preview-image">
-            <div class="preview-info">
-                <div class="preview-category"></div>
-                <h3 class="preview-title"></h3>
-                <div class="preview-artist"></div>
-            </div>
-        </div>
-    </div>
+ <!-- Fullscreen Preview -->
+ <div class="fullscreen-preview">
+     <div class="close-preview">&times;</div>
+     <div class="preview-content">
+         <img src="/placeholder.svg" alt="" class="preview-image">
+         <div class="preview-info">
+             <div class="preview-category"></div>
+             <h3 class="preview-title"></h3>
+             <div class="preview-artist"></div>
+         </div>
+     </div>
+ </div>
 
-    <!-- Footer -->
-    <footer class="nbp-footer">
-        <div class="nbp-footer-grid">
-            <div class="nbp-footer-column">
-                <h3>Quick Links</h3>
-                <ul class="nbp-footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="index.html#pmu-artist">About Us</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="nbp-footer-column">
-                <h3>Services</h3>
-                <ul class="nbp-footer-links">
-                    <li><a href="Our Services.html?filter=ombre-brows">Ombre Brows</a></li>
-                    <li><a href="Our Services.html?filter=lip-blushing">Lip Blushing</a></li>
-                    <li><a href="Our Services.html?filter=eyeliner">Eyeliner</a></li>
-                    <li><a href="Our Services.html?filter=lash-enhancement">Lash Enhancement</a></li>
-                </ul>
-            </div>
-            <div class="nbp-footer-column">
-                <h3>Contact Us</h3>
-                <ul class="nbp-footer-links">
-                    <li>XQQR+RWX, Addis Ababa</li>
-                    <li>+1 (555) 123-4567</li>
-                    <li><a href="/cdn-cgi/l/email-protection#9df4f3fbf2ddf3f8f2f3fff8fce8e9e4edfcf1fcfef8b3fef2f0"><span class="__cf_email__" data-cfemail="1d74737b725d737872737f787c6869646d7c717c7e78337e7270">[email&#160;protected]</span></a></li>
-                </ul>
-            </div>
-            <div class="nbp-footer-column">
-                <h3>Follow Us</h3>
-                <ul class="nbp-footer-links">
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">TikTok</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="nbp-footer-bottom">
-            <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
-        </div>
-    </footer>
+ <!-- Footer -->
+ <footer class="nbp-footer">
+     <div class="nbp-footer-grid">
+         <div class="nbp-footer-column">
+             <h3>Quick Links</h3>
+             <ul class="nbp-footer-links">
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="index.html#services">Services</a></li>
+                 <li><a href="index.html#pmu-artist">About Us</a></li>
+                 <li><a href="index.html#contact">Contact</a></li>
+             </ul>
+         </div>
+         <div class="nbp-footer-column">
+             <h3>Services</h3>
+             <ul class="nbp-footer-links">
+                 <li><a href="Our Services.html?filter=ombre-brows">Ombre Brows</a></li>
+                 <li><a href="Our Services.html?filter=lip-blushing">Lip Blushing</a></li>
+                 <li><a href="Our Services.html?filter=eyeliner">Eyeliner</a></li>
+                 <li><a href="Our Services.html?filter=lash-enhancement">Lash Enhancement</a></li>
+             </ul>
+         </div>
+         <div class="nbp-footer-column">
+             <h3>Contact Us</h3>
+             <ul class="nbp-footer-links">
+                 <li>XQQR+RWX, Addis Ababa</li>
+                 <li>+1 (555) 123-4567</li>
+                 <li><a href="/cdn-cgi/l/email-protection#9df4f3fbf2ddf3f8f2f3fff8fce8e9e4edfcf1fcfef8b3fef2f0"><span class="__cf_email__" data-cfemail="1d74737b725d737872737f787c6869646d7c717c7e78337e7270">[email&#160;protected]</span></a></li>
+             </ul>
+         </div>
+         <div class="nbp-footer-column">
+             <h3>Follow Us</h3>
+             <ul class="nbp-footer-links">
+                 <li><a href="#">Instagram</a></li>
+                 <li><a href="#">Facebook</a></li>
+                 <li><a href="#">TikTok</a></li>
+             </ul>
+         </div>
+     </div>
+     <div class="nbp-footer-bottom">
+         <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+     </div>
+ </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Toggle mobile menu
-        document.addEventListener('DOMContentLoaded', () => {
-            const hamburger = document.querySelector('.hamburger');
-            const nav = document.querySelector('.nav');
-            const body = document.body;
+ <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+     // Toggle mobile menu
+     document.addEventListener('DOMContentLoaded', () => {
+         const hamburger = document.querySelector('.hamburger');
+         const nav = document.querySelector('.nav');
+         const body = document.body;
 
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                nav.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            });
+         hamburger.addEventListener('click', () => {
+             hamburger.classList.toggle('active');
+             nav.classList.toggle('active');
+             body.classList.toggle('menu-open');
+         });
 
-            // Close menu when clicking a link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    nav.classList.remove('active');
-                    body.classList.remove('menu-open');
-                });
-            });
+         // Close menu when clicking a link
+         const navLinks = document.querySelectorAll('.nav-link');
+         navLinks.forEach(link => {
+             link.addEventListener('click', () => {
+                 hamburger.classList.remove('active');
+                 nav.classList.remove('active');
+                 body.classList.remove('menu-open');
+             });
+         });
 
-            // Category filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const workItems = document.querySelectorAll('.work-item');
+         // Category filtering
+         const filterButtons = document.querySelectorAll('.filter-btn');
+         const workItems = document.querySelectorAll('.work-item');
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    button.classList.add('active');
-                    
-                    // Get filter value
-                    const filterValue = button.getAttribute('data-filter');
-                    
-                    // Filter work items
-                    workItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
+         filterButtons.forEach(button => {
+             button.addEventListener('click', () => {
+                 // Remove active class from all buttons
+                 filterButtons.forEach(btn => btn.classList.remove('active'));
+                 
+                 // Add active class to clicked button
+                 button.classList.add('active');
+                 
+                 // Get filter value
+                 const filterValue = button.getAttribute('data-filter');
+                 
+                 // Filter work items
+                 workItems.forEach(item => {
+                     if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                         item.style.display = 'block';
+                     } else {
+                         item.style.display = 'none';
+                     }
+                 });
+             });
+         });
 
-            // Fullscreen preview
-            const fullscreenPreview = document.querySelector('.fullscreen-preview');
-            const previewImage = document.querySelector('.preview-image');
-            const previewCategory = document.querySelector('.preview-category');
-            const previewTitle = document.querySelector('.preview-title');
-            const previewArtist = document.querySelector('.preview-artist');
-            const closePreview = document.querySelector('.close-preview');
+         // Fullscreen preview
+         const fullscreenPreview = document.querySelector('.fullscreen-preview');
+         const previewImage = document.querySelector('.preview-image');
+         const previewCategory = document.querySelector('.preview-category');
+         const previewTitle = document.querySelector('.preview-title');
+         const previewArtist = document.querySelector('.preview-artist');
+         const closePreview = document.querySelector('.close-preview');
 
-            workItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const image = item.querySelector('.work-image');
-                    const category = item.querySelector('.work-category').textContent;
-                    const title = item.querySelector('.work-title').textContent;
-                    const artist = item.querySelector('.work-artist').textContent;
+         workItems.forEach(item => {
+             item.addEventListener('click', () => {
+                 const image = item.querySelector('.work-image');
+                 const category = item.querySelector('.work-category').textContent;
+                 const title = item.querySelector('.work-title').textContent;
+                 const artist = item.querySelector('.work-artist').textContent;
 
-                    previewImage.src = image.src;
-                    previewImage.alt = image.alt;
-                    previewCategory.textContent = category;
-                    previewTitle.textContent = title;
-                    previewArtist.textContent = artist;
+                 previewImage.src = image.src;
+                 previewImage.alt = image.alt;
+                 previewCategory.textContent = category;
+                 previewTitle.textContent = title;
+                 previewArtist.textContent = artist;
 
-                    fullscreenPreview.classList.add('active');
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling
-                });
-            });
+                 fullscreenPreview.classList.add('active');
+                 document.body.style.overflow = 'hidden'; // Prevent scrolling
+             });
+         });
 
-            closePreview.addEventListener('click', () => {
-                fullscreenPreview.classList.remove('active');
-                document.body.style.overflow = ''; // Restore scrolling
-            });
+         closePreview.addEventListener('click', () => {
+             fullscreenPreview.classList.remove('active');
+             document.body.style.overflow = ''; // Restore scrolling
+         });
 
-            fullscreenPreview.addEventListener('click', (e) => {
-                if (e.target === fullscreenPreview) {
-                    fullscreenPreview.classList.remove('active');
-                    document.body.style.overflow = ''; // Restore scrolling
-                }
-            });
+         fullscreenPreview.addEventListener('click', (e) => {
+             if (e.target === fullscreenPreview) {
+                 fullscreenPreview.classList.remove('active');
+                 document.body.style.overflow = ''; // Restore scrolling
+             }
+         });
 
-            // Close on escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && fullscreenPreview.classList.contains('active')) {
-                    fullscreenPreview.classList.remove('active');
-                    document.body.style.overflow = ''; // Restore scrolling
-                }
-            });
+         // Close on escape key
+         document.addEventListener('keydown', (e) => {
+             if (e.key === 'Escape' && fullscreenPreview.classList.contains('active')) {
+                 fullscreenPreview.classList.remove('active');
+                 document.body.style.overflow = ''; // Restore scrolling
+             }
+         });
 
-            // Header scroll effect
-            let lastScrollTop = 0;
-            const header = document.querySelector('.header');
+         // Header scroll effect
+         let lastScrollTop = 0;
+         const header = document.querySelector('.header');
 
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > lastScrollTop) {
-                    // Scroll down
-                    header.style.top = '-100px'; // Hide the header
-                } else {
-                    // Scroll up
-                    header.style.top = '0'; // Show the header
-                }
-                lastScrollTop = scrollTop;
-            });
-        });
-    </script>
+         window.addEventListener('scroll', function() {
+             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+             if (scrollTop > lastScrollTop) {
+                 // Scroll down
+                 header.style.top = '-100px'; // Hide the header
+             } else {
+                 // Scroll up
+                 header.style.top = '0'; // Show the header
+             }
+             lastScrollTop = scrollTop;
+         });
+     });
+ </script>
 </body>
 </html>
