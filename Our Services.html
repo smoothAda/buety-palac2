@@ -641,12 +641,54 @@
             box-sizing: border-box;
         }
 
-        .nbp-footer-grid {
-            padding: 4.5rem 5rem; /* Increased from 4rem */
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2.5rem; /* Increased from 2rem */
-        }
+/* Update the footer grid to be horizontal */
+.nbp-footer-grid {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nbp-footer-column {
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments for the footer */
+@media (max-width: 992px) {
+    .nbp-footer-grid {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .nbp-footer-column {
+        flex: 0 0 auto;
+        width: calc(50% - 1.5rem);
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nbp-footer-grid {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 1rem;
+    }
+    
+    .nbp-footer-column {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 2rem;
+    }
+    
+    .nbp-footer-links {
+        text-align: center;
+    }
+}
 
         .nbp-footer-column h3 {
             font-size: 1.3rem; /* Increased from 1.2rem */
@@ -1264,6 +1306,14 @@
                         <li><a href="mailto:info@neonbeautypalace.com">info@neonbeautypalace.com</a></li>
                     </ul>
                 </div>
+<div class="nbp-footer-column">
+    <h3>Hours</h3>
+    <ul class="nbp-footer-links">
+        <li>Monday - Friday: 10am - 8pm</li>
+        <li>Saturday: 10am - 6pm</li>
+        <li>Sunday: Closed</li>
+    </ul>
+</div>
                 <div class="nbp-footer-column">
                     <h3>Follow Us</h3>
                     <ul class="nbp-footer-links">
