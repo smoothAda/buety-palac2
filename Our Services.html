@@ -632,95 +632,274 @@
             background: linear-gradient(45deg, #0088cc, #0088cc);
         }
 
-        /* Footer */
+        /* NEW FOOTER STYLES */
         .nbp-footer {
-            background-color: #333;
+            background-color: #222;
             color: #fff;
-            padding: 2.5rem; /* Increased from 2rem */
             width: 100%;
             box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
         }
 
-/* Update the footer grid to be horizontal */
-.nbp-footer-grid {
-    padding: 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.nbp-footer-column {
-    flex: 1;
-    min-width: 150px;
-    margin-bottom: 1rem;
-}
-
-/* Responsive adjustments for the footer */
-@media (max-width: 992px) {
-    .nbp-footer-grid {
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .nbp-footer-column {
-        flex: 0 0 auto;
-        width: calc(50% - 1.5rem);
-        min-width: 150px;
-    }
-}
-
-@media (max-width: 768px) {
-    .nbp-footer-grid {
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 1rem;
-    }
-    
-    .nbp-footer-column {
-        width: 100%;
-        max-width: 300px;
-        margin-bottom: 2rem;
-    }
-    
-    .nbp-footer-links {
-        text-align: center;
-    }
-}
-
-        .nbp-footer-column h3 {
-            font-size: 1.3rem; /* Increased from 1.2rem */
-            margin-bottom: 1.2rem; /* Increased from 1rem */
-        }
-
-        .nbp-footer-links {
-            list-style: none;
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 0;
         }
 
-        .nbp-footer-links li {
-            margin-bottom: 0.7rem; /* Increased from 0.5rem */
-            font-size: 1.05rem; /* Added font size */
+        .footer-top {
+            background-color: #111;
+            padding: 3rem 2rem;
+            position: relative;
         }
 
-        .nbp-footer-links a {
+        .footer-top::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            max-width: 180px;
+            height: auto;
+            filter: brightness(1.2);
+        }
+
+        .footer-tagline {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-icon:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .footer-social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 3rem 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-weight: 600;
             color: #fff;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #fff;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .footer-contact-icon {
+            margin-right: 0.8rem;
+            min-width: 20px;
+        }
+
+        .footer-contact-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .footer-contact-text a {
+            color: #ccc;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .nbp-footer-links a:hover {
-            color: #ccc;
+        .footer-contact-text a:hover {
+            color: #fff;
         }
 
-        .nbp-footer-bottom {
-            margin-top: 2.5rem; /* Increased from 2rem */
+        .footer-hours {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.5rem 1rem;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            background-color: #111;
+            padding: 1.5rem 2rem;
             text-align: center;
-            padding-top: 1.2rem; /* Increased from 1rem */
-            border-top: 1px solid #555;
-            font-size: 1.05rem; /* Added font size */
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+
+        /* Responsive footer styles */
+        @media (max-width: 992px) {
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-top {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .footer-logo {
+                max-width: 150px;
+            }
+            
+            .footer-tagline {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .footer-main {
+                padding: 2.5rem 1.5rem;
+                gap: 2rem 1rem;
+            }
+            
+            .footer-column h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1.2rem;
+            }
+            
+            .footer-links a, .footer-contact-text {
+                font-size: 0.9rem;
+            }
+            
+            .footer-hours {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-column h3 {
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+            }
+            
+            .footer-links {
+                text-align: center;
+            }
+            
+            .footer-links a:hover {
+                transform: none;
+            }
+            
+            .footer-contact-item {
+                justify-content: center;
+            }
+            
+            .footer-hours {
+                justify-content: center;
+                grid-template-columns: auto auto;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+            
+            .footer-bottom {
+                padding: 1.2rem 1rem;
+                font-size: 0.85rem;
+            }
         }
 
         /* Hamburger menu */
@@ -857,21 +1036,6 @@
             .social-icon svg {
                 width: 24px; /* Increased from 20px */
                 height: 24px; /* Increased from 20px */
-            }
-
-            .nbp-footer-grid {
-                grid-template-columns: 1fr;
-                padding: 3rem 1.5rem; /* Increased padding */
-            }
-            
-            .nbp-footer-column h3 {
-                font-size: 1.4rem; /* Increased for mobile */
-                margin-bottom: 1.3rem; /* Increased for mobile */
-            }
-            
-            .nbp-footer-links li {
-                margin-bottom: 0.9rem; /* Increased for mobile */
-                font-size: 1.1rem; /* Increased for mobile */
             }
             
             /* Adjusted services container for mobile */
@@ -1275,22 +1439,55 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- New Footer Design -->
     <footer class="nbp-footer">
-        <div class="centered-content">
-            <div class="nbp-footer-grid">
-                <div class="nbp-footer-column">
+        <div class="footer-container">
+            <!-- Footer Top Section with Logo -->
+            <div class="footer-top">
+                <div class="footer-logo-container">
+                    <img src="New neon logo.png" alt="Neon Beauty Palace Logo" class="footer-logo">
+                </div>
+                <p class="footer-tagline">Enhancing Your Natural Beauty with Precision and Care</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                            <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="TikTok">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Telegram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                            <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Footer Main Section with Columns -->
+            <div class="footer-main">
+                <div class="footer-column">
                     <h3>Quick Links</h3>
-                    <ul class="nbp-footer-links">
+                    <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="certificate.html">PMU Artist</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="ourworkspage.html">Our Work</a></li>
+                        <li><a href="academy.html">Academy</a></li>
                     </ul>
                 </div>
-                <div class="nbp-footer-column">
-                    <h3>Services</h3>
-                    <ul class="nbp-footer-links">
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
                         <li><a href="services.html?filter=ombre-brows">Ombre Brows</a></li>
                         <li><a href="services.html?filter=nano-brows">Nano Brows</a></li>
                         <li><a href="services.html?filter=lip-blushing">Lip Blushing</a></li>
@@ -1298,39 +1495,74 @@
                         <li><a href="services.html?filter=lash-enhancement">Lash Enhancement</a></li>
                     </ul>
                 </div>
-                <div class="nbp-footer-column">
+                
+                <div class="footer-column">
                     <h3>Contact Us</h3>
-                    <ul class="nbp-footer-links">
-                        <li><a href="https://www.google.com/maps/place/XQQR%2BRWX+Addis+Ababa+Ethiopia" target="_blank" rel="noopener noreferrer">XQQR+RWX, Addis Ababa</a></li>
-                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-                        <li><a href="mailto:info@neonbeautypalace.com">info@neonbeautypalace.com</a></li>
-                    </ul>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="footer-contact-text">
+                            <a href="https://www.google.com/maps/place/XQQR%2BRWX+Addis+Ababa+Ethiopia" target="_blank" rel="noopener noreferrer">XQQR+RWX, Addis Ababa, Ethiopia</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="footer-contact-text">
+                            <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="footer-contact-text">
+                            <a href="mailto:info@neonbeautypalace.com">info@neonbeautypalace.com</a>
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                        </div>
+                        <div class="footer-contact-text">
+                            <a href="https://wa.me/15551234567">WhatsApp: +1 (555) 123-4567</a>
+                        </div>
+                    </div>
                 </div>
-<div class="nbp-footer-column">
-    <h3>Hours</h3>
-    <ul class="nbp-footer-links">
-        <li>Monday - Friday: 10am - 8pm</li>
-        <li>Saturday: 10am - 6pm</li>
-        <li>Sunday: Closed</li>
-    </ul>
-</div>
-                <div class="nbp-footer-column">
-                    <h3>Follow Us</h3>
-                    <ul class="nbp-footer-links">
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">TikTok</a></li>
-                    </ul>
+                
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <div class="footer-hours">
+                        <span>Monday - Friday:</span>
+                        <span>10:00 AM - 8:00 PM</span>
+                        <span>Saturday:</span>
+                        <span>10:00 AM - 6:00 PM</span>
+                        <span>Sunday:</span>
+                        <span>Closed</span>
+                    </div>
                 </div>
             </div>
-            <div class="nbp-footer-bottom">
-                <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+            
+            <!-- Footer Bottom Section with Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2023 Neon Beauty Palace. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
             </div>
         </div>
     </footer>
 
     <script>
-
         document.addEventListener('DOMContentLoaded', function() {
             // Get URL parameters to check for filter
             const urlParams = new URLSearchParams(window.location.search);
@@ -1449,35 +1681,35 @@
             });
             
             // Hamburger menu functionality
-const hamburger = document.querySelector('.hamburger');
-const nav = document.querySelector('.nav');
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('.nav');
 
-hamburger.addEventListener('click', function() {
-    this.classList.toggle('active');
-    nav.classList.toggle('active');
-    document.body.classList.toggle('menu-open');
-});
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
 
-// Close menu when clicking a nav link
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        nav.classList.remove('active');
-        document.body.classList.remove('menu-open');
-    });
-});
+            // Close menu when clicking a nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (nav.classList.contains('active') && 
-        !nav.contains(e.target) && 
-        !hamburger.contains(e.target)) {
-        hamburger.classList.remove('active');
-        nav.classList.remove('active');
-        document.body.classList.remove('menu-open');
-    }
-});
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (nav.classList.contains('active') && 
+                    !nav.contains(e.target) && 
+                    !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
         });
     </script>
 </body>
