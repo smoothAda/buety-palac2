@@ -1933,6 +1933,162 @@
               max-width: 220px; /* Increased from 200px */
           }
       }
+
+    /* Updated footer styles to match services.html */
+    .nbp-footer {
+        background-color: #000; /* Changed from #333 to black */
+        color: #fff;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+        z-index: 50;
+    }
+
+    .nbp-footer-grid {
+        padding: 3rem 2rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem;
+    }
+
+    .nbp-footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.8rem;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    .nbp-footer-column h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background-color: #fff;
+    }
+
+    .nbp-footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nbp-footer-links li {
+        margin-bottom: 0.8rem;
+    }
+
+    .nbp-footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+        font-size: 0.95rem;
+    }
+
+    .nbp-footer-links a:hover {
+        color: #fff;
+        transform: translateX(3px);
+    }
+
+    .footer-hours {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.5rem 1rem;
+        color: #ccc;
+        font-size: 0.95rem;
+    }
+
+    .nbp-footer-bottom {
+        background-color: #000; /* Changed from #111 to black */
+        padding: 1.5rem 2rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #999;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nbp-footer-bottom p {
+        margin: 0;
+    }
+
+    .nbp-footer-bottom a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .nbp-footer-bottom a:hover {
+        color: #fff;
+    }
+
+    /* Responsive footer styles */
+    @media (max-width: 992px) {
+        .nbp-footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nbp-footer-grid {
+            padding: 2.5rem 1.5rem;
+            gap: 2rem 1rem;
+        }
+        
+        .nbp-footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .nbp-footer-links a {
+            font-size: 0.9rem;
+        }
+        
+        .footer-hours {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .nbp-footer-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .nbp-footer-column h3 {
+            text-align: center;
+        }
+        
+        .nbp-footer-column h3::after {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+        }
+        
+        .nbp-footer-links {
+            text-align: center;
+        }
+        
+        .nbp-footer-links a:hover {
+            transform: none;
+        }
+        
+        .footer-hours {
+            justify-content: center;
+            grid-template-columns: auto auto;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        
+        .nbp-footer-bottom {
+            padding: 1.2rem 1rem;
+            font-size: 0.85rem;
+        }
+    }
     </style>
 </head>
 <body>
@@ -2092,7 +2248,7 @@
                     <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Work 2" loading="lazy" />
                 </div>
                 <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 3" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 3" loading="lazy" />
                 </div>
                 <div class="work-item">
                     <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 4" loading="lazy" />
@@ -2110,13 +2266,10 @@
                     <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Work 8" loading="lazy" />
                 </div>
                 <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 9" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 9" loading="lazy" />
                 </div>
                 <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Work 10" loading="lazy" />
-                </div>
-                <div class="work-item">
-                    <img src="https://images.unsplash.com/photo-1596704017254-9b121068fb31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 11" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Work 10" loading="lazy" />
                 </div>
                 <div class="work-item">
                     <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Work 12" loading="lazy" />
@@ -2324,40 +2477,45 @@
                     <h3>Quick Links</h3>
                     <ul class="nbp-footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#pmu-artist">PMU Artist</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="certificate.html">PMU Artist</a></li>
+                        <li><a href="ourworkspage.html">Our Work</a></li>
+                        <li><a href="academy.html">Academy</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
-                    <h3>Services</h3>
+                    <h3>Our Services</h3>
                     <ul class="nbp-footer-links">
-                        <li><a href="Our Services.html?filter=ombre-brows">Ombre Brows</a></li>
-                        <li><a href="Our Services.html?filter=nano-brows">Nano Brows</a></li>
-                        <li><a href="Our Services.html?filter=lip-blushing">Lip Blushing</a></li>
-                        <li><a href="Our Services.html?filter=eyeliner">Eyeliner</a></li>
-                        <li><a href="Our Services.html?filter=lash-enhancement">Lash Enhancement</a></li>
+                        <li><a href="services.html?filter=ombre-brows">Ombre Brows</a></li>
+                        <li><a href="services.html?filter=nano-brows">Nano Brows</a></li>
+                        <li><a href="services.html?filter=lip-blushing">Lip Blushing</a></li>
+                        <li><a href="services.html?filter=eyeliner">Eyeliner</a></li>
+                        <li><a href="services.html?filter=lash-enhancement">Lash Enhancement</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
                     <h3>Contact Us</h3>
                     <ul class="nbp-footer-links">
-                        <li><a href="https://www.google.com/maps/place/XQQR%2BRWX+Addis+Ababa+Ethiopia" target="_blank" rel="noopener noreferrer">XQQR+RWX, Addis Ababa</a></li>
+                        <li><a href="https://www.google.com/maps/place/XQQR%2BRWX+Addis+Ababa+Ethiopia" target="_blank" rel="noopener noreferrer">XQQR+RWX, Addis Ababa, Ethiopia</a></li>
                         <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-                        <li><a href="/cdn-cgi/l/email-protection#3950575f5679575c56575b5c584c4d40495855585a5c175a5654"><span class="__cf_email__" data-cfemail="7a13141c153a141f1514181f1b0f0e030a1b161b191f54191517">[email&#160;protected]</span></a></li>
+                        <li><a href="mailto:info@neonbeautypalace.com">info@neonbeautypalace.com</a></li>
+                        <li><a href="https://wa.me/15551234567">WhatsApp: +1 (555) 123-4567</a></li>
                     </ul>
                 </div>
                 <div class="nbp-footer-column">
-                    <h3>Follow Us</h3>
-                    <ul class="nbp-footer-links">
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">TikTok</a></li>
-                    </ul>
+                    <h3>Opening Hours</h3>
+                    <div class="footer-hours">
+                        <span>Monday - Friday:</span>
+                        <span>10:00 AM - 8:00 PM</span>
+                        <span>Saturday:</span>
+                        <span>10:00 AM - 6:00 PM</span>
+                        <span>Sunday:</span>
+                        <span>Closed</span>
+                    </div>
                 </div>
             </div>
             <div class="nbp-footer-bottom">
-                <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+                <p>&copy; 2023 Neon Beauty Palace. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
             </div>
         </div>
     </footer>
