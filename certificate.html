@@ -36,7 +36,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 1010;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
             transition: top 0.3s;
@@ -56,6 +56,7 @@
             gap: 3rem;
             justify-content: flex-end;
             align-items: center;
+            z-index: 1009;
         }
 
         .nav-link {
@@ -115,10 +116,11 @@
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            z-index: 1000;
+            z-index: 990;
             gap: 12px;
             box-shadow: none;
             pointer-events: auto;
+            transition: opacity 0.3s ease;
         }
 
         .social-icon {
@@ -346,6 +348,8 @@
             position: relative;
             display: flex;
             flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .modal-header {
@@ -533,7 +537,7 @@
             width: 28px;
             height: 22px;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 1011;
             margin-left: auto;
             position: relative;
             background: none;
@@ -634,15 +638,16 @@
 
             .social-icons {
                 left: auto;
-                right: 15px;
+                right: 10px;
                 top: 50%;
                 transform: translateY(-50%);
                 gap: 10px;
+                width: 40px;
             }
 
             .social-icon {
-                width: 40px;
-                height: 40px;
+                width: 35px;
+                height: 35px;
                 margin-bottom: 10px;
             }
 
@@ -663,6 +668,12 @@
             .nbp-footer-grid {
                 grid-template-columns: repeat(2, 1fr);
                 padding: 2rem 1rem;
+            }
+
+            .modal-content {
+                width: 85%;
+                margin-left: auto;
+                margin-right: 60px; /* Add space for social icons */
             }
         }
 
@@ -710,6 +721,34 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .modal-content {
+                width: 80%;
+                margin-right: 50px; /* More space for social icons */
+            }
+    
+            /* Further reduce social icon size on small mobile */
+            .social-icon {
+                width: 30px;
+                height: 30px;
+            }
+    
+            .social-icon svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .certificate-modal {
+                justify-content: flex-end;
+            }
+        }
+
+        /* Hide social icons when modal is active on small screens */
+        .social-icons-hidden {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -758,8 +797,10 @@
 
     <!-- Page Title -->
     <section class="page-title">
-        <h1>Our PMU Artists</h1>
-        <p>Meet our talented team of Permanent Makeup artists who are dedicated to enhancing your natural beauty</p>
+        <div class="container">
+            <h1>Our PMU Artists</h1>
+            <p>Meet our talented team of Permanent Makeup artists who are dedicated to enhancing your natural beauty</p>
+        </div>
     </section>
 
     <!-- Artists Section -->
@@ -781,7 +822,7 @@
                 </div>
             </div>
 
-            <!-- Artist 2 -->
+            <!-- Artist 2 - Emma -->
             <div class="artist-card">
                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1061&q=80" alt="Emma Rodriguez" class="artist-image">
                 <div class="artist-info">
@@ -797,7 +838,7 @@
                 </div>
             </div>
 
-            <!-- Artist 3 -->
+            <!-- Artist 3 - Olivia -->
             <div class="artist-card">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" alt="Olivia Chen" class="artist-image">
                 <div class="artist-info">
@@ -820,35 +861,33 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title-container">
-                    <h2 class="modal-title" id="modalArtistName">Artist Name</h2>
-                    <p class="modal-subtitle" id="modalArtistTitle">Artist Title</p>
+                    <h2 class="modal-title" id="modalTitle">Artist Name</h2>
+                    <p class="modal-subtitle" id="modalSubtitle">Artist Title</p>
                 </div>
-                <span class="close-modal">&times;</span>
+                <button class="close-modal" id="closeModal" aria-label="Close modal">×</button>
             </div>
             <div class="modal-body">
                 <div class="modal-content-flex">
                     <div class="certificate-image-container">
-                        <img src="/placeholder.svg" alt="Certificate" class="certificate-image" id="certificateImage">
+                        <img src="/placeholder.svg" alt="Certificate" class="certificate-image" id="modalImage">
                     </div>
                     <div class="certificate-details">
                         <div class="certificate-section">
                             <h3>Professional Experience</h3>
-                            <p class="certificate-info" id="artistExperience">Experience details will appear here.</p>
+                            <p class="certificate-info" id="modalExperience"></p>
                         </div>
                         <div class="certificate-section">
                             <h3>Certifications</h3>
-                            <ul class="certificate-list" id="certificateList">
-                                <!-- Certification items will be added here dynamically -->
+                            <ul class="certificate-list" id="modalCertifications">
+                                <!-- Certification list items will be added dynamically -->
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="certificate-section">
-                    <h3>About</h3>
-                    <p class="certificate-info" id="certificateInfo">Certificate details will appear here.</p>
-                </div>
+                <h3>About</h3>
+                <p class="certificate-info" id="modalInfo"></p>
             </div>
         </div>
     </div>
@@ -899,50 +938,8 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const nav = document.querySelector('.nav');
-        const body = document.body;
-
-        if (hamburger) {
-            hamburger.addEventListener('click', function() {
-                this.classList.toggle('active');
-                nav.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            });
-        }
-
-        // Close menu when clicking a nav link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-                body.classList.remove('menu-open');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (nav && hamburger && !nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                nav.classList.remove('active');
-                body.classList.remove('menu-open');
-            }
-        });
-
-        // Certificate modal functionality
-        const modal = document.getElementById('certificateModal');
-        const certificateBtns = document.querySelectorAll('.details-btn');
-        const closeModal = document.querySelector('.close-modal');
-        const modalArtistName = document.getElementById('modalArtistName');
-        const modalArtistTitle = document.getElementById('modalArtistTitle');
-        const certificateImage = document.getElementById('certificateImage');
-        const certificateInfo = document.getElementById('certificateInfo');
-        const artistExperience = document.getElementById('artistExperience');
-        const certificateList = document.getElementById('certificateList');
-
         // Certificate data
         const certificateData = {
             seble: {
@@ -950,91 +947,138 @@
                 title: "Senior PMU Artist & Trainer",
                 image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
                 info: "Certified by the American Academy of Micropigmentation. Advanced training in microblading, powder brows, and lip blush techniques. Authorized trainer for PhiBrows methodology.",
-                experience: "8+ years of experience in permanent makeup artistry with specialization in creating natural-looking brows and lips.",
                 certifications: [
                     "American Academy of Micropigmentation - Master Artist (2019)",
                     "PhiBrows Microblading Certification (2018)",
                     "Powder & Ombre Brows Masterclass (2020)",
                     "Advanced Lip Blush Techniques (2021)"
-                ]
+                ],
+                experience: "8+ years of experience in permanent makeup artistry with specialization in creating natural-looking brows and lips."
             },
             emma: {
                 name: "Emma Rodriguez",
                 title: "PMU Artist & Color Specialist",
                 image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
                 info: "Certified by the International Permanent Makeup Association. Specialized training in color theory and correction techniques. Expert in powder brows and eyeliner applications.",
-                experience: "6+ years of experience with exceptional color matching skills and gentle technique. Trained internationally in Europe and Asia.",
                 certifications: [
                     "International Permanent Makeup Association - Certified Artist (2020)",
                     "Color Theory Masterclass by Beauty Ink (2021)",
                     "Advanced Eyeliner Techniques (2019)",
                     "Powder Brows Certification (2018)"
-                ]
+                ],
+                experience: "6+ years of experience with exceptional color matching skills and gentle technique. Trained internationally in Europe and Asia."
             },
             olivia: {
                 name: "Olivia Chen",
                 title: "Advanced PMU Specialist",
                 image: "https://images.unsplash.com/photo-1584552541484-a5a616181d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
                 info: "Certified by the Society of Permanent Cosmetic Professionals. Advanced training in nano brows and combination techniques. Specialized in lip neutralization and enhancement procedures.",
-                experience: "5+ years of experience bringing a fresh perspective to permanent makeup with innovative techniques. Specializes in creating dimensional brows.",
                 certifications: [
                     "Society of Permanent Cosmetic Professionals - Advanced Certification (2021)",
                     "Nano Brows Masterclass (2020)",
                     "Combination Brow Techniques (2019)",
                     "Lip Neutralization & Enhancement (2022)"
-                ]
+                ],
+                experience: "5+ years of experience bringing a fresh perspective to permanent makeup with innovative techniques. Specializes in creating dimensional brows."
             }
         };
 
-        // Open modal with certificate data
-        certificateBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const artistId = btn.getAttribute('data-artist');
-                const data = certificateData[artistId];
-                
-                if (data) {
-                    modalArtistName.textContent = data.name;
-                    modalArtistTitle.textContent = data.title;
-                    certificateImage.src = data.image;
-                    certificateImage.alt = `${data.name}'s Certificate`;
-                    certificateInfo.textContent = data.info;
-                    artistExperience.textContent = data.experience;
-                    
-                    // Clear previous certifications
-                    certificateList.innerHTML = '';
-                    
-                    // Add certifications
-                    data.certifications.forEach(cert => {
-                        const li = document.createElement('li');
-                        li.textContent = cert;
-                        certificateList.appendChild(li);
-                    });
-                    
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+        // DOM Elements
+        const modal = document.getElementById('certificateModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const detailButtons = document.querySelectorAll('.details-btn');
+        const hamburgerBtn = document.querySelector('.hamburger');
+        const nav = document.querySelector('.nav');
+        const socialIcons = document.querySelector('.social-icons');
+        
+        // Open modal function
+        function openModal(artistId) {
+            const artist = certificateData[artistId];
+            
+            // Set modal content
+            document.getElementById('modalTitle').textContent = artist.name;
+            document.getElementById('modalSubtitle').textContent = artist.title;
+            document.getElementById('modalImage').src = artist.image;
+            document.getElementById('modalImage').alt = artist.name + "'s Certificate";
+            document.getElementById('modalExperience').textContent = artist.experience;
+            document.getElementById('modalInfo').textContent = artist.info;
+            
+            // Clear and populate certifications list
+            const certList = document.getElementById('modalCertifications');
+            certList.innerHTML = '';
+            artist.certifications.forEach(cert => {
+                const li = document.createElement('li');
+                li.textContent = cert;
+                certList.appendChild(li);
+            });
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Hide social icons on small screens when modal is open
+            if (window.innerWidth <= 480) {
+                socialIcons.classList.add('social-icons-hidden');
+            }
+        }
+        
+        // Close modal function
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Show social icons again
+            socialIcons.classList.remove('social-icons-hidden');
+        }
+        
+        // Toggle mobile menu
+        function toggleMenu() {
+            hamburgerBtn.classList.toggle('active');
+            nav.classList.toggle('active');
+        }
+        
+        // Event Listeners
+        detailButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const artistId = this.getAttribute('data-artist');
+                openModal(artistId);
+            });
+        });
+        
+        closeModalBtn.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Escape key closes modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        // Hamburger menu toggle
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link, .academy-btn').forEach(link => {
+            link.addEventListener('click', function() {
+                if (nav.classList.contains('active')) {
+                    toggleMenu();
                 }
             });
         });
-
-        // Close modal
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
+        
+        // Resize handler for social icons visibility
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 480 && modal.classList.contains('active')) {
+                socialIcons.classList.remove('social-icons-hidden');
+            } else if (window.innerWidth <= 480 && modal.classList.contains('active')) {
+                socialIcons.classList.add('social-icons-hidden');
             }
         });
     </script>
