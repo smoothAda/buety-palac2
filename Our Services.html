@@ -556,25 +556,25 @@
         /* Social icons */
         .social-icons {
             position: fixed;
-            left: 15px; /* Increased from 10px */
+            left: 15px;
             top: 50%;
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            z-index: 1000;
-            gap: 12px; /* Increased from 10px */
+            z-index: 100;
+            gap: 12px;
             box-shadow: none;
             pointer-events: auto;
         }
 
         .social-icon {
-            width: 45px; /* Increased from 40px */
-            height: 45px; /* Increased from 40px */
+            width: 45px;
+            height: 45px;
             background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 12px; /* Increased from 10px */
+            margin-bottom: 12px;
             border-radius: 50%;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -599,8 +599,8 @@
         }
 
         .social-icon svg {
-            width: 28px; /* Increased from 24px */
-            height: 28px; /* Increased from 24px */
+            width: 28px;
+            height: 28px;
             fill: #fff;
             transition: transform 0.3s ease;
             z-index: 1;
@@ -632,25 +632,27 @@
             background: linear-gradient(45deg, #0088cc, #0088cc);
         }
 
-        /* NEW FOOTER STYLES */
+        /* NEW FOOTER STYLES - UPDATED with black background and removed logo/tagline */
         .nbp-footer {
-            background-color: #222;
+            background-color: #000; /* Changed from #222 to #000 (black) */
             color: #fff;
             width: 100%;
             box-sizing: border-box;
             position: relative;
             overflow: hidden;
+            z-index: 50;
         }
 
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0;
+            padding-left: 70px; /* Add padding to prevent overlap with side social icons */
         }
 
         .footer-top {
-            background-color: #111;
-            padding: 3rem 2rem;
+            background-color: #000; /* Changed from #111 to #000 (black) */
+            padding: 2rem; /* Reduced padding since logo and tagline are removed */
             position: relative;
         }
 
@@ -662,56 +664,6 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
-        }
-
-        .footer-logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .footer-logo {
-            max-width: 180px;
-            height: auto;
-            filter: brightness(1.2);
-        }
-
-        .footer-tagline {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .footer-social-icon:hover {
-            transform: translateY(-3px);
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        .footer-social-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: #fff;
         }
 
         .footer-main {
@@ -799,7 +751,7 @@
         }
 
         .footer-bottom {
-            background-color: #111;
+            background-color: #000; /* Changed from #111 to #000 (black) */
             padding: 1.5rem 2rem;
             text-align: center;
             font-size: 0.9rem;
@@ -826,20 +778,15 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
+            
+            .footer-container {
+                padding-left: 50px; /* Reduce padding on medium screens */
+            }
         }
 
         @media (max-width: 768px) {
             .footer-top {
-                padding: 2.5rem 1.5rem;
-            }
-            
-            .footer-logo {
-                max-width: 150px;
-            }
-            
-            .footer-tagline {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
+                padding: 1.5rem; /* Further reduced padding for mobile */
             }
             
             .footer-main {
@@ -858,6 +805,18 @@
             
             .footer-hours {
                 font-size: 0.9rem;
+            }
+            
+            /* Adjust footer container padding for mobile */
+            .footer-container {
+                padding-left: 0; /* Remove left padding on mobile */
+                padding-right: 0;
+            }
+            
+            /* Move social icons to the right on mobile */
+            .social-icons {
+                left: auto;
+                right: 15px;
             }
         }
 
@@ -1439,37 +1398,12 @@
         </div>
     </div>
 
-    <!-- New Footer Design -->
+    <!-- New Footer Design - Updated with black background and removed logo/tagline -->
     <footer class="nbp-footer">
         <div class="footer-container">
-            <!-- Footer Top Section with Logo -->
+            <!-- Footer Top Section - Logo and tagline removed -->
             <div class="footer-top">
-                <div class="footer-logo-container">
-                    <img src="New neon logo.png" alt="Neon Beauty Palace Logo" class="footer-logo">
-                </div>
-                <p class="footer-tagline">Enhancing Your Natural Beauty with Precision and Care</p>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-                            <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="TikTok">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
-                        </svg>
-                    </a>
-                    <a href="https://telegram.org/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Telegram">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                            <path d="M248,8C111.033,8,0,119.033,0,256S111.033,504,248,504,496,392.967,496,256,384.967,8,248,8ZM362.952,176.66c-3.732,39.215-19.881,134.378-28.1,178.3-3.476,18.584-10.322,24.816-16.948,25.425-14.4,1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25,5.342-39.5,3.652-3.793,67.107-61.51,68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608,69.142-14.845,10.194-26.894,9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7,18.45-13.7,108.446-47.248,144.628-62.3c68.872-28.647,83.183-33.623,92.511-33.789,2.052-.034,6.639.474,9.61,2.885a10.452,10.452,0,0,1,3.53,6.716A43.765,43.765,0,0,1,362.952,176.66Z"/>
-                        </svg>
-                    </a>
-                </div>
+                <!-- Logo and tagline removed as requested -->
             </div>
             
             <!-- Footer Main Section with Columns -->
