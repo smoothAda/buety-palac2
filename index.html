@@ -708,17 +708,15 @@
       width: 100%;
   }
 
+  /* Hide text content on mobile but keep the heading and button */
+  .artist-info p {
+      display: none;
+  }
+
   .artist-info h3 {
       font-size: 2.4rem; /* Increased from 2.2rem */
       margin-bottom: 1.2rem; /* Increased from 1rem */
       color: #333;
-  }
-
-  .artist-info p {
-      font-size: 1.1rem; /* Increased from 1rem */
-      margin-bottom: 1.8rem; /* Increased from 1.5rem */
-      padding: 0 0.7rem; /* Increased from 0.5rem */
-      line-height: 1.7; /* Increased from 1.6 */
   }
 
   .artist-image {
@@ -751,13 +749,6 @@
 
   .artist-info h3 {
       font-size: 2rem; /* Increased from 1.8rem */
-  }
-
-  .artist-info p {
-      font-size: 1.05rem; /* Increased from 0.95rem */
-      line-height: 1.6; /* Increased from 1.5 */
-      padding: 0;
-      margin-bottom: 1.5rem; /* Increased from 1.2rem */
   }
 
   .artist-image {
@@ -1355,11 +1346,17 @@
 
       /* footer */
       .nbp-footer {
-          background-color: #333;
+          background-color: #000;
           color: #fff;
-          padding: 2.5rem; /* Increased from 2rem */
-          width: 100%;
+          width: 100vw; /* Changed to viewport width */
+          margin-left: -50vw; /* Negative margin technique for full width */
+          margin-right: -50vw;
+          position: relative;
+          left: 50%;
+          right: 50%;
           box-sizing: border-box;
+          overflow: hidden;
+          z-index: 50;
       }
 
       .nbp-footer-grid {
@@ -1367,16 +1364,32 @@
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 2.5rem; /* Increased from 2rem */
+          max-width: 1200px;
+          margin: 0 auto;
       }
 
       .nbp-footer-column h3 {
           font-size: 1.3rem; /* Increased from 1.2rem */
           margin-bottom: 1.2rem; /* Increased from 1rem */
+          position: relative;
+          padding-bottom: 0.8rem;
+          font-weight: 600;
+      }
+
+      .nbp-footer-column h3::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 40px;
+          height: 2px;
+          background-color: #fff;
       }
 
       .nbp-footer-links {
           list-style: none;
           padding: 0;
+          margin: 0;
       }
 
       .nbp-footer-links li {
@@ -1385,21 +1398,48 @@
       }
 
       .nbp-footer-links a {
+          color: #ccc;
+          text-decoration: none;
+          transition: color 0.3s ease, transform 0.3s ease;
+          display: inline-block;
+      }
+
+      .nbp-footer-links a:hover {
           color: #fff;
+          transform: translateX(3px);
+      }
+
+      .footer-hours {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          gap: 0.5rem 1rem;
+          color: #ccc;
+          font-size: 0.95rem;
+      }
+
+      .nbp-footer-bottom {
+          background-color: #000;
+          padding: 1.5rem 2rem;
+          text-align: center;
+          font-size: 0.9rem;
+          color: #999;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .nbp-footer-bottom p {
+          margin: 0;
+      }
+
+      .nbp-footer-bottom a {
+          color: #ccc;
           text-decoration: none;
           transition: color 0.3s ease;
       }
 
-      .nbp-footer-links a:hover {
-          color: #ccc;
-      }
-
-      .nbp-footer-bottom {
-          margin-top: 2.5rem; /* Increased from 2rem */
-          text-align: center;
-          padding-top: 1.2rem; /* Increased from 1rem */
-          border-top: 1px solid #555;
-          font-size: 1.05rem; /* Added font size */
+      .nbp-footer-bottom a:hover {
+          color: #fff;
       }
 
       @media (max-width: 768px) {
@@ -1407,6 +1447,7 @@
           .nbp-footer-grid {
               grid-template-columns: 1fr;
               padding: 3rem 1.5rem; /* Increased padding */
+              width: 100%;
           }
           
           .nbp-footer-column h3 {
@@ -1417,6 +1458,20 @@
           .nbp-footer-links li {
               margin-bottom: 0.9rem; /* Increased for mobile */
               font-size: 1.1rem; /* Increased for mobile */
+          }
+
+          .nbp-footer {
+              width: 100vw;
+              margin-left: -50vw;
+              margin-right: -50vw;
+              left: 50%;
+              right: 50%;
+              padding: 0;
+          }
+
+          .nbp-footer-bottom {
+              width: 100%;
+              padding: 1.5rem 1rem;
           }
       }
 
@@ -1710,20 +1765,12 @@
       /* Update footer for mobile */
       @media (max-width: 768px) {
           .nbp-footer {
-              padding: 2.5rem 1.5rem; /* Increased from 2rem */
-              margin: 0;
-              border-radius: 0;
+              padding: 0;
               width: 100vw;
-              position: relative;
-              left: 50%;
-              right: 50%;
               margin-left: -50vw;
               margin-right: -50vw;
-          }
-          
-          .nbp-footer-grid {
-              padding: 2.5rem 1rem; /* Increased from 2rem */
-              grid-template-columns: 1fr;
+              left: 50%;
+              right: 50%;
           }
       }
 
@@ -1745,7 +1792,12 @@
           }
           
           .nbp-footer {
-              padding: 2.5rem 1.2rem; /* Increased from 2rem 1rem */
+              padding: 0;
+              width: 100vw;
+              margin-left: -50vw;
+              margin-right: -50vw;
+              left: 50%;
+              right: 50%;
           }
           
           .nbp-footer-grid {
@@ -1933,162 +1985,6 @@
               max-width: 220px; /* Increased from 200px */
           }
       }
-
-    /* Updated footer styles to match services.html */
-    .nbp-footer {
-        background-color: #000; /* Changed from #333 to black */
-        color: #fff;
-        width: 100%;
-        box-sizing: border-box;
-        position: relative;
-        overflow: hidden;
-        z-index: 50;
-    }
-
-    .nbp-footer-grid {
-        padding: 3rem 2rem;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2.5rem;
-    }
-
-    .nbp-footer-column h3 {
-        font-size: 1.2rem;
-        margin-bottom: 1.5rem;
-        position: relative;
-        padding-bottom: 0.8rem;
-        font-weight: 600;
-        color: #fff;
-    }
-
-    .nbp-footer-column h3::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 40px;
-        height: 2px;
-        background-color: #fff;
-    }
-
-    .nbp-footer-links {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .nbp-footer-links li {
-        margin-bottom: 0.8rem;
-    }
-
-    .nbp-footer-links a {
-        color: #ccc;
-        text-decoration: none;
-        transition: color 0.3s ease, transform 0.3s ease;
-        display: inline-block;
-        font-size: 0.95rem;
-    }
-
-    .nbp-footer-links a:hover {
-        color: #fff;
-        transform: translateX(3px);
-    }
-
-    .footer-hours {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 0.5rem 1rem;
-        color: #ccc;
-        font-size: 0.95rem;
-    }
-
-    .nbp-footer-bottom {
-        background-color: #000; /* Changed from #111 to black */
-        padding: 1.5rem 2rem;
-        text-align: center;
-        font-size: 0.9rem;
-        color: #999;
-        border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .nbp-footer-bottom p {
-        margin: 0;
-    }
-
-    .nbp-footer-bottom a {
-        color: #ccc;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .nbp-footer-bottom a:hover {
-        color: #fff;
-    }
-
-    /* Responsive footer styles */
-    @media (max-width: 992px) {
-        .nbp-footer-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .nbp-footer-grid {
-            padding: 2.5rem 1.5rem;
-            gap: 2rem 1rem;
-        }
-        
-        .nbp-footer-column h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
-        }
-        
-        .nbp-footer-links a {
-            font-size: 0.9rem;
-        }
-        
-        .footer-hours {
-            font-size: 0.9rem;
-        }
-    }
-
-    @media (max-width: 576px) {
-        .nbp-footer-grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .nbp-footer-column h3 {
-            text-align: center;
-        }
-        
-        .nbp-footer-column h3::after {
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-        }
-        
-        .nbp-footer-links {
-            text-align: center;
-        }
-        
-        .nbp-footer-links a:hover {
-            transform: none;
-        }
-        
-        .footer-hours {
-            justify-content: center;
-            grid-template-columns: auto auto;
-            max-width: 250px;
-            margin: 0 auto;
-        }
-        
-        .nbp-footer-bottom {
-            padding: 1.2rem 1rem;
-            font-size: 0.85rem;
-        }
-    }
     </style>
 </head>
 <body>
@@ -2229,7 +2125,6 @@
             <div class="artist-card">
                 <div class="artist-info">
                     <h3>SEBLE</h3>
-                    <p>She is a passionate permanent makeup artist dedicated to enhancing natural beauty and boosting confidence. With years of experience, she combines precision and artistry to deliver personalized, long</p>
                     <a href="certificate.html" class="certificate-btn">See Her Certificates</a>
                 </div>
                 <img src="home2.png" alt="Brianna" class="artist-image" />
