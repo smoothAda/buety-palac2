@@ -812,6 +812,167 @@
      body.menu-open {
          overflow: hidden;
      }
+
+/* Updated footer styles to match index.html */
+.nbp-footer {
+    background-color: #000; /* Changed from #333 to black */
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    z-index: 50;
+}
+
+.centered-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nbp-footer-grid {
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+}
+
+.nbp-footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.nbp-footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #fff;
+}
+
+.nbp-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nbp-footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.nbp-footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    font-size: 0.95rem;
+}
+
+.nbp-footer-links a:hover {
+    color: #fff;
+    transform: translateX(3px);
+}
+
+.footer-hours {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.nbp-footer-bottom {
+    background-color: #000; /* Changed from #111 to black */
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #999;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.nbp-footer-bottom p {
+    margin: 0;
+}
+
+.nbp-footer-bottom a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nbp-footer-bottom a:hover {
+    color: #fff;
+}
+
+/* Responsive footer styles */
+@media (max-width: 992px) {
+    .nbp-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nbp-footer-grid {
+        padding: 2.5rem 1.5rem;
+        gap: 2rem 1rem;
+    }
+    
+    .nbp-footer-column h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .nbp-footer-links a {
+        font-size: 0.9rem;
+    }
+    
+    .footer-hours {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .nbp-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .nbp-footer-column h3 {
+        text-align: center;
+    }
+    
+    .nbp-footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+    }
+    
+    .nbp-footer-links {
+        text-align: center;
+    }
+    
+    .nbp-footer-links a:hover {
+        transform: none;
+    }
+    
+    .footer-hours {
+        justify-content: center;
+        grid-template-columns: auto auto;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .nbp-footer-bottom {
+        padding: 1.2rem 1rem;
+        font-size: 0.85rem;
+    }
+}
  </style>
 </head>
 <body>
@@ -819,7 +980,7 @@
  <div class="social-icons">
      <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" aria-label="TikTok">
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-             <path fill="#ffffff" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+             <path fill="#ffffff" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
          </svg>
      </a>
      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="Instagram">
@@ -980,47 +1141,55 @@
  </div>
 
  <!-- Footer -->
- <footer class="nbp-footer">
-     <div class="nbp-footer-grid">
-         <div class="nbp-footer-column">
-             <h3>Quick Links</h3>
-             <ul class="nbp-footer-links">
-                 <li><a href="index.html">Home</a></li>
-                 <li><a href="index.html#services">Services</a></li>
-                 <li><a href="index.html#pmu-artist">About Us</a></li>
-                 <li><a href="index.html#contact">Contact</a></li>
-             </ul>
-         </div>
-         <div class="nbp-footer-column">
-             <h3>Services</h3>
-             <ul class="nbp-footer-links">
-                 <li><a href="Our Services.html?filter=ombre-brows">Ombre Brows</a></li>
-                 <li><a href="Our Services.html?filter=lip-blushing">Lip Blushing</a></li>
-                 <li><a href="Our Services.html?filter=eyeliner">Eyeliner</a></li>
-                 <li><a href="Our Services.html?filter=lash-enhancement">Lash Enhancement</a></li>
-             </ul>
-         </div>
-         <div class="nbp-footer-column">
-             <h3>Contact Us</h3>
-             <ul class="nbp-footer-links">
-                 <li>XQQR+RWX, Addis Ababa</li>
-                 <li>+1 (555) 123-4567</li>
-                 <li><a href="/cdn-cgi/l/email-protection#9df4f3fbf2ddf3f8f2f3fff8fce8e9e4edfcf1fcfef8b3fef2f0"><span class="__cf_email__" data-cfemail="1d74737b725d737872737f787c6869646d7c717c7e78337e7270">[email&#160;protected]</span></a></li>
-             </ul>
-         </div>
-         <div class="nbp-footer-column">
-             <h3>Follow Us</h3>
-             <ul class="nbp-footer-links">
-                 <li><a href="#">Instagram</a></li>
-                 <li><a href="#">Facebook</a></li>
-                 <li><a href="#">TikTok</a></li>
-             </ul>
-         </div>
-     </div>
-     <div class="nbp-footer-bottom">
-         <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
-     </div>
- </footer>
+<footer class="nbp-footer">
+    <div class="centered-content">
+        <div class="nbp-footer-grid">
+            <div class="nbp-footer-column">
+                <h3>Quick Links</h3>
+                <ul class="nbp-footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="certificate.html">PMU Artist</a></li>
+                    <li><a href="ourworkspage.html">Our Work</a></li>
+                    <li><a href="academy.html">Academy</a></li>
+                </ul>
+            </div>
+            <div class="nbp-footer-column">
+                <h3>Our Services</h3>
+                <ul class="nbp-footer-links">
+                    <li><a href="services.html?filter=ombre-brows">Ombre Brows</a></li>
+                    <li><a href="services.html?filter=nano-brows">Nano Brows</a></li>
+                    <li><a href="services.html?filter=lip-blushing">Lip Blushing</a></li>
+                    <li><a href="services.html?filter=eyeliner">Eyeliner</a></li>
+                    <li><a href="services.html?filter=lash-enhancement">Lash Enhancement</a></li>
+                </ul>
+            </div>
+            <div class="nbp-footer-column">
+                <h3>Contact Us</h3>
+                <ul class="nbp-footer-links">
+                    <li><a href="https://www.google.com/maps/place/XQQR%2BRWX+Addis+Ababa+Ethiopia" target="_blank" rel="noopener noreferrer">XQQR+RWX, Addis Ababa, Ethiopia</a></li>
+                    <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                    <li><a href="mailto:info@neonbeautypalace.com">info@neonbeautypalace.com</a></li>
+                    <li><a href="https://wa.me/15551234567">WhatsApp: +1 (555) 123-4567</a></li>
+                </ul>
+            </div>
+            <div class="nbp-footer-column">
+                <h3>Opening Hours</h3>
+                <div class="footer-hours">
+                    <span>Monday - Friday:</span>
+                    <span>10:00 AM - 8:00 PM</span>
+                    <span>Saturday:</span>
+                    <span>10:00 AM - 6:00 PM</span>
+                    <span>Sunday:</span>
+                    <span>Closed</span>
+                </div>
+            </div>
+        </div>
+        <div class="nbp-footer-bottom">
+            <p>&copy; 2023 Neon Beauty Palace. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        </div>
+    </div>
+</footer>
 
  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
      // Toggle mobile menu
