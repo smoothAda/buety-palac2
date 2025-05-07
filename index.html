@@ -1935,164 +1935,160 @@
       }
 
     /* Updated footer styles to match services.html */
-    /* Footer CSS */
-.nbp-footer {
-    background-color: #000;
-    color: #fff;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    z-index: 50;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0;
-    padding-left: 70px; /* Add padding to prevent overlap with side social icons */
-}
-
-.footer-main {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    padding: 3rem 2rem;
-}
-
-.footer-column h3 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-    font-weight: 600;
-    color: #fff;
-}
-
-.footer-column h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background-color: #fff;
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-links li {
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-}
-
-.footer-links li svg {
-    margin-right: 8px;
-    flex-shrink: 0;
-    color: #ccc;
-}
-
-.footer-links a, .footer-contact-text a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 0.9rem;
-    display: inline-block;
-}
-
-.footer-links a:hover, .footer-contact-text a:hover {
-    color: #fff;
-}
-
-.footer-links li a {
-    display: flex;
-    align-items: center;
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links li a:hover {
-    color: #fff;
-}
-
-.footer-contact-text {
-    margin-bottom: 0.5rem;
-}
-
-.footer-bottom {
-    background-color: #000;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #999;
-}
-
-.footer-bottom p {
-    margin: 0;
-}
-
-/* Responsive footer styles */
-@media (max-width: 1024px) {
-    .footer-main {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+    .nbp-footer {
+        background-color: #000; /* Changed from #333 to black */
+        color: #fff;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+        z-index: 50;
     }
-}
 
-@media (max-width: 768px) {
-    .footer-container {
-        padding-left: 0;
-        padding-right: 50px; /* Add right padding for social icons on mobile */
+    .nbp-footer-grid {
+        padding: 3rem 2rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem;
     }
-    
-    .footer-main {
-        padding: 2rem 1.5rem;
-        gap: 1.5rem;
-    }
-}
 
-@media (max-width: 576px) {
-    .footer-main {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 1.5rem 1.2rem;
+    .nbp-footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.8rem;
+        font-weight: 600;
+        color: #fff;
     }
-    
-    .footer-column h3 {
-        margin-bottom: 0.7rem;
-    }
-    
-    .footer-column h3::after {
+
+    .nbp-footer-column h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
         left: 0;
-        transform: none;
-        width: 25px;
+        width: 40px;
+        height: 2px;
+        background-color: #fff;
     }
-    
-    .footer-links li {
-        margin-bottom: 1rem;
+
+    .nbp-footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
-    
-    .footer-links li svg {
-        width: 14px;
-        height: 14px;
+
+    .nbp-footer-links li {
+        margin-bottom: 0.8rem;
     }
-    
-    .footer-links a, .footer-contact-text a {
-        font-size: 0.85rem;
+
+    .nbp-footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+        font-size: 0.95rem;
     }
-    
-    .footer-bottom {
-        padding: 0.8rem;
-        font-size: 0.75rem;
+
+    .nbp-footer-links a:hover {
+        color: #fff;
+        transform: translateX(3px);
     }
-}
+
+    .footer-hours {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.5rem 1rem;
+        color: #ccc;
+        font-size: 0.95rem;
+    }
+
+    .nbp-footer-bottom {
+        background-color: #000; /* Changed from #111 to black */
+        padding: 1.5rem 2rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #999;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nbp-footer-bottom p {
+        margin: 0;
+    }
+
+    .nbp-footer-bottom a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .nbp-footer-bottom a:hover {
+        color: #fff;
+    }
+
+    /* Responsive footer styles */
+    @media (max-width: 992px) {
+        .nbp-footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nbp-footer-grid {
+            padding: 2.5rem 1.5rem;
+            gap: 2rem 1rem;
+        }
+        
+        .nbp-footer-column h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .nbp-footer-links a {
+            font-size: 0.9rem;
+        }
+        
+        .footer-hours {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .nbp-footer-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .nbp-footer-column h3 {
+            text-align: center;
+        }
+        
+        .nbp-footer-column h3::after {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+        }
+        
+        .nbp-footer-links {
+            text-align: center;
+        }
+        
+        .nbp-footer-links a:hover {
+            transform: none;
+        }
+        
+        .footer-hours {
+            justify-content: center;
+            grid-template-columns: auto auto;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        
+        .nbp-footer-bottom {
+            padding: 1.2rem 1rem;
+            font-size: 0.85rem;
+        }
+    }
     </style>
 </head>
 <body>
@@ -2473,38 +2469,41 @@
         </div>
     </section>
 
+    <!-- footer -->
     <footer class="nbp-footer">
-        <div class="footer-container">
-            <div class="footer-main">
-                <div class="footer-column">
+        <div class="centered-content">
+            <div class="nbp-footer-grid">
+                <div class="nbp-footer-column">
                     <h3>Quick Links</h3>
-                    <ul class="footer-links">
+                    <ul class="nbp-footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="certificate.html">PMU Artist</a></li>
                         <li><a href="ourworkspage.html">Our Work</a></li>
+                        <li><a href="academy.html">Academy</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
+                <div class="nbp-footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="nbp-footer-links">
                         <li><a href="services.html?filter=ombre-brows">Ombre Brows</a></li>
                         <li><a href="services.html?filter=nano-brows">Nano Brows</a></li>
                         <li><a href="services.html?filter=lip-blushing">Lip Blushing</a></li>
                         <li><a href="services.html?filter=eyeliner">Eyeliner</a></li>
+                        <li><a href="services.html?filter=lash-enhancement">Lash Enhancement</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
+                <div class="nbp-footer-column">
                     <h3>Contact Us</h3>
-                    <ul class="footer-links">
+                    <ul class="nbp-footer-links">
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            XQQR+RWX, Addis Ababa, Ethiopia
+                            <a href="https://www.google.com/maps/place/XQQR%2BRWX+Addis+Ababa+Ethiopia" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                XQQR+RWX, Addis Ababa, Ethiopia
+                            </a>
                         </li>
                         <li>
                             <a href="tel:+15551234567">
@@ -2533,19 +2532,20 @@
                         </li>
                     </ul>
                 </div>
-                
-                <div class="footer-column">
-                    <h3>Hours</h3>
-                    <ul class="footer-links">
-                        <li>Monday - Friday: 10AM - 8PM</li>
-                        <li>Saturday: 10AM - 6PM</li>
-                        <li>Sunday: Closed</li>
-                    </ul>
+                <div class="nbp-footer-column">
+                    <h3>Opening Hours</h3>
+                    <div class="footer-hours">
+                        <span>Monday - Friday:</span>
+                        <span>10:00 AM - 8:00 PM</span>
+                        <span>Saturday:</span>
+                        <span>10:00 AM - 6:00 PM</span>
+                        <span>Sunday:</span>
+                        <span>Closed</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+            <div class="nbp-footer-bottom">
+                <p>&copy; 2023 Neon Beauty Palace. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
             </div>
         </div>
     </footer>
