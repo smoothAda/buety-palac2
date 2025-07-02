@@ -1353,70 +1353,155 @@
           }
       }
 
-      /* footer */
+      /* UPDATED FOOTER STYLES - Matching Our Services page */
       .nbp-footer {
-          background-color: #333;
+          background-color: #000;
           color: #fff;
-          padding: 2.5rem; /* Increased from 2rem */
           width: 100%;
           box-sizing: border-box;
+          position: relative;
+          overflow: hidden;
+          z-index: 50;
       }
 
-      .nbp-footer-grid {
-          padding: 4.5rem 5rem; /* Increased from 4rem */
+      .footer-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0;
+          padding-left: 70px; /* Add padding to prevent overlap with side social icons */
+      }
+
+      .footer-main {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 2.5rem; /* Increased from 2rem */
+          gap: 2rem;
+          padding: 3rem 2rem;
       }
 
-      .nbp-footer-column h3 {
-          font-size: 1.3rem; /* Increased from 1.2rem */
-          margin-bottom: 1.2rem; /* Increased from 1rem */
+      .footer-column h3 {
+          font-size: 1.1rem;
+          margin-bottom: 1rem;
+          position: relative;
+          padding-bottom: 0.5rem;
+          font-weight: 600;
+          color: #fff;
       }
 
-      .nbp-footer-links {
+      .footer-column h3::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 30px;
+          height: 2px;
+          background-color: #fff;
+      }
+
+      .footer-links {
           list-style: none;
           padding: 0;
+          margin: 0;
       }
 
-      .nbp-footer-links li {
-          margin-bottom: 0.7rem; /* Increased from 0.5rem */
-          font-size: 1.05rem; /* Added font size */
+      .footer-links li {
+          margin-bottom: 0.8rem;
+          display: flex;
+          align-items: center;
       }
 
-      .nbp-footer-links a {
-          color: #fff;
+      .footer-links li svg {
+          margin-right: 8px;
+          flex-shrink: 0;
+          color: #ccc;
+          width: 16px;
+          height: 16px;
+      }
+
+      .footer-links a, .footer-contact-text a {
+          color: #ccc;
           text-decoration: none;
           transition: color 0.3s ease;
+          font-size: 0.9rem;
+          display: flex;
+          align-items: center;
       }
 
-      .nbp-footer-links a:hover {
+      .footer-links a:hover, .footer-contact-text a:hover {
+          color: #fff;
+      }
+
+      .footer-contact-text {
+          margin-bottom: 0.5rem;
           color: #ccc;
+          font-size: 0.9rem;
       }
 
-      .nbp-footer-bottom {
-          margin-top: 2.5rem; /* Increased from 2rem */
+      .footer-bottom {
+          background-color: #000;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          padding: 1rem;
           text-align: center;
-          padding-top: 1.2rem; /* Increased from 1rem */
-          border-top: 1px solid #555;
-          font-size: 1.05rem; /* Added font size */
+          font-size: 0.8rem;
+          color: #999;
+      }
+
+      .footer-bottom p {
+          margin: 0;
+      }
+
+      /* Responsive footer styles */
+      @media (max-width: 1024px) {
+          .footer-main {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 2rem;
+          }
       }
 
       @media (max-width: 768px) {
-          .nbp-contact-grid,
-          .nbp-footer-grid {
+          .footer-container {
+              padding-left: 0;
+              padding-right: 50px; /* Add right padding for social icons on mobile */
+          }
+          
+          .footer-main {
+              padding: 2rem 1.5rem;
+              gap: 1.5rem;
+          }
+      }
+
+      @media (max-width: 576px) {
+          .footer-main {
               grid-template-columns: 1fr;
-              padding: 3rem 1.5rem; /* Increased padding */
+              gap: 1.5rem;
+              padding: 1.5rem 1.2rem;
           }
           
-          .nbp-footer-column h3 {
-              font-size: 1.4rem; /* Increased for mobile */
-              margin-bottom: 1.3rem; /* Increased for mobile */
+          .footer-column h3 {
+              margin-bottom: 0.7rem;
           }
           
-          .nbp-footer-links li {
-              margin-bottom: 0.9rem; /* Increased for mobile */
-              font-size: 1.1rem; /* Increased for mobile */
+          .footer-column h3::after {
+              left: 0;
+              transform: none;
+              width: 25px;
+          }
+          
+          .footer-links li {
+              margin-bottom: 1rem;
+          }
+          
+          .footer-links li svg {
+              width: 14px;
+              height: 14px;
+          }
+          
+          .footer-links a, .footer-contact-text a {
+              font-size: 0.85rem;
+          }
+          
+          .footer-bottom {
+              padding: 0.8rem;
+              font-size: 0.75rem;
           }
       }
 
@@ -1707,26 +1792,6 @@
           }
       }
 
-      /* Update footer for mobile */
-      @media (max-width: 768px) {
-          .nbp-footer {
-              padding: 2.5rem 1.5rem; /* Increased from 2rem */
-              margin: 0;
-              border-radius: 0;
-              width: 100vw;
-              position: relative;
-              left: 50%;
-              right: 50%;
-              margin-left: -50vw;
-              margin-right: -50vw;
-          }
-          
-          .nbp-footer-grid {
-              padding: 2.5rem 1rem; /* Increased from 2rem */
-              grid-template-columns: 1fr;
-          }
-      }
-
       /* Ensure consistent spacing for small mobile devices */
       @media (max-width: 480px) {
           .services,
@@ -1748,7 +1813,7 @@
               padding: 2.5rem 1.2rem; /* Increased from 2rem 1rem */
           }
           
-          .nbp-footer-grid {
+          .footer-main {
               padding: 2rem 1rem; /* Increased from 1.5rem 0.75rem */
           }
       }
@@ -2316,52 +2381,83 @@
         </div>
     </section>
 
-    <!-- footer -->
-    <footer class="nbp-footer">
-        <div class="centered-content">
-            <div class="nbp-footer-grid">
-                <div class="nbp-footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="nbp-footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#pmu-artist">PMU Artist</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="nbp-footer-column">
-                    <h3>Services</h3>
-                    <ul class="nbp-footer-links">
-                        <li><a href="Our Services.html?filter=ombre-brows">Ombre Brows</a></li>
-                        <li><a href="Our Services.html?filter=nano-brows">Nano Brows</a></li>
-                        <li><a href="Our Services.html?filter=lip-blushing">Lip Blushing</a></li>
-                        <li><a href="Our Services.html?filter=eyeliner">Eyeliner</a></li>
-                        <li><a href="Our Services.html?filter=lash-enhancement">Lash Enhancement</a></li>
-                    </ul>
-                </div>
-                <div class="nbp-footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="nbp-footer-links">
-                        <li><a href="https://www.google.com/maps/place/XQQR%2BRWX+Addis+Ababa+Ethiopia" target="_blank" rel="noopener noreferrer">XQQR+RWX, Addis Ababa</a></li>
-                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-                        <li><a href="/cdn-cgi/l/email-protection#3950575f5679575c56575b5c584c4d40495855585a5c175a5654"><span class="__cf_email__" data-cfemail="7a13141c153a141f1514181f1b0f0e030a1b161b191f54191517">[email&#160;protected]</span></a></li>
-                    </ul>
-                </div>
-                <div class="nbp-footer-column">
-                    <h3>Follow Us</h3>
-                    <ul class="nbp-footer-links">
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">TikTok</a></li>
-                    </ul>
-                </div>
+      <!-- Footer -->
+<footer class="nbp-footer">
+    <div class="footer-container">
+        <div class="footer-main">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="certificate.html">PMU Artist</a></li>
+                    <li><a href="ourworkspage.html">Our Work</a></li>
+                </ul>
             </div>
-            <div class="nbp-footer-bottom">
-                <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+            
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html?filter=ombre-brows">Ombre Brows</a></li>
+                    <li><a href="services.html?filter=nano-brows">Nano Brows</a></li>
+                    <li><a href="services.html?filter=lip-blushing">Lip Blushing</a></li>
+                    <li><a href="services.html?filter=eyeliner">Eyeliner</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        XQQR+RWX, Addis Ababa, Ethiopia
+                    </li>
+                    <li>
+                        <a href="tel:+15551234567">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            +1 (555) 123-4567
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:info@neonbeautypalace.com">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            info@neonbeautypalace.com
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/15551234567">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            WhatsApp: +1 (555) 123-4567
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Hours</h3>
+                <ul class="footer-links">
+                    <li>Monday - Friday: 10AM - 8PM</li>
+                    <li>Saturday: 10AM - 6PM</li>
+                    <li>Sunday: Closed</li>
+                </ul>
             </div>
         </div>
-    </footer>
-
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Neon Beauty Palace. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         document.addEventListener('DOMContentLoaded', () => {
             const content = document.querySelector('.content');
